@@ -1,0 +1,35 @@
+	  Connection con = null;
+	  Statement stmt = null;
+	  ResultSet rs = null;
+	  response.setContentType("text/html");
+	  PrintWriter out = response.getWriter();
+
+	  try {
+	  // Carica (e quindi registra) il driver MySql
+	  Class.forName("com.mysql.jdbc.Driver");
+
+	  // Ottieni una connessione alla base di dati
+	  con=DriverManager.getConnection
+	  ("jdbc:mysql://localhost:3306/dbprova","root","");
+
+	  // Crea un oggetto Statement
+	  stmt = con.createStatement();
+
+	  // Esegui una query SQL, ottieni un ResultSet
+	  rs = stmt.executeQuery("SELECT * FROM login");
+	  out.println (rs.getString("email"));
+	  
+	  /*  while(rs.next()) {
+	  	  out.println("<LI>" + rs.getString("name") + " " + rs.getString("phone"));
+	  	  } */ 
+
+	  }
+
+	  catch (ClassNotFoundException e) {
+	  // Handle an error loading the driver
+	  out.println("Impossibile caricare il driver della base di dati: " 
+	  + e.getMessage());
+	  }
+	  catch (SQLException e) {
+	  // Handle an error getting the connection
+	  }

@@ -1,0 +1,136 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/sfondo"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:scrollbars="horizontal|vertical"
+    tools:context="com.github.nicolediana.siriofootballfriends.RegistrazioneActivity" >
+
+        <TextView
+            android:id="@+id/login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:contentDescription="@string/login"
+            android:gravity="center_horizontal"
+            android:scrollbars="horizontal|vertical"
+            android:text="@string/registrazione"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/bianco"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/label_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_weight="0.40"
+                android:text="@string/label_email"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/darkblue"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="174dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.30"
+                android:ems="10"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/bianco"
+                android:textColorHint="@color/bianco"
+                android:textStyle="bold" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/label_psw"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:text="@string/label_psw"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/darkblue"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/psw"
+                android:layout_width="166dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/psw"
+                android:inputType="textPassword"
+                android:textColor="@color/bianco"
+                android:textColorHint="@color/bianco"
+                android:textStyle="bold" >
+
+                <requestFocus />
+            </EditText>
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/label_psw2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:text="@string/label_psw2"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/darkblue"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/psw2"
+                android:layout_width="166dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/psw2"
+                android:inputType="textPassword"
+                android:textColor="@color/bianco"
+                android:textColorHint="@color/bianco"
+                android:textStyle="bold" />
+
+        </TableRow>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/separa"
+        android:gravity="center_vertical|center_horizontal"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/bottone_salva"
+            android:layout_width="102dp"
+            android:layout_height="wrap_content"
+            android:onClick="onClickSalvaReg"
+            android:text="@string/bottone_salva"
+            android:textColor="@color/rosso2"
+            android:textStyle="bold" />
+
+         </LinearLayout>
+            
+</LinearLayout>

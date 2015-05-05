@@ -1,0 +1,307 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ScrollView01"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+    
+    <TableLayout 
+    android:id="@+id/TableLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginRight="5dp"
+    android:background="@drawable/sfondo"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:scrollbars="horizontal|vertical"
+    tools:context="com.github.nicolediana.siriofootballfriends.ModificaProfiloActivity" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="PROFILO"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/bianco"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TableRow
+        android:id="@+id/tableRow1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+        <TextView
+            android:id="@+id/label_nome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="@string/label_nome"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/darkblue"
+            android:textStyle="bold" />
+        <EditText
+            android:id="@+id/nome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/nome"
+            android:inputType="textPersonName"
+            android:textColor="@color/bianco"
+            android:textColorHint="@color/bianco"
+            android:textStyle="bold" >
+            <requestFocus />
+        </EditText>
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+        <TextView
+            android:id="@+id/label_cognome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="@string/label_cognome"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/darkblue"
+            android:textStyle="bold" />
+        <EditText
+            android:id="@+id/cognome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/cognome"
+            android:inputType="textPersonName"
+            android:textColor="@color/bianco"
+            android:textColorHint="@color/bianco"
+            android:textStyle="bold" />
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+        <TextView
+            android:id="@+id/label_nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="@string/label_nickname"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/darkblue"
+            android:textStyle="bold" />
+        <EditText
+            android:id="@+id/nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/nickname"
+            android:textColor="@color/bianco"
+            android:textColorHint="@color/bianco"
+            android:textStyle="bold" />
+    </TableRow>
+    
+    <TableRow
+        android:id="@+id/tableRow5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+        <TextView
+            android:id="@+id/label_cellular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="@string/label_cellulare"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/darkblue"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/cellulare"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/cellulare"
+            android:inputType="phone"
+            android:textColor="@color/bianco"
+            android:textColorHint="@color/bianco"
+            android:textStyle="bold" >
+
+        </EditText>
+
+     </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/label_annonascita"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="@string/label_annonascita"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/darkblue"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/annonascita"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/annonascita"
+            android:inputType="number"
+            android:textColor="@color/bianco"
+            android:textColorHint="@color/bianco"
+            android:textStyle="bold" />
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/label_citta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="@string/label_citta"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/darkblue"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/citta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/citta"
+            android:textColor="@color/bianco"
+            android:textColorHint="@color/bianco"
+            android:textStyle="bold" />
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/label_sesso"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="@string/label_sesso"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/darkblue"
+            android:textStyle="bold" />
+
+        <TableRow
+            android:id="@+id/tableRow81"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <RadioGroup
+                android:id="@+id/radio_sesso"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <RadioButton
+                    android:id="@+id/radio_sessoM"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:onClick="onRadioButtonClicked"
+                    android:text="@string/radio_sessoM"
+                    android:textColor="@color/bianco"
+                    android:textStyle="bold" />
+
+                <RadioButton
+                    android:id="@+id/radio_sessoF"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="onRadioButtonClicked"
+                    android:text="@string/radio_sessoF"
+                    android:textColor="@color/bianco"
+                    android:textStyle="bold" />
+
+            </RadioGroup>
+
+        </TableRow>
+    </TableRow>
+
+        
+	<TableRow
+            android:id="@+id/tableRow9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+		<TextView
+		    android:id="@+id/label_psw"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_marginLeft="15dp"
+		    android:text="@string/label_psw"
+		    android:textAppearance="?android:attr/textAppearanceMedium"
+		    android:textColor="@color/darkblue"
+		    android:textStyle="bold" />
+
+		<EditText
+		    android:id="@+id/psw"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:ems="10"
+		    android:hint="@string/psw"
+		    android:inputType="textPassword"
+		    android:textColor="@color/bianco"
+		    android:textColorHint="@color/bianco"
+		    android:textStyle="bold" />
+
+    </TableRow>
+    
+    <TableRow
+        android:id="@+id/tableRow10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/bottoneSalva"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:onClick="onClickSalva"
+            android:text="@string/bottone_salva"
+            android:textColor="@color/rosso2"
+            android:textStyle="bold" />
+
+        <TableRow
+            android:id="@+id/tableRow11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:gravity="center_horizontal|left" >
+
+            <Button
+                android:id="@+id/bottoneAnnulla"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onClickAnnulla"
+                android:text="@string/bottone_annulla"
+                android:textColor="@color/rosso2"
+                android:textStyle="bold" />
+
+        </TableRow>
+
+    </TableRow>
+
+</TableLayout>
+</ScrollView>

@@ -1,0 +1,447 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ScrollView01"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+    
+<TableLayout 
+    android:id="@+id/TableLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginRight="6dp"
+    android:background="@drawable/sfondo"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.github.nicolediana.siriofootballfriends.ConfermaPartecipaActivity" >
+
+    <TableRow
+        android:id="@+id/tableRow1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical|center_horizontal|center" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center_horizontal|center"
+            android:text="@string/Partecipa"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/bianco"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/label_tipoPartita"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="@string/label_tipoPartita"
+            android:textAppearance="?android:attr/textAppearanceMedium" 
+			android:textColor="@color/darkblue"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/tipoPartita"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:enabled="false"
+            android:hint="@string/nonspecificato"
+            android:textColor="@color/bianco"
+            android:textColorHint="@color/bianco"
+            android:textStyle="bold" >            
+        </EditText>
+
+    </TableRow>
+    
+    <TableRow
+        android:id="@+id/tableRow16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/label_amministratore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="@string/label_amministratore"
+            android:textAppearance="?android:attr/textAppearanceMedium" 
+			android:textColor="@color/darkblue"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/amministratore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:enabled="false"
+            android:hint="@string/nonspecificato"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/bianco"
+            android:textColorHint="@color/bianco"
+            android:textStyle="bold" />
+
+    </TableRow>
+    
+    <TableRow
+        android:id="@+id/tableRow3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/label_contatto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="@string/label_contatto"
+            android:textAppearance="?android:attr/textAppearanceMedium" 
+			android:textColor="@color/darkblue"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/cellulare"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:enabled="false"
+            android:hint="@string/nonspecificato"
+            android:inputType="phone"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/bianco"
+            android:textColorHint="@color/bianco"
+            android:textStyle="bold" />
+
+    </TableRow>
+    
+    <TableRow
+        android:id="@+id/tableRow4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/label_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="@string/label_data"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/darkblue"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:enabled="false"
+            android:hint="@string/nonspecificato"
+            android:inputType="date"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/bianco"
+            android:textColorHint="@color/bianco"
+            android:textStyle="bold" />
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/label_ora"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="@string/label_ora"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/darkblue"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/ora"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:enabled="false"
+            android:hint="@string/nonspecificato"
+            android:inputType="time"
+            android:textColor="@color/bianco"
+            android:textColorHint="@color/bianco"
+            android:textStyle="bold" />
+
+    </TableRow>
+    
+    <TableRow
+        android:id="@+id/tableRow6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/label_nomeCampo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="@string/label_nomeCampo"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/darkblue"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/nomeCampo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:enabled="false"
+            android:hint="@string/nonspecificato"
+            android:textColor="@color/bianco"
+            android:textColorHint="@color/bianco"
+            android:textStyle="bold" >
+            
+        </EditText>
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/label_indirCampo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="@string/label_indirCampo"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/darkblue"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/indirizzoCampo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:enabled="false"
+            android:hint="@string/nonspecificato"
+            android:textColor="@color/bianco"
+            android:textColorHint="@color/bianco"
+            android:textStyle="bold" />
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/label_citta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="@string/label_citta"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/darkblue"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/citta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:enabled="false"
+            android:hint="@string/nonspecificato"
+            android:textColor="@color/bianco"
+            android:textColorHint="@color/bianco"
+            android:textStyle="bold" />
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/label_provincia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="@string/label_provincia"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/darkblue"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/provincia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:enabled="false"
+            android:hint="@string/nonspecificato"
+            android:textColor="@color/bianco"
+            android:textColorHint="@color/bianco"
+            android:textStyle="bold" />
+
+    </TableRow>
+
+
+    <TableRow
+        android:id="@+id/tableRow10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/label_costo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="@string/label_costo"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/darkblue"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/costo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:enabled="false"
+            android:hint="@string/nonspecificato"
+            android:inputType="numberDecimal"
+            android:textColor="@color/bianco"
+            android:textColorHint="@color/bianco"
+            android:textStyle="bold" />
+
+    </TableRow>
+    
+    <TableRow
+            android:id="@+id/tableRow11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+    		<TextView
+    		    android:id="@+id/label_tipoTerreno"
+    		    android:layout_width="wrap_content"
+    		    android:layout_height="wrap_content"
+    		    android:layout_marginLeft="15dp"
+	            android:text="@string/label_tipoTerreno"
+	            android:textAppearance="?android:attr/textAppearanceMedium"
+	            android:textColor="@color/darkblue"
+	            android:textStyle="bold" />
+
+    		<EditText
+    		    android:id="@+id/tipoTerreno"
+    		    android:layout_width="wrap_content"
+    		    android:layout_height="wrap_content"
+    		    android:ems="10"
+            	android:enabled="false"
+            	android:hint="@string/nonspecificato"
+            	android:textColor="@color/bianco"
+           		android:textColorHint="@color/bianco"
+            	android:textStyle="bold" />  		
+
+    </TableRow>
+    <TableRow
+    		    android:id="@+id/tableRow12"
+    		    android:layout_width="wrap_content"
+    		    android:layout_height="wrap_content" >
+
+    			<TextView
+    			    android:id="@+id/label_coperto"
+    			    android:layout_width="wrap_content"
+    			    android:layout_height="wrap_content"
+    			    android:layout_marginLeft="15dp"
+		            android:text="@string/label_coperto"
+		            android:textAppearance="?android:attr/textAppearanceMedium"
+		            android:textColor="@color/darkblue"
+		            android:textStyle="bold" />
+
+    			<EditText
+    			    android:id="@+id/coperto"
+    			    android:layout_width="wrap_content"
+    			    android:layout_height="wrap_content" 
+					android:enabled="false"
+          		    android:hint="@string/nonspecificato"
+            		android:textColor="@color/bianco"
+           			android:textColorHint="@color/bianco"
+            		android:textStyle="bold" />
+
+    		</TableRow>
+    		
+    		<TableRow
+		        android:id="@+id/tableRow13"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content" >
+		
+		        <TextView
+		            android:id="@+id/label_note"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_marginLeft="15dp"
+		            android:text="@string/label_note"
+		            android:textAppearance="?android:attr/textAppearanceMedium"
+		            android:textColor="@color/darkblue"
+		            android:textStyle="bold" />
+		        <EditText
+		            android:id="@+id/note"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:ems="10" 
+		            android:enabled="false"
+            		android:hint="@string/nonspecificato"
+					android:textColor="@color/bianco"
+					android:textColorHint="@color/bianco"
+            		android:textStyle="bold" />
+		            
+		    </TableRow>
+    
+    <TableRow
+        android:id="@+id/tableRow14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp">
+
+        <Button
+            android:id="@+id/bottoneConfermaPartecipa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:onClick="onClickSalva"
+            android:text="@string/bottoneConfermaPartecipa"
+            android:textColor="@color/rosso"
+            android:textStyle="bold" />
+
+        <TableRow
+            android:id="@+id/tableRow15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:gravity="center_horizontal|left" >
+
+            <Button
+                android:id="@+id/bottoneAnnulla"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onClickAnnulla"
+                android:text="@string/bottone_annulla"
+                android:textColor="@color/rosso"
+                android:textStyle="bold" />
+
+        </TableRow>
+
+    </TableRow>
+
+</TableLayout>
+
+</ScrollView>

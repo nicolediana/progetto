@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="rosso">#F00</color>
+    <color name="darkblue">#000099</color>
+    <color name="celestino">#80C0FF</color>
+    <color name="nero">#000000</color>
+    <color name="bianco">#FFFFFF</color>
+    <color name="rosso2">#EA0101</color>
+    <color name="rossoscuro">#AB0303</color>   
+</resources>

@@ -1,0 +1,273 @@
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/TableLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"    
+    android:layout_marginRight="5dp"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/sfondo"
+    tools:context="com.github.nicolediana.siriofootballfriends.VisualizzaProfiloActivity" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="PROFILO"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/bianco"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    
+    <TableRow
+        android:id="@+id/tableRow2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+        <TextView
+            android:id="@+id/label_nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="@string/label_nickname"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/darkblue"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:enabled="false"
+            android:hint="@string/nickname"
+            android:textColor="@color/bianco"
+            android:textColorHint="@color/bianco"
+            android:textStyle="bold" />
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+        <TextView
+            android:id="@+id/label_eta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="@string/label_eta"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/darkblue"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/eta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:enabled="false"
+            android:hint="@string/eta"
+            android:inputType="number"
+            android:textColor="@color/bianco"
+            android:textColorHint="@color/bianco"
+            android:textStyle="bold" />
+
+    </TableRow>    
+    
+    <TableRow
+        android:id="@+id/tableRow4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+        <TextView
+            android:id="@+id/label_gioca_a"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="@string/label_gioca_a"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/darkblue"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/citta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:enabled="false"
+            android:hint="@string/citta"
+            android:textColor="@color/bianco"
+            android:textColorHint="@color/bianco"
+            android:textStyle="bold" />
+
+    </TableRow>
+    
+    <TableRow
+        android:id="@+id/tableRow5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+        <TextView
+            android:id="@+id/label_livello"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="@string/label_livello"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/darkblue"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/livello2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:enabled="false"
+            android:hint="@string/livello2"
+            android:textColor="@color/bianco"
+            android:textColorHint="@color/bianco"
+            android:textStyle="bold" />
+
+    </TableRow>
+    
+    <TableRow
+        android:id="@+id/tableRow6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+        <TextView
+            android:id="@+id/label_voto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="@string/label_voto"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/darkblue"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/voto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:enabled="false"
+            android:hint="@string/voto"
+            android:inputType="number"
+            android:textColor="@color/bianco"
+            android:textColorHint="@color/bianco"
+            android:textStyle="bold" />
+
+    </TableRow>
+    <TableRow
+        android:id="@+id/tableRow7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+        <TextView
+            android:id="@+id/label_partite_giocate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="@string/label_partite_giocate"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/darkblue"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/partite_giocate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:enabled="false"
+            android:hint="@string/partite_giocate"
+            android:inputType="number"
+            android:textColor="@color/bianco"
+            android:textColorHint="@color/bianco"
+            android:textStyle="bold" />
+
+    </TableRow>
+    <TableRow
+        android:id="@+id/tableRow8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+        <TextView
+            android:id="@+id/label_partite_vinte"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="@string/label_partite_vinte"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/darkblue"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/partite_vinte"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:enabled="false"
+            android:hint="@string/partite_vinte"
+            android:inputType="number"
+            android:textColor="@color/bianco"
+            android:textColorHint="@color/bianco"
+            android:textStyle="bold" />
+
+    </TableRow>
+    <TableRow
+        android:id="@+id/tableRow9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+        <TextView
+            android:id="@+id/label_partite_perse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="@string/label_partite_perse"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/darkblue"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/partite_perse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:enabled="false"
+            android:hint="@string/partite_perse"
+            android:inputType="number"
+            android:textColor="@color/bianco"
+            android:textColorHint="@color/bianco"
+            android:textStyle="bold" />
+
+    </TableRow>
+    <TableRow
+        android:id="@+id/tableRow10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+        <TextView
+            android:id="@+id/label_bidoni"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="@string/label_bidoni"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/darkblue"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/bidoni"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:enabled="false"
+            android:hint="@string/bidoni"
+            android:inputType="number"
+            android:textColor="@color/bianco"
+            android:textColorHint="@color/bianco"
+            android:textStyle="bold" />
+
+    </TableRow>
+    
+
+</TableLayout>
