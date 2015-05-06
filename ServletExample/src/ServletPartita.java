@@ -38,6 +38,7 @@ public class ServletPartita extends HttpServlet {
 	private Integer numgiocatori;
 	private String contatto;
 	private static final long serialVersionUID = 1L;
+	String sql="";
 	
 	private ConnessioneDB connect=new ConnessioneDB();
 	  
@@ -64,6 +65,7 @@ public class ServletPartita extends HttpServlet {
 		    conn = connect.openConnection();
 			stmt = conn.createStatement();			
 								
+//-----------------------------CREA PARTITA----------------------------------------
 			//PUT ->crea partita. PartitaActivity
 			if(tiporichiesta.equals("crea"))
 			{
@@ -79,7 +81,6 @@ public class ServletPartita extends HttpServlet {
 			    coperto= jObj.get("coperto").toString();
 			    note= jObj.get("note").toString();
 			    tipopartita= jObj.get("tipopartita").toString();
-			    String sql="";
 			    sql = "SELECT * FROM tipopartita WHERE tipopartita='"+tipopartita+"'";
 				rs = stmt.executeQuery(sql);
 				if(rs.next()) {
@@ -136,14 +137,13 @@ public class ServletPartita extends HttpServlet {
 				writer.write(jsonObj.toString()); 				
 			}
 			
-			
+//------------------------------CERCA PARTITE-----------------------------------------
 			//GET ->cerca partite->elenco PartecipaActivity
 			if(tiporichiesta.equals("leggi")&&(!citta.equals("null") || !provincia.equals("null")))
 			{
 				Vector<Partita> v = new Vector<Partita>();
 				Vector<Partita> v2 = new Vector<Partita>();
 				Vector<String> quer = new Vector<String>();
-			    String sql="";
 			    
 			    if(citta.equals("null")){
 			    	System.out.println("Ricerca per provincia");
@@ -209,13 +209,15 @@ public class ServletPartita extends HttpServlet {
 				writer.write(jsonObj.toString());
 			}
 			
+			
+//------------------------------DETTAGIO PARTITA----------------------------------
 			// riepilogo/dettaglio di una partita ConfermaPartecipaActivity
 			if(tiporichiesta.equals("leggi")&& citta.equals("null") && provincia.equals("null"))
 			{
 				idpartita = Integer.parseInt(jObj.get("idpartita").toString());
 				System.out.println("Leggi Partita per Id");
 				// Prelevo dati dal database
-				String sql = "SELECT * FROM partita WHERE idpartita='"+idpartita+"'";
+				sql = "SELECT * FROM partita WHERE idpartita='"+idpartita+"'";
 				rs = stmt.executeQuery(sql);
 				if(rs.next()) {
 					citta=rs.getString("citta");
@@ -265,33 +267,46 @@ public class ServletPartita extends HttpServlet {
 				   
 			}
 			
+			
+//------------------------PARTECIPA ALLA PARTITA------------------------------------
 			//POST -update
+	//fa anche il controllo se un utente già si è registrato x quella partita
 			if(tiporichiesta.equals("aggiorna"))
 			{
 				//inserire idprofilo in tab correlate
-				System.out.println("Aggiorna numero giocatori mancanti per partita");
+				System.out.println("Registrazione alla partita");
 				idpartita = Integer.parseInt(jObj.get("idpartita").toString());
 				Integer idprofilo = Integer.parseInt(jObj.get("idprofilo").toString());
 				idtipopartita = Integer.parseInt(jObj.get("idtipopartita").toString());
 				String ruolo = jObj.get("ruolo").toString();
 				Integer squadra = Integer.parseInt(jObj.get("squadra").toString());
 				Integer idruolo=0,idsquadra=0;
+				JSONObject jsonObj = new JSONObject();
 				
-				String sql = "SELECT idruolo FROM ruolo WHERE ruolo='"+ruolo+"' and idtipopartita='"+idtipopartita+"'";
+				sql = "SELECT * FROM profilo_partita WHERE idprofilo='"+idprofilo+"' and idpartita='"+idpartita+"'";
 				rs = stmt.executeQuery(sql);
 				if(rs.next()) {
-					idruolo=Integer.parseInt(rs.getString("idruolo"));
+					jsonObj.put("risposta", "no");
 				}
-				sql = "SELECT idsquadra FROM squadra WHERE squadra='"+squadra+"' and idpartita='"+idpartita+"' and idtipopartita='"+idtipopartita+"'";
-				rs = stmt.executeQuery(sql);
-				if(rs.next()) {
-					idsquadra=Integer.parseInt(rs.getString("idsquadra"));
+				else {
+					sql = "SELECT idruolo FROM ruolo WHERE ruolo='"+ruolo+"' and idtipopartita='"+idtipopartita+"'";
+					rs = stmt.executeQuery(sql);
+					if(rs.next()) {
+						idruolo=Integer.parseInt(rs.getString("idruolo"));
+					}
+					sql = "SELECT idsquadra FROM squadra WHERE squadra='"+squadra+"' and idpartita='"+idpartita+"' and idtipopartita='"+idtipopartita+"'";
+					rs = stmt.executeQuery(sql);
+					if(rs.next()) {
+						idsquadra=Integer.parseInt(rs.getString("idsquadra"));
+					}
+					sql = "INSERT INTO squadra_ruolo (idsquadra, idruolo) VALUES ('"+idsquadra+"', '"+idruolo+"')";
+					stmt.executeUpdate(sql);
+					sql = "INSERT INTO profilo_partita (idprofilo, idpartita, idruolo, idsquadra) VALUES ('"+idprofilo+"','"+idpartita+"', '"+idruolo+"', '"+idsquadra+"')";
+					stmt.executeUpdate(sql);
+					jsonObj.put("risposta", "si");
 				}
-				sql = "INSERT INTO squadra_ruolo (idsquadra, idruolo) VALUES ('"+idsquadra+"', '"+idruolo+"')";
-				stmt.executeUpdate(sql);
-				sql = "INSERT INTO profilo_partita (idprofilo, idpartita, idruolo, idsquadra) VALUES ('"+idprofilo+"','"+idpartita+"', '"+idruolo+"', '"+idsquadra+"')";
-				stmt.executeUpdate(sql);
-				
+				writer.write(jsonObj.toString());
+			
 				//potrei fare la select col timestamp creazione della partita
 				
 				/*
@@ -308,12 +323,13 @@ public class ServletPartita extends HttpServlet {
 			}
 			//fine put
 			
+//-------------------------RUOLI GIA' ASSEGNATI--------------------------------------
 			if(tiporichiesta.equals("leggiRuoli")){
 				idpartita = Integer.parseInt(jObj.get("idpartita").toString());				
 				Vector<Ruolo2> v = new Vector<Ruolo2>();
 				
 				//prende solo i nickname, ruolo,squadra di chi partecipa alla partita
-				String sql = "SELECT profilo.nickname,squadra.squadra, ruolo.ruolo FROM (profilo_partita "
+				sql = "SELECT profilo.nickname,squadra.squadra, ruolo.ruolo FROM (profilo_partita "
 						+ "inner join profilo ON profilo.idprofilo=profilo_partita.idprofilo) "
 						+ "inner join squadra ON (squadra.idsquadra=profilo_partita.idsquadra) "
 						+ "inner join ruolo ON (ruolo.idruolo=profilo_partita.idruolo) "

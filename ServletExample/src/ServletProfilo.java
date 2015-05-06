@@ -24,6 +24,7 @@ public class ServletProfilo extends HttpServlet {
 		ResultSet rs;
 		ResultSet rs2;
 		PrintWriter writer = response.getWriter();
+		String sql ="";
 		
 		// Recupero dei dati dalla Json in ingresso
 		try {
@@ -47,6 +48,7 @@ public class ServletProfilo extends HttpServlet {
 			
 			// Esegui una query SQL, ottieni un ResultSet
 //--------------------------------------CREA PROFILO--------------------------------------------------------------			
+//c'è anche il controllo per veder se il nickname è stato già assegnato a qualcun altro
 			if(tiporichiesta.equals("crea"))
 			{
 				System.out.println("crea");
@@ -61,20 +63,29 @@ public class ServletProfilo extends HttpServlet {
 			    voto=100; //x ogni partita vinta=+10 pareggio=+5 perdita=-5 bidone=-10
 			    idcredenziali= Integer.parseInt(jObj.get("idcredenziali").toString());
 			    idprofilo=0;
-			  
-			    //memorizzare profilo
-				String sql = "INSERT INTO profilo (nome, cognome, nickname, sesso, citta, annonascita, voto, cellulare, linkfotoprofilo, idcredenziali) VALUES ('"+nome+"', '"+cognome+"', '"+nickname+"', '"+sesso+"', '"+citta+"', '"+annonascita+"', '"+voto+"', '"+cellulare+"', '"+linkfotoprofilo+"', '"+idcredenziali+"')";
-				stmt.executeUpdate(sql);
-			
-				sql = "SELECT idprofilo FROM profilo WHERE idcredenziali='"+idcredenziali+"'";
+			    
+			    JSONObject jsonObj = new JSONObject();
+				sql = "SELECT * FROM profilo WHERE nickname='"+nickname+"'";
 				rs = stmt.executeQuery(sql);
 				if(rs.next()) {
-					idprofilo=Integer.parseInt(rs.getString("idprofilo"));
-					sql = "UPDATE credenziali SET idprofilo = '"+idprofilo+"' WHERE idcredenziali='"+idcredenziali+"'";
-					stmt.executeUpdate(sql);				
+					jsonObj.put("risposta", "no");
 				}
-				//writer.println(idcredenziali.toString().toJson());
-				JSONObject jsonObj = new JSONObject();
+				else {
+			  
+			    //memorizzare profilo
+					sql = "INSERT INTO profilo (nome, cognome, nickname, sesso, citta, annonascita, voto, cellulare, linkfotoprofilo, idcredenziali) VALUES ('"+nome+"', '"+cognome+"', '"+nickname+"', '"+sesso+"', '"+citta+"', '"+annonascita+"', '"+voto+"', '"+cellulare+"', '"+linkfotoprofilo+"', '"+idcredenziali+"')";
+					stmt.executeUpdate(sql);
+				
+					sql = "SELECT idprofilo FROM profilo WHERE idcredenziali='"+idcredenziali+"'";
+					rs = stmt.executeQuery(sql);
+					if(rs.next()) {
+						idprofilo=Integer.parseInt(rs.getString("idprofilo"));
+						sql = "UPDATE credenziali SET idprofilo = '"+idprofilo+"' WHERE idcredenziali='"+idcredenziali+"'";
+						stmt.executeUpdate(sql);				
+					}
+					//writer.println(idcredenziali.toString().toJson());
+					jsonObj.put("risposta", "si");
+				}
 				jsonObj.put("idprofilo", idprofilo);
 				writer.write(jsonObj.toString());
 			}
@@ -85,7 +96,7 @@ public class ServletProfilo extends HttpServlet {
 				System.out.println("leggi");
 				idprofilo= Integer.parseInt(jObj.get("idprofilo").toString());
 				
-				String sql = "SELECT * FROM profilo WHERE idprofilo='"+idprofilo+"'";
+				sql = "SELECT * FROM profilo WHERE idprofilo='"+idprofilo+"'";
 				rs = stmt.executeQuery(sql);
 				
 				JSONObject jsonObj = new JSONObject();
@@ -132,7 +143,7 @@ public class ServletProfilo extends HttpServlet {
 			    //linkfotoprofilo
 			    
 				//memorizzare profilo
-				String sql = "UPDATE profilo SET nome='"+nome+"', cognome='"+cognome+"', nickname='"+nickname+"', sesso='"+sesso+"', citta='"+citta+"', annonascita='"+annonascita
+				sql = "UPDATE profilo SET nome='"+nome+"', cognome='"+cognome+"', nickname='"+nickname+"', sesso='"+sesso+"', citta='"+citta+"', annonascita='"+annonascita
 						+"', cellulare='"+cellulare+"', linkfotoprofilo='"+linkfotoprofilo+"' WHERE idprofilo='"+idprofilo+"'";
 				stmt.executeUpdate(sql);
 				System.out.println("psw:"+password);
@@ -153,7 +164,7 @@ public class ServletProfilo extends HttpServlet {
 				System.out.println("vediprofilo");
 				idprofilo= Integer.parseInt(jObj.get("idprofilo").toString());
 				
-				String sql = "SELECT * FROM profilo WHERE idprofilo='"+idprofilo+"'";
+				sql = "SELECT * FROM profilo WHERE idprofilo='"+idprofilo+"'";
 				rs = stmt.executeQuery(sql);
 				
 				JSONObject jsonObj = new JSONObject();
@@ -207,7 +218,7 @@ public class ServletProfilo extends HttpServlet {
 					Integer idpartita=(Integer) rs.getObject("idpartita");
 					
 					String sql2 = "SELECT * FROM squadra WHERE idpartita='"+idpartita+"'";
-					rs2 = stmt.executeQuery(sql);					
+					rs2 = stmt.executeQuery(sql2);					
 					if(rs2.getString("esito") == "VITTORIA")
 						partite_vinte += 1;
 					if(rs2.getString("esito") == "SCONFITTA")
