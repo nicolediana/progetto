@@ -206,15 +206,26 @@ public class CalcioA5Activity extends Activity {
 			HttpPost httppostreq = new HttpPost(MainActivity.urlServlet+nomeServlet);
 			entity.setContentType("application/json;charset=UTF-8");
 			httppostreq.setEntity(entity);
-			HttpResponse response = httpclient.execute(httppostreq);			
-		
-			// Ritorno alla Homepage
-			Intent intent=new Intent(this,HomeActivity.class);
-			Bundle b=new Bundle();
-		    b.putString("idprofilo", idprofilo); //passa chiave valore a activity_home
-		    intent.putExtras(b); //intent x passaggio parametri
-		    startActivity(intent);
-			}catch (Exception e) {e.printStackTrace();}
+			HttpResponse response = httpclient.execute(httppostreq);
+			//risposta si=ok prenotazione effettuata con successo,no=nick già presente x qst partita
+			String line = "";
+			InputStream inputstream = response.getEntity().getContent();
+			line = convertStreamToString(inputstream);
+			JSONObject myjson = new JSONObject(line);	        	     
+			String risposta=myjson.get("risposta").toString();
+			if(risposta.equals("si")){
+				Toast.makeText(this, "Registrazione effettuata con successo", Toast.LENGTH_SHORT).show();
+			
+				// Ritorno alla Homepage
+				Intent intent=new Intent(this,HomeActivity.class);
+				Bundle b=new Bundle();
+			    b.putString("idprofilo", idprofilo); //passa chiave valore a activity_home
+			    intent.putExtras(b); //intent x passaggio parametri
+			    startActivity(intent);
+			}
+			else Toast.makeText(this, "Nickname già presente in questa partita", Toast.LENGTH_SHORT).show();
+		}
+		catch (Exception e) {e.printStackTrace();}
 	}
 	
 	public void leggiRuoli(){

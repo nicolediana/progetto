@@ -139,13 +139,18 @@ public class ProfiloActivity extends Activity {
 					line = convertStreamToString(inputstream);
 					JSONObject myjson = new JSONObject(line);	        	     
 					String idprofilo=myjson.get("idprofilo").toString();
-					
-					Intent intent=new Intent(this,HomeActivity.class);
-					Bundle b=new Bundle();
-					b.putString("idprofilo", idprofilo); //passa chiave valore a activity_home
-					intent.putExtras(b); //intent x passaggio parametri
-					startActivity(intent);
-			    }
+					String risposta=myjson.get("risposta").toString();
+					if(risposta.equals("si")){
+						
+						// Ritorno alla Homepage
+						Intent intent=new Intent(this,HomeActivity.class);
+						Bundle b=new Bundle();
+					    b.putString("idprofilo", idprofilo); //passa chiave valore a activity_home
+					    intent.putExtras(b); //intent x passaggio parametri
+					    startActivity(intent);
+					}
+					else Toast.makeText(this, "Nickname già presente, sceglierne un altro", Toast.LENGTH_SHORT).show();
+				}
 				catch (JSONException ex) {
 					ex.printStackTrace();
 				}

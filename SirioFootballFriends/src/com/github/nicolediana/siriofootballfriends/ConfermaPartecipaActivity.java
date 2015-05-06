@@ -152,11 +152,11 @@ public class ConfermaPartecipaActivity extends Activity {
 	    b.putString("idprofilo", idprofilo); 
 	    b.putString("idpartita", idpartita); 
 	    Intent intent = null;
-	    if(tipopartita.equals("Calcio a 5"))
+	    if(tipopartita.equals("calcio a 5"))
 	    	intent=new Intent(this,CalcioA5Activity.class);
-	    else if(tipopartita.equals("Calcio a 11"))
+	    else if(tipopartita.equals("calcio a 11"))
 	    	//intent=new Intent(this,CalcioA11Activity.class);
-	        Toast.makeText(getApplicationContext(), "Calcio a 11 ", Toast.LENGTH_LONG).show();
+	        Toast.makeText(getApplicationContext(), "calcio a 11 ", Toast.LENGTH_LONG).show();
 		else
 	    	intent=new Intent(this,HomeActivity.class);
 	    intent.putExtras(b); //intent x passaggio parametri
