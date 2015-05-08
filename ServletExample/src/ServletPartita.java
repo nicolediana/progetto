@@ -39,6 +39,7 @@ public class ServletPartita extends HttpServlet {
 	private String contatto;
 	private static final long serialVersionUID = 1L;
 	String sql="";
+	int idprofilo;
 	
 	private ConnessioneDB connect=new ConnessioneDB();
 	  
@@ -60,7 +61,7 @@ public class ServletPartita extends HttpServlet {
 		    JSONObject jObj = new JSONObject(sb.toString());
 		    tiporichiesta= jObj.get("tiporichiesta").toString();	
 			citta= jObj.get("citta").toString();
-		    provincia= jObj.get("provincia").toString();
+		    provincia= jObj.get("provincia").toString();		    
 		    
 		    conn = connect.openConnection();
 			stmt = conn.createStatement();			
@@ -210,7 +211,7 @@ public class ServletPartita extends HttpServlet {
 			}
 			
 			
-//------------------------------DETTAGIO PARTITA----------------------------------
+//------------------------------DETTAGLIO PARTITA----------------------------------
 			// riepilogo/dettaglio di una partita ConfermaPartecipaActivity
 			if(tiporichiesta.equals("leggi")&& citta.equals("null") && provincia.equals("null"))
 			{
@@ -347,6 +348,47 @@ public class ServletPartita extends HttpServlet {
 				jsonObj.put("jsonVector", v);
 				writer.write(jsonObj.toString());	
 			}
+
+//------------------------PROSSIMA PARTITA------------------------------------			
+			if(tiporichiesta.equals("prossimaPartita")) {
+				
+				int idprofilo = Integer.parseInt(jObj.get("idprofilo").toString());
+				ResultSet result;
+				int idPartita = 0;
+				boolean esito = false;				
+		    	
+		    	//String sql = "SELECT idpartita FROM profilo_partita WHERE idprofilo='" + idprofilo + "'";
+		    	String sql = "SELECT * FROM partita " +
+		    				 "INNER JOIN profilo_partita ON partita.idpartita = profilo_partita.idpartita " +
+		    				 "WHERE partita.data > (SELECT NOW()) AND profilo_partita.idprofilo = " + idprofilo +
+		    				 " ORDER BY partita.data ASC LIMIT 1;";
+		    	result = stmt.executeQuery(sql);		    	
+		    	Partita partita = new Partita();
+		    	if(result.next()) {
+		    		esito = true;
+		    		partita.setIdpartita(Integer.parseInt(result.getString("idpartita")));	
+		    		partita.setIdtipopartita(Integer.parseInt(result.getString("idtipopartita")));					
+		    		partita.setNomecampo(result.getString("nomecampo"));
+		    		partita.setIndirizzocampo(result.getString("indirizzocampo"));
+		    		partita.setCosto(Float.parseFloat(result.getString("costo")));
+		    		partita.setData(result.getString("data"));
+		    		partita.setOra(result.getString("ora"));
+		    		partita.setCitta(result.getString("citta"));
+		    		partita.setProvincia(result.getString("provincia"));
+		    		partita.setLinkfotocampo(result.getString("linkfotocampo"));
+		    		partita.setTerreno(result.getString("terreno"));
+		    		partita.setCoperto(result.getString("coperto"));
+		    		partita.setNote(result.getString("note"));
+					partita.setAmministratore(Integer.parseInt(result.getString("amministratore")));
+					partita.setContatto(result.getString("contatto"));					
+				}
+		    	else esito = false;
+		    	
+		    	JSONObject jsonObj = new JSONObject();
+				jsonObj.put("prossimaPartita", partita);
+				jsonObj.put("esito", esito);
+				writer.write(jsonObj.toString());
+		    }
 			
 			/*
 			if(tiporichiesta.equals("caricaTipoPartita"))
