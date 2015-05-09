@@ -86,16 +86,18 @@ public class ConfermaPartecipaActivity extends Activity {
 			 TextView cittadig=(TextView)findViewById(R.id.citta);
 		     cittadig.setText(myjson1.get("citta").toString());
 		     TextView provinciadig=(TextView)findViewById(R.id.provincia);
-		     provinciadig.setText(myjson1.get("provincia").toString());
-		     
+		     provinciadig.setText(myjson1.get("provincia").toString());		     
 		     TextView datadig=(TextView)findViewById(R.id.data);
+		     datadig.setText(myjson1.get("data").toString());
 		     TextView oradig=(TextView)findViewById(R.id.ora);
-		     //oradig.setText(myjson1.get("ora").toString());
-		     //datadig.setText(myjson1.get("data").toString());
+		     oradig.setText(myjson1.get("ora").toString());
+		     
+		     /*
 		     String dataDaConvertire = myjson1.get("data").toString();
 		     String[] result = convertiDataSql(dataDaConvertire);
 		     datadig.setText(result[0]);
 		     oradig.setText(result[1]);
+		     */
 		     
 		     TextView costodig=(TextView)findViewById(R.id.costo);
 			 costodig.setText(myjson1.get("costo").toString());
@@ -190,7 +192,7 @@ public class ConfermaPartecipaActivity extends Activity {
 	    intent.putExtras(b); //intent x passaggio parametri
 	    startActivity(intent);
 	}
-	
+/*	
 	private String[] convertiDataSql(String data) {
 		String[] result = new String[2];
 		String[] separated = new String[3];
@@ -211,4 +213,5 @@ public class ConfermaPartecipaActivity extends Activity {
 		result[1] = ora + ":" + minuti;
 		return result;
 	}
+*/	
 }

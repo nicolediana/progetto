@@ -72,7 +72,7 @@
     <string name="indirizzoCampo"> via, n° , ecc</string>
     <string name="provincia">Provincia</string>
     <string name="nmancanti">   mancanti</string>
-    <string name="data_hint">gg/mm/aaaa</string>
+    <string name="data_hint">gg-mm-aaaa</string>
     <string name="ora_hint">hh:mm</string>
     <string name="costo">00.00 Euro</string>
     <string name="label_cercaPerCitta">Cerca per Città</string>

@@ -131,8 +131,7 @@ public class PartecipaActivity extends Activity {
 			    for (int i = 0; i < size; i++) {
 			        JSONObject another_json_object = json_array.getJSONObject(i);
 			        partite[i] = another_json_object.get("nomecampo").toString() + " - " +
-			        		     another_json_object.get("data").toString() + " - " +
-			        		     another_json_object.get("ora").toString();
+			        		     another_json_object.get("data").toString();
 			        idpart[i] = Integer.parseInt(another_json_object.get("idpartita").toString()); 
 				}
 			    // Creazione del Listview - definisco un ArrayList
@@ -160,11 +159,6 @@ public class PartecipaActivity extends Activity {
 				        startActivity(intent);
 				     }    
 			    });  
-			/*Intent intent=new Intent(this,HomeActivity.class);
-				Bundle b=new Bundle();
-			    b.putString("idprofilo", idprofilo); //passa chiave valore a activity_home
-			    intent.putExtras(b); //intent x passaggio parametri
-			    startActivity(intent);*/
 			}	
 			catch (JSONException ex) {
 				ex.printStackTrace();
