@@ -135,12 +135,14 @@ public class HomeActivity extends Activity {
 		catch (JSONException | IOException e) {
 			  e.printStackTrace();
 	    }
-		
-		
 	}
 	
 	public void onClickLeMiePartite(View v) {
-		
+		Intent intent = new Intent(this, LeMiePartiteActivity.class);
+		Bundle b = new Bundle();
+		b.putString("idprofilo", idprofilo); //passa chiave valore a activity_home
+		intent.putExtras(b); //intent x passaggio parametri
+		startActivity(intent);	
 	}
 	
 	public void onClickLogout(View v) {

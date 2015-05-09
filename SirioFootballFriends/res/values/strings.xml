@@ -128,5 +128,14 @@
     <string name="bottone_prossimaPartita">PROSSIMA PARTITA</string>
     <string name="bottone_leMiePartite">LE MIE PARTITE</string>
     <string name="title_activity_dettaglio_partita">Dettaglio Partita</string>
+    <string name="title_activity_le_mie_partite">LeMiePartiteActivity</string>
+    <string name="title_activity_leMiePartite">LE MIE PARTITE</string>
+    <string name="title_activity_partite_in_programma">PartiteInProgrammaActivity</string>
+    <string name="bottone_PartiteInProgramma">PARTITE IN PROGRAMMA</string>
+    <string name="bottone_PartiteGiocate">PARTITE GIOCATE</string>
+    <string name="bottone_PartiteOrganizzate">PARTITE ORGANIZZATE</string>
+    <string name="title_activity_partite_giocate">PartiteGiocateActivity</string>
+    <string name="title_activity_partite_organizzate">PartiteOrganizzateActivity</string>
+    <string name="label_PartiteInProgramma">PARTITE IN PROGRAMMA</string>
 
 </resources>

@@ -64,6 +64,22 @@
             android:name=".CalcioA5Activity"
             android:label="@string/title_activity_calcio_a5" >
         </activity>
+        <activity
+            android:name=".LeMiePartiteActivity"
+            android:label="@string/title_activity_le_mie_partite" >
+        </activity>
+        <activity
+            android:name=".PartiteInProgrammaActivity"
+            android:label="@string/title_activity_partite_in_programma" >
+        </activity>
+        <activity
+            android:name=".PartiteGiocateActivity"
+            android:label="@string/title_activity_partite_giocate" >
+        </activity>
+        <activity
+            android:name=".PartiteOrganizzateActivity"
+            android:label="@string/title_activity_partite_organizzate" >
+        </activity>
     </application>
 
 </manifest>
