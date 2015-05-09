@@ -6,7 +6,6 @@ public class Partita {
 	private String nomecampo;
 	private String indirizzocampo;
 	private String data;
-	private String ora;
 	private String citta;
 	private String provincia;
 	private Float costo;	
@@ -63,14 +62,6 @@ public class Partita {
 		this.data = data;
 	}
 	
-	public String getOra() {
-		return ora;
-	}
-
-	public void setOra(String ora) {
-		this.ora = ora;
-	}
-
 	public Integer getIdtipopartita() {
 		return idtipopartita;
 	}

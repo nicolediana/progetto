@@ -82,6 +82,8 @@ public class ServletPartita extends HttpServlet {
 			    coperto= jObj.get("coperto").toString();
 			    note= jObj.get("note").toString();
 			    tipopartita= jObj.get("tipopartita").toString();
+			    
+			    String dataSQL = convertiDataInSql(data, ora);
 			    sql = "SELECT * FROM tipopartita WHERE tipopartita='"+tipopartita+"'";
 				rs = stmt.executeQuery(sql);
 				if(rs.next()) {
@@ -91,10 +93,10 @@ public class ServletPartita extends HttpServlet {
 				}
 			    
 				//Memorizza parita
-				sql = "INSERT INTO partita (idtipopartita, nomecampo, indirizzocampo, citta, provincia, costo, data, ora, terreno, coperto, note, linkfotocampo,amministratore, contatto) VALUES ('"+idtipopartita+"','"+nomecampo+"', '"+indirizzocampo+"', '"+citta.toUpperCase()+"', '"+provincia.toUpperCase()+"', '"+costo+"', '"+data+"', '"+ora+"', '"+terreno+"', '"+coperto+"', '"+note+"', '"+linkfotocampo+"', '"+amministratore+"', '"+contatto+"')";
+				sql = "INSERT INTO partita (idtipopartita, nomecampo, indirizzocampo, citta, provincia, costo, data, terreno, coperto, note, linkfotocampo,amministratore, contatto) VALUES ('"+idtipopartita+"','"+nomecampo+"', '"+indirizzocampo+"', '"+citta.toUpperCase()+"', '"+provincia.toUpperCase()+"', '"+costo+"', '"+dataSQL+"', '"+terreno+"', '"+coperto+"', '"+note+"', '"+linkfotocampo+"', '"+amministratore+"', '"+contatto+"')";
 				stmt.executeUpdate(sql);
 				//potrei fare la select col timestamp creazione della partita
-				sql = "SELECT idpartita FROM partita WHERE idtipopartita='"+idtipopartita+"' and nomecampo='"+nomecampo+"' and indirizzocampo='"+indirizzocampo+"' and citta='"+citta+"' and provincia='"+provincia+"' and data='"+data+"' and ora='"+ora+"'";
+				sql = "SELECT idpartita FROM partita WHERE idtipopartita='"+idtipopartita+"' and nomecampo='"+nomecampo+"' and indirizzocampo='"+indirizzocampo+"' and citta='"+citta+"' and provincia='"+provincia+"' and data='"+dataSQL+"'";
 				rs = stmt.executeQuery(sql);
 				if(rs.next()) {
 					idpartita=Integer.parseInt(rs.getString("idpartita"));
@@ -148,15 +150,15 @@ public class ServletPartita extends HttpServlet {
 			    
 			    if(citta.equals("null")){
 			    	System.out.println("Ricerca per provincia");
-			    	sql = "SELECT * FROM partita WHERE provincia='"+provincia.toUpperCase()+"'";
+			    	sql = "SELECT * FROM partita WHERE provincia='"+provincia.toUpperCase()+"' AND data > (SELECT NOW()) ORDER BY data ASC";
 			    }
 			    if(provincia.equals("null")){
 			    	System.out.println("Ricerca per città");
-			    	sql = "SELECT * FROM partita WHERE citta='"+citta.toUpperCase()+"'";
+			    	sql = "SELECT * FROM partita WHERE citta='"+citta.toUpperCase()+"' AND data > (SELECT NOW()) ORDER BY data ASC";
 				}
 			    if(!provincia.equals("null")&&!citta.equals("null")){
 			    	System.out.println("Ricerca per provincia e citta");
-			    	sql = "SELECT * FROM partita WHERE provincia='"+provincia.toUpperCase()+"' and citta='"+citta.toUpperCase()+"'" ;
+			    	sql = "SELECT * FROM partita WHERE provincia='"+provincia.toUpperCase()+"' and citta='"+citta.toUpperCase()+"' AND data > (SELECT NOW()) ORDER BY data ASC";
 			    }
 				rs = stmt.executeQuery(sql);
 				while(rs.next()) {
@@ -166,8 +168,10 @@ public class ServletPartita extends HttpServlet {
 					part.setNomecampo(rs.getString("nomecampo"));
 					part.setIndirizzocampo(rs.getString("indirizzocampo"));
 					part.setCosto(Float.parseFloat(rs.getString("costo")));
-					part.setData(rs.getString("data"));
-					part.setOra(rs.getString("ora"));
+					String dataTemp = rs.getString("data");
+					String[] result = convertiDataSql(dataTemp);
+					String data = result[0] + " - " + result[1];
+					part.setData(data);
 					part.setCitta(rs.getString("citta"));
 					part.setProvincia(rs.getString("provincia"));
 					part.setLinkfotocampo(rs.getString("linkfotocampo"));
@@ -225,8 +229,10 @@ public class ServletPartita extends HttpServlet {
 					provincia=rs.getString("provincia");					
 				    nomecampo= rs.getString("nomecampo");
 				    indirizzocampo= rs.getString("indirizzocampo");
-				    data= rs.getString("data");
-				    ora= rs.getString("ora");
+				    String dataTemp = rs.getString("data");
+				    String[] result = convertiDataSql(dataTemp);
+					data = result[0];
+					ora = result[1];
 				    costo= Float.parseFloat(rs.getString("costo"));
 				    amministratore = Integer.parseInt(rs.getString("amministratore"));
 				    linkfotocampo="";
@@ -383,7 +389,44 @@ public class ServletPartita extends HttpServlet {
 	  if (conn != null)
 	  connect.closeConnection(conn);
 	  }
-	 } 
+	} 
 	
+	private String[] convertiDataSql(String data) {
+		String[] result = new String[2];
+		String[] separated = new String[3];
+		
+		separated = data.split("-");
+		String anno = separated[0];
+		String mese = separated[1];
+		String temp = separated[2];
+		
+		separated = temp.split(" ");
+		String giorno = separated[0];
+		result[0] = giorno + "/" + mese + "/" + anno;
+		
+		temp = separated[1];
+		separated = temp.split(":");
+		String ora = separated[0];
+		String minuti = separated[1];
+		result[1] = ora + ":" + minuti;
+		return result;
+	}
+	
+	private String convertiDataInSql(String data, String orario) {
+		String result;
+		String[] separated = new String[3];
+		
+		separated = data.split("-");
+		String giorno = separated[0];
+		String mese = separated[1];
+		String anno = separated[2];
+		
+		separated = orario.split(":");
+		String ora = separated[0];
+		String minuti = separated[1];
+		
+		result = anno + "-" + mese + "-" + giorno + " " + ora + ":" + minuti;		
+		return result;		
+	}
 
 }
