@@ -64,6 +64,10 @@
             android:name=".CalcioA5Activity"
             android:label="@string/title_activity_calcio_a5" >
         </activity>
+        <activity
+            android:name=".DettaglioPartitaActivity"
+            android:label="@string/title_activity_dettaglio_partita" >
+        </activity>
     </application>
 
 </manifest>

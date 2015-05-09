@@ -13,9 +13,11 @@ import org.json.JSONObject;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +28,7 @@ public class ConfermaPartecipaActivity extends Activity {
 	private String idpartita;
 	private String idprofilo;
 	private String tiporichiesta;
+	private String visibilit‡Pulsanti;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +39,20 @@ public class ConfermaPartecipaActivity extends Activity {
 		Intent i = getIntent();
 		idpartita= i.getStringExtra("idpartita");
 		idprofilo= i.getStringExtra("idprofilo");
-		//Toast.makeText(getApplicationContext(), idpartita, Toast.LENGTH_LONG).show();
+		visibilit‡Pulsanti = i.getStringExtra("visibilit‡Pulsanti");
+		
+		// Visibilit‡ dei pulsanti
+		Button partecipaButton = (Button) findViewById(R.id.bottoneConfermaPartecipa);
+		Button annullaButton = (Button) findViewById(R.id.bottoneAnnulla);
+		
+		if(visibilit‡Pulsanti.equals("invisibili")) {
+			partecipaButton.setVisibility(View.GONE); // GONE: pulsanti completamente rimossi dall'activity
+			annullaButton.setVisibility(View.GONE);
+		}
+        else {
+			partecipaButton.setVisibility(View.VISIBLE);
+			annullaButton.setVisibility(View.VISIBLE);
+		}
 		
 		// Legge i campi della tabella 'partita'
 		tiporichiesta = "leggi";
@@ -60,8 +76,7 @@ public class ConfermaPartecipaActivity extends Activity {
     		 // Settaggio dei Textview
     		 String line = "";
 		     InputStream inputstream = response.getEntity().getContent();
-		     line = convertStreamToString(inputstream);
-		     //Toast.makeText(getApplicationContext(), line, Toast.LENGTH_LONG).show();
+		     line = convertStreamToString(inputstream);		     
 		     JSONObject myjson1 = new JSONObject(line);
 		     
 		     TextView nomedig=(TextView)findViewById(R.id.nomeCampo);
@@ -72,14 +87,19 @@ public class ConfermaPartecipaActivity extends Activity {
 		     cittadig.setText(myjson1.get("citta").toString());
 		     TextView provinciadig=(TextView)findViewById(R.id.provincia);
 		     provinciadig.setText(myjson1.get("provincia").toString());
+		     
 		     TextView datadig=(TextView)findViewById(R.id.data);
-		     datadig.setText(myjson1.get("data").toString());
 		     TextView oradig=(TextView)findViewById(R.id.ora);
-		     oradig.setText(myjson1.get("ora").toString());
+		     //oradig.setText(myjson1.get("ora").toString());
+		     //datadig.setText(myjson1.get("data").toString());
+		     String dataDaConvertire = myjson1.get("data").toString();
+		     String[] result = convertiDataSql(dataDaConvertire);
+		     datadig.setText(result[0]);
+		     oradig.setText(result[1]);
+		     
 		     TextView costodig=(TextView)findViewById(R.id.costo);
 			 costodig.setText(myjson1.get("costo").toString());
-		     
-			 TextView tipoterrenodig=(TextView)findViewById(R.id.tipoTerreno);
+		     TextView tipoterrenodig=(TextView)findViewById(R.id.tipoTerreno);
 			 tipoterrenodig.setText(myjson1.get("terreno").toString());
 			 TextView copertodig=(TextView)findViewById(R.id.coperto);
 			 copertodig.setText(myjson1.get("coperto").toString());
@@ -169,5 +189,26 @@ public class ConfermaPartecipaActivity extends Activity {
 	    b.putString("idprofilo", idprofilo); //passa chiave valore a activity_home
 	    intent.putExtras(b); //intent x passaggio parametri
 	    startActivity(intent);
+	}
+	
+	private String[] convertiDataSql(String data) {
+		String[] result = new String[2];
+		String[] separated = new String[3];
+		
+		separated = data.split("-");
+		String anno = separated[0];
+		String mese = separated[1];
+		String temp = separated[2];
+		
+		separated = temp.split(" ");
+		String giorno = separated[0];
+		result[0] = giorno + "/" + mese + "/" + anno;
+		
+		temp = separated[1];
+		separated = temp.split(":");
+		String ora = separated[0];
+		String minuti = separated[1];
+		result[1] = ora + ":" + minuti;
+		return result;
 	}
 }

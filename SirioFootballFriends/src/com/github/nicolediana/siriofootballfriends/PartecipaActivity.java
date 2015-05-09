@@ -156,6 +156,7 @@ public class PartecipaActivity extends Activity {
 				        //Toast.makeText(getApplicationContext(), indicepartita, Toast.LENGTH_LONG).show();
 				        intent.putExtra("idpartita", indicepartita); //intent x passaggio parametri
 				        intent.putExtra("idprofilo", idprofilo);
+				        intent.putExtra("visibilit‡Pulsanti", "");
 				        startActivity(intent);
 				     }    
 			    });  

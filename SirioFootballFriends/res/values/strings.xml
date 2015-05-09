@@ -121,9 +121,12 @@
     <string name="label_squadra2">SQUADRA 2</string>
     <string name="label_attaccante">Attaccante</string>
     <string name="label_difensore">Difensore</string>
-	<string name="label_portiere">Portiere</string>
+    <string name="label_portiere">Portiere</string>
     <string name="label_alaDx">Ala destra</string>
     <string name="label_alaSx">Ala sinistra</string>
-    <string name="btnDisponibile">Disponibile</string>    
-    
+    <string name="btnDisponibile">Disponibile</string>
+    <string name="bottone_prossimaPartita">PROSSIMA PARTITA</string>
+    <string name="bottone_leMiePartite">LE MIE PARTITE</string>
+    <string name="title_activity_dettaglio_partita">Dettaglio Partita</string>
+
 </resources>
