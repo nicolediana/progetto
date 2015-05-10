@@ -120,7 +120,11 @@ public void onClickSalva(View v) throws UnsupportedEncodingException {
 		TextView oradig=(TextView)findViewById(R.id.ora);
 		ora= oradig.getText().toString();
 		TextView costodig=(TextView)findViewById(R.id.costo);
-		costo= Float.parseFloat(costodig.getText().toString());
+		String costoStr=costodig.getText().toString();
+		if(costoStr.equals("")||costoStr.equals(null))
+			costo= (float) 0;
+		else
+			costo= Float.parseFloat(costodig.getText().toString());
 		TextView celldig=(TextView)findViewById(R.id.cellulare);
 		String cellulareStr= (String)celldig.getText().toString();
 		TextView tipoterrenodig=(TextView)findViewById(R.id.tipoTerreno);
@@ -131,8 +135,8 @@ public void onClickSalva(View v) throws UnsupportedEncodingException {
 		note= notedig.getText().toString();
 		
 		//città non deve essere nullo
-		if(citta.equals("")||citta.equals(null)||provincia.equals("")||provincia.equals(null))
-			Toast.makeText(getApplicationContext(), "Citta' e/o Provincia non valide", Toast.LENGTH_LONG).show();
+		if(citta.equals("")||provincia.equals("")||indirizzocampo.equals("")||data.equals("")||ora.equals("")||cellulareStr.equals(""))
+			Toast.makeText(getApplicationContext(), "Inserire tutti i campi contrassegnati con * ", Toast.LENGTH_LONG).show();
 		else{
 			JSONObject jsonobj= new JSONObject();
 			try{

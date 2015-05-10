@@ -118,49 +118,56 @@ public class ModificaProfiloActivity extends Activity {
 		//if(annonascita<5||annonascita>80)
 		//	Toast.makeText(gannonascitapplicationContext(), "Inserire una annonascita' valida", Toast.LENGTH_LONG).show();
 		
-		//città non deve essere nullo
-		if(citta.equals("")||citta.equals(null))
-			Toast.makeText(getApplicationContext(), "Citta' non valida", Toast.LENGTH_LONG).show();
-		else{
-			JSONObject jsonobj= new JSONObject();
-			try{
-				String tiporichiesta="aggiorna";
-				//creazione della Json
-				jsonobj.put("tiporichiesta", tiporichiesta );
-				jsonobj.put("nome", nome );
-				jsonobj.put("cognome", cognome );
-				jsonobj.put("nickname", nickname );
-				jsonobj.put("citta", citta );
-				jsonobj.put("annonascita", annonascita );
-				jsonobj.put("cellulare", cellulare );
-				jsonobj.put("sesso", sesso );
-				jsonobj.put("password", password );
-				jsonobj.put("idprofilo", idprofilo );
-				
-				//creazione pacchetto post
-				StringEntity entity = new StringEntity(jsonobj.toString());
-				StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-				StrictMode.setThreadPolicy(policy);
-				DefaultHttpClient httpclient = new DefaultHttpClient();
-				HttpPost httppostreq = new HttpPost(MainActivity.urlServlet+nomeServlet);
-				entity.setContentType("application/json;charset=UTF-8");
-				httppostreq.setEntity(entity);
-				HttpResponse httpresponse = httpclient.execute(httppostreq);
-				
-				/*
-				 //recupero della risposta
-				String line = "";
-				InputStream inputstream = httpresponse.getEntity().getContent();
-				line = convertStreamToString(inputstream);
-				JSONObject myjson = new JSONObject(line);	        	     
-				String idprofilo=myjson.get("idprofilo").toString();
-				*/
-				Intent intent=new Intent(this,HomeActivity.class);
-				Bundle b=new Bundle();
-			    b.putString("idprofilo", idprofilo); //passa chiave valore a activity_home
-			    intent.putExtras(b); //intent x passaggio parametri
-			    startActivity(intent);
-			    }
+		//nickname non può essere nullo
+		if(nickname.equals("")||nickname.equals(null))
+				Toast.makeText(getApplicationContext(), " Inserire un Nickname", Toast.LENGTH_LONG).show();	
+		else{				
+			//città non deve essere nullo
+			if(citta.equals("")||citta.equals(null))
+				Toast.makeText(getApplicationContext(), "Citta' non valida", Toast.LENGTH_LONG).show();
+			else{
+				JSONObject jsonobj= new JSONObject();
+				try{
+					String tiporichiesta="aggiorna";
+					//creazione della Json
+					jsonobj.put("tiporichiesta", tiporichiesta );
+					jsonobj.put("nome", nome );
+					jsonobj.put("cognome", cognome );
+					jsonobj.put("nickname", nickname );
+					jsonobj.put("citta", citta );
+					jsonobj.put("annonascita", annonascita );
+					jsonobj.put("cellulare", cellulare );
+					jsonobj.put("sesso", sesso );
+					jsonobj.put("password", password );
+					jsonobj.put("idprofilo", idprofilo );
+					
+					//creazione pacchetto post
+					StringEntity entity = new StringEntity(jsonobj.toString());
+					StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+					StrictMode.setThreadPolicy(policy);
+					DefaultHttpClient httpclient = new DefaultHttpClient();
+					HttpPost httppostreq = new HttpPost(MainActivity.urlServlet+nomeServlet);
+					entity.setContentType("application/json;charset=UTF-8");
+					httppostreq.setEntity(entity);
+					HttpResponse httpresponse = httpclient.execute(httppostreq);
+					
+					//recupero della risposta
+					String line = "";
+					InputStream inputstream = httpresponse.getEntity().getContent();
+					line = convertStreamToString(inputstream);
+					JSONObject myjson = new JSONObject(line);	        	     
+					String idprofilo=myjson.get("idprofilo").toString();
+					String risposta=myjson.get("risposta").toString();
+					
+					if(risposta.equals("si")){
+						Intent intent=new Intent(this,HomeActivity.class);
+						Bundle b=new Bundle();
+					    b.putString("idprofilo", idprofilo); //passa chiave valore a activity_home
+					    intent.putExtras(b); //intent x passaggio parametri
+					    startActivity(intent);
+					}
+					else Toast.makeText(this, "Nickname non valido, sceglierne un altro", Toast.LENGTH_SHORT).show();
+				}
 				catch (JSONException ex) {
 					ex.printStackTrace();
 				}
@@ -172,7 +179,7 @@ public class ModificaProfiloActivity extends Activity {
 					// TODO Auto-generated catch block
 					e2.printStackTrace();
 				}
-				
+			}
 		}
 	}
 	

@@ -99,12 +99,16 @@ public class ProfiloActivity extends Activity {
 		else
 			annonascita=Integer.parseInt(etaStr);
 			
-		//città non deve essere nullo
+		//nickname non può essere nullo
+		if(nickname.equals("")||nickname.equals(null))
+				Toast.makeText(getApplicationContext(), " Inserire un Nickname", Toast.LENGTH_LONG).show();
+		else{
+			//città non deve essere nullo
 		if(citta.equals("")||citta.equals(null))
-			Toast.makeText(getApplicationContext(), "Citta' non valida", Toast.LENGTH_LONG).show();
+			Toast.makeText(getApplicationContext(), "Inserire una Citta' ", Toast.LENGTH_LONG).show();
 		else{
 			if(!sessochecked)
-				Toast.makeText(getApplicationContext(), "Inserire Sesso", Toast.LENGTH_LONG).show();
+				Toast.makeText(getApplicationContext(), "Inserire il Sesso", Toast.LENGTH_LONG).show();
 			else
 			{
 				JSONObject jsonobj= new JSONObject();
@@ -163,7 +167,7 @@ public class ProfiloActivity extends Activity {
 					e2.printStackTrace();
 				}
 			}	
-		}
+		}}
 	}
 	
 	private String convertStreamToString(InputStream is) {
