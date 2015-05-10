@@ -141,18 +141,30 @@ public class ServletProfilo extends HttpServlet {
 			    cellulare= Integer.parseInt(jObj.get("cellulare").toString());
 			    idprofilo= Integer.parseInt(jObj.get("idprofilo").toString());
 			    //linkfotoprofilo
+			    String risposta="si";
 			    
-				//memorizzare profilo
-				sql = "UPDATE profilo SET nome='"+nome+"', cognome='"+cognome+"', nickname='"+nickname+"', sesso='"+sesso+"', citta='"+citta+"', annonascita='"+annonascita
-						+"', cellulare='"+cellulare+"', linkfotoprofilo='"+linkfotoprofilo+"' WHERE idprofilo='"+idprofilo+"'";
-				stmt.executeUpdate(sql);
-				System.out.println("psw:"+password);
-				if(!password.equals(null)||password!=" "){
-					if(!password.isEmpty())
-					{sql = "UPDATE credenziali SET password='"+password+"' WHERE idprofilo='"+idprofilo+"'";
-					stmt.executeUpdate(sql);	}			
+			    //controllo che nickname non sia già esistente
+			    JSONObject jsonObj = new JSONObject();
+				sql = "SELECT * FROM profilo WHERE nickname='"+nickname+"'";
+				rs = stmt.executeQuery(sql);
+				if(rs.next()) {
+					Integer temp=Integer.parseInt(rs.getString("idprofilo"));	
+					if(idprofilo!=temp)
+						risposta="no";	
 				}
-				JSONObject jsonObj = new JSONObject();
+				if(risposta.equals("si")) {
+					//memorizzare profilo
+					sql = "UPDATE profilo SET nome='"+nome+"', cognome='"+cognome+"', nickname='"+nickname+"', sesso='"+sesso+"', citta='"+citta+"', annonascita='"+annonascita
+							+"', cellulare='"+cellulare+"', linkfotoprofilo='"+linkfotoprofilo+"' WHERE idprofilo='"+idprofilo+"'";
+					stmt.executeUpdate(sql);
+					System.out.println("psw:"+password);
+					if(!password.equals(null)||password!=" "){
+						if(!password.isEmpty())
+						{sql = "UPDATE credenziali SET password='"+password+"' WHERE idprofilo='"+idprofilo+"'";
+						stmt.executeUpdate(sql);	}			
+					}					
+				}
+				jsonObj.put("risposta", risposta);
 				jsonObj.put("idprofilo", idprofilo);
 				writer.write(jsonObj.toString());
 			}
