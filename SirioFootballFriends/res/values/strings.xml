@@ -26,11 +26,14 @@
     <string name="label_nome">Nome</string>
     <string name="label_cognome">Cognome</string>
     <string name="label_nickname">Nickname</string>
+    <string name="label_nicknameObl">Nickname *</string>
     <string name="label_eta">Età</string>
     <string name="label_annonascita">Nato il</string>
     <string name="label_citta">Città</string>
+    <string name="label_cittaObl">Città *</string>
     <string name="label_gioca_a">Gioca a</string>
     <string name="label_sesso">Sesso</string>
+    <string name="label_sessoObl">Sesso *</string>
     <string name="label_ruolo">Ruolo</string>
     <string name="label_livello">Livello</string>
     <string name="label_cellulare">Cellulare</string>
@@ -63,10 +66,14 @@
     <string name="bottone_annulla">ANNULLA</string>
     <string name="label_nomeCampo">Campo</string>
     <string name="label_indirCampo">Indirizzo</string>
+    <string name="label_indirCampoObl">Indirizzo *</string>
     <string name="label_data">Data</string>
     <string name="label_ora">Ora</string>
+    <string name="label_dataObl">Data *</string>
+    <string name="label_oraObl">Ora *</string>
     <string name="label_costo">Costo tot</string>
     <string name="label_provincia">Provincia</string>
+    <string name="label_provinciaObl">Provincia *</string>
     <string name="label_nmancanti">N° Giocatori</string>
     <string name="nomeCampo"> Nome Campetto</string>
     <string name="indirizzoCampo"> via, n° , ecc</string>
@@ -105,6 +112,7 @@
     <string name="label_bidoni">Bidoni</string>
     <string name="bidoni">#</string>
     <string name="label_tipoPartita">Tipo partita</string>
+    <string name="label_tipoPartitaObl">Tipo partita *</string>
     <string name="label_tipoTerreno">Tipo terreno</string>
     <string name="label_coperto">Coperto</string>
     <string name="coperto">Coperto/Scoperto</string>
@@ -112,6 +120,7 @@
     <string name="label_note">Note aggiuntive</string>
     <string name="Note">Note...</string>
     <string name="label_contatto">Contatto</string>
+    <string name="label_contattoObl">Contatto *</string>
     <string name="contatto">cell</string>
     <string name="bottone_prosegui">PROSEGUI</string>
     <string name="nonspecificato">non specificato</string>

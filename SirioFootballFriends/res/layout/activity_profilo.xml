@@ -84,15 +84,17 @@
         android:id="@+id/tableRow3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" >
+
         <TextView
             android:id="@+id/label_nickname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
-            android:text="@string/label_nickname"
+            android:text="@string/label_nicknameObl"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/darkblue"
             android:textStyle="bold" />
+
         <EditText
             android:id="@+id/nickname"
             android:layout_width="wrap_content"
@@ -164,15 +166,17 @@
         android:id="@+id/tableRow6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" >
+
         <TextView
             android:id="@+id/label_sesso"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
-            android:text="@string/label_sesso"
+            android:text="@string/label_sessoObl"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/darkblue"
             android:textStyle="bold" />
+
         <TableRow
             android:id="@+id/tableRow61"
             android:layout_width="wrap_content"
@@ -211,15 +215,17 @@
         android:id="@+id/tableRow8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" >
+
         <TextView
             android:id="@+id/label_citta"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
-            android:text="@string/label_citta"
+            android:text="@string/label_cittaObl"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/darkblue"
             android:textStyle="bold" />
+
         <EditText
             android:id="@+id/citta"
             android:layout_width="wrap_content"

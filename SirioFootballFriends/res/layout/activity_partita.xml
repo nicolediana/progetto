@@ -37,9 +37,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
-            android:text="@string/label_tipoPartita"
-            android:textAppearance="?android:attr/textAppearanceMedium" 
-			android:textColor="@color/darkblue"
+            android:text="@string/label_tipoPartitaObl"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/darkblue"
             android:textStyle="bold" />
 
         <Spinner
@@ -60,9 +60,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
-            android:text="@string/label_contatto"
-            android:textAppearance="?android:attr/textAppearanceMedium" 
-			android:textColor="@color/darkblue"
+            android:text="@string/label_contattoObl"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/darkblue"
             android:textStyle="bold" />
 
         <EditText
@@ -91,7 +91,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
-            android:text="@string/label_data"
+            android:text="@string/label_dataObl"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/darkblue"
             android:textStyle="bold" />
@@ -120,7 +120,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
-            android:text="@string/label_ora"
+            android:text="@string/label_oraObl"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/darkblue"
             android:textStyle="bold" />
@@ -176,7 +176,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
-            android:text="@string/label_indirCampo"
+            android:text="@string/label_indirCampoObl"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/darkblue"
             android:textStyle="bold" />
@@ -203,7 +203,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
-            android:text="@string/label_citta"
+            android:text="@string/label_cittaObl"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/darkblue"
             android:textStyle="bold" />
@@ -230,7 +230,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
-            android:text="@string/label_provincia"
+            android:text="@string/label_provinciaObl"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/darkblue"
             android:textStyle="bold" />
