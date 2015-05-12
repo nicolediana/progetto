@@ -14,11 +14,13 @@
         android:id="@+id/tableRow1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|center_horizontal"
         android:gravity="center_vertical|center_horizontal" >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center_horizontal"
             android:text="@string/label_PartiteInProgramma"
             android:textColor="@color/bianco"
             android:textStyle="bold" />
@@ -34,9 +36,11 @@
 
         <ListView
             android:id="@+id/elencoPartiteInProgramma"
+            style="@color/darkblue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal" style="@color/darkblue"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_marginTop="@dimen/separa"
             android:layout_weight="1"
             android:background="@color/bianco" >
 
