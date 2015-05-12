@@ -390,7 +390,7 @@ public class ServletPartita extends HttpServlet {
 						"ON partita.idpartita = profilo_partita.idpartita " +
 						"WHERE profilo_partita.idprofilo = " + idprofilo +
 						" AND partita.data > (SELECT NOW()) " +
-						" ORDER BY partita.data ASC";	
+						" ORDER BY partita.data DESC";	
 				ResultSet rs1 = stmt.executeQuery(sql);				
 	    	    while(rs1.next()) {
 	    	    	Partita part = new Partita();
@@ -418,6 +418,83 @@ public class ServletPartita extends HttpServlet {
 				//jsonObj.put("esito", esito);
 				writer.write(jsonObj.toString());
 	    	}
+
+//--------------------------------------- PARTITE GIOCATE ----------------------------------------------------
+			if(tiporichiesta.equals("partiteGiocate")) {	
+				Vector<Partita> partite = new Vector<Partita>();
+				String idprofilo = jObj.get("idprofilo").toString();
+				
+				String sql = "SELECT * FROM partita " + 
+						"INNER JOIN profilo_partita " + 
+						"ON partita.idpartita = profilo_partita.idpartita " +
+						"WHERE profilo_partita.idprofilo = " + idprofilo +
+						" AND partita.data < (SELECT NOW()) " +
+						" ORDER BY partita.data DESC";	
+				ResultSet rs1 = stmt.executeQuery(sql);				
+	    	    while(rs1.next()) {
+	    	    	Partita part = new Partita();
+					part.setIdpartita(Integer.parseInt(rs1.getString("idpartita")));	
+					part.setIdtipopartita(Integer.parseInt(rs1.getString("idtipopartita")));					
+					part.setNomecampo(rs1.getString("nomecampo"));
+					part.setIndirizzocampo(rs1.getString("indirizzocampo"));
+					part.setCosto(Float.parseFloat(rs1.getString("costo")));
+					String dataTemp = rs1.getString("data");
+					String[] result = convertiDataSql(dataTemp);
+					String data = result[0] + " - " + result[1];
+					part.setData(data);
+					part.setCitta(rs1.getString("citta"));
+					part.setProvincia(rs1.getString("provincia"));
+					part.setLinkfotocampo(rs1.getString("linkfotocampo"));
+					part.setTerreno(rs1.getString("terreno"));
+					part.setCoperto(rs1.getString("coperto"));
+					part.setNote(rs1.getString("note"));
+					part.setAmministratore(Integer.parseInt(rs1.getString("amministratore")));
+					part.setContatto(rs1.getString("contatto"));		
+	    	    	partite.add(part);	    	    		    						
+	    	    }
+	    	    JSONObject jsonObj = new JSONObject();
+				jsonObj.put("elencoPartite", partite);
+				//jsonObj.put("esito", esito);
+				writer.write(jsonObj.toString());
+	    	}
+			
+//--------------------------------------- PARTITE ORGANIZZATE ----------------------------------------------------
+			if(tiporichiesta.equals("partiteOrganizzate")) {	
+				Vector<Partita> partite = new Vector<Partita>();
+				String idprofilo = jObj.get("idprofilo").toString();
+				
+				String sql = "SELECT * FROM partita " + 
+						"WHERE partita.amministratore = " + idprofilo +
+						" AND partita.data > (SELECT NOW()) " +
+						" ORDER BY partita.data DESC";	
+				ResultSet rs1 = stmt.executeQuery(sql);				
+	    	    while(rs1.next()) {
+	    	    	Partita part = new Partita();
+					part.setIdpartita(Integer.parseInt(rs1.getString("idpartita")));	
+					part.setIdtipopartita(Integer.parseInt(rs1.getString("idtipopartita")));					
+					part.setNomecampo(rs1.getString("nomecampo"));
+					part.setIndirizzocampo(rs1.getString("indirizzocampo"));
+					part.setCosto(Float.parseFloat(rs1.getString("costo")));
+					String dataTemp = rs1.getString("data");
+					String[] result = convertiDataSql(dataTemp);
+					String data = result[0] + " - " + result[1];
+					part.setData(data);
+					part.setCitta(rs1.getString("citta"));
+					part.setProvincia(rs1.getString("provincia"));
+					part.setLinkfotocampo(rs1.getString("linkfotocampo"));
+					part.setTerreno(rs1.getString("terreno"));
+					part.setCoperto(rs1.getString("coperto"));
+					part.setNote(rs1.getString("note"));
+					part.setAmministratore(Integer.parseInt(rs1.getString("amministratore")));
+					part.setContatto(rs1.getString("contatto"));		
+	    	    	partite.add(part);	    	    		    						
+	    	    }
+	    	    JSONObject jsonObj = new JSONObject();
+				jsonObj.put("elencoPartite", partite);
+				//jsonObj.put("esito", esito);
+				writer.write(jsonObj.toString());
+	    	}			
+//-------------------------------------------------------------------------------------------------------------			
 			
 		} catch (SQLException | JSONException e) {
 			  e.printStackTrace();
