@@ -283,30 +283,29 @@ public class CalcioA5Activity extends Activity {
 		        String ruoloscelto=another_json_object.get("ruolo").toString();
 		        String nick=another_json_object.get("nickname").toString();
 		        
-		        TextView temp = null;
-		        Button temp2 = null;
+		        Button temp = null;
 		        if(ruoloscelto.equals("attaccante1"))
-		        	temp2=(Button)findViewById(R.id.attaccante1);
+		        	temp=(Button)findViewById(R.id.attaccante1);
 				if(ruoloscelto.equals("attaccante2"))
-					temp2=(Button)findViewById(R.id.attaccante2);
+					temp=(Button)findViewById(R.id.attaccante2);
 				if(ruoloscelto.equals("ala destra1"))
-			        temp=(TextView)findViewById(R.id.alaDx1);
+			        temp=(Button)findViewById(R.id.alaDx1);
 				if(ruoloscelto.equals("ala destra2"))
-			        temp=(TextView)findViewById(R.id.alaDx2);
+			        temp=(Button)findViewById(R.id.alaDx2);
 				if(ruoloscelto.equals("ala sinistra1"))
-					temp=(TextView)findViewById(R.id.alaSx1);
+					temp=(Button)findViewById(R.id.alaSx1);
 				if(ruoloscelto.equals("ala sinistra2"))
-					temp=(TextView)findViewById(R.id.alaSx2);
+					temp=(Button)findViewById(R.id.alaSx2);
 				if(ruoloscelto.equals("difensore1"))
-			        temp=(TextView)findViewById(R.id.difensore1);
+			        temp=(Button)findViewById(R.id.difensore1);
 				if(ruoloscelto.equals("difensore2"))
-					temp=(TextView)findViewById(R.id.difensore2);
+					temp=(Button)findViewById(R.id.difensore2);
 				if(ruoloscelto.equals("portiere1"))
-					temp=(TextView)findViewById(R.id.portiere1);
+					temp=(Button)findViewById(R.id.portiere1);
 				if(ruoloscelto.equals("portiere2"))
-					temp=(TextView)findViewById(R.id.portiere2);
-				temp2.setText(nick);	
-				temp2.setTextColor(getResources().getColor(R.color.nero));
+					temp=(Button)findViewById(R.id.portiere2);
+				temp.setText(nick);	
+				temp.setTextColor(getResources().getColor(R.color.nero));
 			}
 			
 		}catch (Exception e) {e.printStackTrace();}
