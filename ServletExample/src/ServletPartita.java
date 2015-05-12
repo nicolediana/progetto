@@ -381,15 +381,16 @@ public class ServletPartita extends HttpServlet {
 		    }
 			
 //----------------------------------------------- PARTITE IN PROGRAMMA -------------------------------------------			
-			if(tiporichiesta.equals("partiteInProgramma")) {				
+			if(tiporichiesta.equals("partiteInProgramma")) {	
 				Vector<Partita> partite = new Vector<Partita>();
 				String idprofilo = jObj.get("idprofilo").toString();
 				
-				String sql = "SELECT * FROM partita" + 
-						"INNER JOIN profilo_partita" + 
-						"ON partita.idpartita = profilo_partita.idpartita" +
+				String sql = "SELECT * FROM partita " + 
+						"INNER JOIN profilo_partita " + 
+						"ON partita.idpartita = profilo_partita.idpartita " +
 						"WHERE profilo_partita.idprofilo = " + idprofilo +
-						"ORDER BY partita.data ASC";						
+						" AND partita.data > (SELECT NOW()) " +
+						" ORDER BY partita.data ASC";	
 				ResultSet rs1 = stmt.executeQuery(sql);				
 	    	    while(rs1.next()) {
 	    	    	Partita part = new Partita();
@@ -412,7 +413,6 @@ public class ServletPartita extends HttpServlet {
 					part.setContatto(rs1.getString("contatto"));		
 	    	    	partite.add(part);	    	    		    						
 	    	    }
-	    	    
 	    	    JSONObject jsonObj = new JSONObject();
 				jsonObj.put("elencoPartite", partite);
 				//jsonObj.put("esito", esito);
