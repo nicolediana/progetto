@@ -120,7 +120,7 @@
             android:layout_marginLeft="20dp"
             android:text="@string/label_alaDx"
             android:textAppearance="?android:attr/textAppearanceMedium" 
-			android:textColor="@color/darkblue""
+			android:textColor="@color/darkblue"
             android:textStyle="bold" />
         <TextView
             android:id="@+id/alaDx2"
@@ -129,7 +129,7 @@
             android:layout_marginLeft="30dp"
             android:text="@string/label_alaDx"
             android:textAppearance="?android:attr/textAppearanceMedium" 
-			android:textColor="@color/darkblue""
+			android:textColor="@color/darkblue"
             android:textStyle="bold" />
     </TableRow>
     
