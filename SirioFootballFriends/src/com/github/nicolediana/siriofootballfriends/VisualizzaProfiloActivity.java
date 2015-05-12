@@ -52,8 +52,8 @@ public class VisualizzaProfiloActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_visualizza_profilo);
 		Intent i=getIntent();
-		idprofilo= i.getStringExtra("idprofilo");
-		
+		idprofilo= i.getStringExtra("idprofilo"); //idprofilo dell'utente che visualizza i profili degli altri giocatori,mi serve se voglio tornare indietro
+		nickname= i.getStringExtra("nickname");
 		caricaProfilo();
 	}
 
@@ -98,7 +98,7 @@ public class VisualizzaProfiloActivity extends Activity {
 		try{
 			//creazione della Json
 			myjson.put("tiporichiesta", tiporichiesta );
-			myjson.put("idprofilo", idprofilo );
+			myjson.put("nickname", nickname );
 			//creazione pacchetto post
 			StringEntity entity = new StringEntity(myjson.toString());
 			StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -122,24 +122,22 @@ public class VisualizzaProfiloActivity extends Activity {
 			TextView partitevintedig=(TextView)findViewById(R.id.partite_vinte);
 			TextView partitepersedig=(TextView)findViewById(R.id.partite_perse);
 			TextView bidonidig=(TextView)findViewById(R.id.bidoni);
-			
-			if(!myjson2.get("eta").toString().equals("0"))
-			{
-				TextView annonascitadig=(TextView)findViewById(R.id.eta);
-				annonascitadig.setText(Integer.parseInt(myjson2.get("eta").toString())); //calc eta lato servlet			
-			}
-			
+			TextView annonascitadig=(TextView)findViewById(R.id.eta);
 			
 			nicknamedig.setText(myjson2.get("nickname").toString());
 			cittadig.setText(myjson2.get("citta").toString());
-			livellodig.setText(myjson2.get("livellodig").toString());
-			votodig.setText(Integer.parseInt(myjson2.get("voto").toString()));
-			partitegiocatedig.setText(Integer.parseInt(myjson2.get("partitegiocate").toString()));
-			partitevintedig.setText(Integer.parseInt(myjson2.get("partitevinte").toString()));
-			partitepersedig.setText(Integer.parseInt(myjson2.get("partiteperse").toString()));
-			bidonidig.setText(Integer.parseInt(myjson2.get("bidoni").toString()));			
+			livellodig.setText(myjson2.get("livello").toString());
+			partitegiocatedig.setText(myjson2.get("partitegiocate").toString());
+			partitevintedig.setText(myjson2.get("partitevinte").toString());
+			partitepersedig.setText(myjson2.get("partiteperse").toString());
+			bidonidig.setText(myjson2.get("bidoni").toString());			
+			votodig.setText(myjson2.get("voto").toString());
 			
-			
+			String temp=myjson2.get("eta").toString();
+			if(!temp.equals("0"))
+			{
+				annonascitadig.setText(myjson2.get("eta").toString());			
+			}
 		}
 		catch (JSONException ex) {
 			ex.printStackTrace();
