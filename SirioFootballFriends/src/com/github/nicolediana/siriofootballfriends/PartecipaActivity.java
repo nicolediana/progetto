@@ -134,6 +134,7 @@ public class PartecipaActivity extends Activity {
 			        		     another_json_object.get("data").toString();
 			        idpart[i] = Integer.parseInt(another_json_object.get("idpartita").toString()); 
 				}
+			    
 			    // Creazione del Listview - definisco un ArrayList
 			    final ArrayList <String> partitelist = new ArrayList<String>();  
 		        for (int i = 0; i < partite.length; ++i) {  
