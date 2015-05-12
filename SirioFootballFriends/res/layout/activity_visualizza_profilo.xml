@@ -44,9 +44,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:enabled="false"
-            android:hint="@string/nickname"
             android:textColor="@color/bianco"
-            android:textColorHint="@color/bianco"
             android:textStyle="bold" />
 
     </TableRow>
@@ -71,10 +69,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:enabled="false"
-            android:hint="@string/eta"
-            android:inputType="number"
             android:textColor="@color/bianco"
-            android:textColorHint="@color/bianco"
             android:textStyle="bold" />
 
     </TableRow>    
@@ -99,9 +94,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:enabled="false"
-            android:hint="@string/citta"
             android:textColor="@color/bianco"
-            android:textColorHint="@color/bianco"
             android:textStyle="bold" />
 
     </TableRow>
@@ -126,9 +119,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:enabled="false"
-            android:hint="@string/livello2"
             android:textColor="@color/bianco"
-            android:textColorHint="@color/bianco"
             android:textStyle="bold" />
 
     </TableRow>
@@ -153,10 +144,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:enabled="false"
-            android:hint="@string/voto"
-            android:inputType="number"
             android:textColor="@color/bianco"
-            android:textColorHint="@color/bianco"
             android:textStyle="bold" />
 
     </TableRow>
@@ -180,10 +168,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:enabled="false"
-            android:hint="@string/partite_giocate"
-            android:inputType="number"
             android:textColor="@color/bianco"
-            android:textColorHint="@color/bianco"
             android:textStyle="bold" />
 
     </TableRow>
@@ -207,10 +192,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:enabled="false"
-            android:hint="@string/partite_vinte"
-            android:inputType="number"
             android:textColor="@color/bianco"
-            android:textColorHint="@color/bianco"
             android:textStyle="bold" />
 
     </TableRow>
@@ -234,10 +216,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:enabled="false"
-            android:hint="@string/partite_perse"
-            android:inputType="number"
             android:textColor="@color/bianco"
-            android:textColorHint="@color/bianco"
             android:textStyle="bold" />
 
     </TableRow>
@@ -261,10 +240,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:enabled="false"
-            android:hint="@string/bidoni"
-            android:inputType="number"
             android:textColor="@color/bianco"
-            android:textColorHint="@color/bianco"
             android:textStyle="bold" />
 
     </TableRow>
