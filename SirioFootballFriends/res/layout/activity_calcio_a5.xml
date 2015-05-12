@@ -55,10 +55,36 @@
     </TableRow>
     
     <TableRow
+        android:id="@+id/tableRow2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/separa">
+
+        <TextView
+            android:id="@+id/attaccante1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="@string/label_attaccante"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/darkblue"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/attaccante2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:text="@string/label_attaccante"
+            android:textAppearance="?android:attr/textAppearanceMedium" 
+			android:textColor="@color/darkblue"
+            android:textStyle="bold" />
+    </TableRow> 
+    
+    <TableRow
         android:id="@+id/tableRow7"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" 
-        android:layout_marginTop="@dimen/separa" >
+        android:layout_height="wrap_content" >
 
         <Button
             android:id="@+id/btnAttaccante1"
@@ -67,8 +93,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:onClick="onClickAttaccante1"
-            android:text="@string/label_attaccante"  
-			android:textColor="@color/darkblue"
+            android:text="@string/btnDisponibile"  
+			android:textColor="@color/rossoscuro"
             android:textStyle="bold" />
 
         <Button
@@ -78,36 +104,11 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:onClick="onClickAttaccante2"
-            android:text="@string/label_attaccante"  
-			android:textColor="@color/darkblue"
+            android:text="@string/btnDisponibile"  
+			android:textColor="@color/rossoscuro"
             android:textStyle="bold" />
 
     </TableRow>
-    <TableRow
-        android:id="@+id/tableRow2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/attaccante1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="@string/btnDisponibile"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/rossoscuro"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/attaccante2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:text="@string/btnDisponibile"
-            android:textAppearance="?android:attr/textAppearanceMedium" 
-			android:textColor="@color/rossoscuro"
-            android:textStyle="bold" />
-    </TableRow>   
 
 	<TableRow
         android:id="@+id/tableRow8"
