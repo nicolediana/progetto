@@ -141,7 +141,7 @@ public class PartecipaActivity extends Activity {
 		             partitelist.add(partite[i]);  
 		        }  
 			    // recupero la lista dal layout  
-			    ListView mylist = (ListView) findViewById(R.id.listView1); 
+			    ListView mylist = (ListView) findViewById(R.id.elencoPartiteOrganizzate); 
 			    mylist.setTextFilterEnabled(true);			    
 			    // creo e istruisco l'adattatore  
 			    ArrayAdapter <String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, partitelist);  

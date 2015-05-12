@@ -143,8 +143,8 @@
     <string name="bottone_PartiteInProgramma">PARTITE IN PROGRAMMA</string>
     <string name="bottone_PartiteGiocate">PARTITE GIOCATE</string>
     <string name="bottone_PartiteOrganizzate">PARTITE ORGANIZZATE</string>
-    <string name="title_activity_partite_giocate">PartiteGiocateActivity</string>
-    <string name="title_activity_partite_organizzate">PartiteOrganizzateActivity</string>
+    <string name="title_activity_partite_giocate">PARTITE GIOCATE</string>
+    <string name="title_activity_partite_organizzate">PARTITE ORGANIZZATE</string>
     <string name="label_PartiteInProgramma">PARTITE IN PROGRAMMA</string>
 
 </resources>

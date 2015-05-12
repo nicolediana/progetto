@@ -23,6 +23,7 @@
             android:layout_gravity="center_vertical|center_horizontal"
             android:text="@string/label_PartiteInProgramma"
             android:textColor="@color/bianco"
+            android:textSize="@dimen/abc_text_size_title_material"
             android:textStyle="bold" />
 
     </TableRow>
