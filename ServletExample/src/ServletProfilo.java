@@ -11,6 +11,7 @@ import org.json.JSONObject;
 import java.io.PrintWriter;
 import java.sql.*;
 import java.util.Calendar;
+import java.util.Vector;
 
 public class ServletProfilo extends HttpServlet {
 	
@@ -174,13 +175,15 @@ public class ServletProfilo extends HttpServlet {
 			if(tiporichiesta.equals("vediprofilo"))
 			{
 				System.out.println("vediprofilo");
-				idprofilo= Integer.parseInt(jObj.get("idprofilo").toString());
-				
-				sql = "SELECT * FROM profilo WHERE idprofilo='"+idprofilo+"'";
+				nickname= jObj.get("nickname").toString();
+				Integer idprof = null;
+				sql = "SELECT * FROM profilo WHERE nickname='"+nickname+"'";
 				rs = stmt.executeQuery(sql);
 				
 				JSONObject jsonObj = new JSONObject();
 				if(rs.next()) {
+					idprof=(Integer) rs.getObject("idprofilo");
+					
 					nickname=rs.getString("nickname");
 					annonascita=(Integer) rs.getObject("annonascita");
 					citta=rs.getString("citta");
@@ -208,12 +211,15 @@ public class ServletProfilo extends HttpServlet {
 				    	livello="professionista di serie A";
 				    
 					Integer currentYear=Calendar.getInstance().get(Calendar.YEAR);
-					Integer eta= currentYear - annonascita;
+					Integer eta = currentYear - annonascita;
+					if(eta.equals(currentYear))
+						eta=0;
 					jsonObj.put("nickname", nickname);
 					jsonObj.put("eta", eta);
 					jsonObj.put("citta", citta);
 					jsonObj.put("linkfotoprofilo", linkfotoprofilo);
 					jsonObj.put("livello", livello);
+					jsonObj.put("voto", voto);
 				}
 				
 				Integer bidone=0;
@@ -221,8 +227,9 @@ public class ServletProfilo extends HttpServlet {
 				Integer partite_vinte=0;
 				Integer partite_perse=0;
 				Integer pareggi=0;
+				Vector<String> quer = new Vector<String>();
 				
-				sql = "SELECT * FROM profilo-partita WHERE idprofilo='"+idprofilo+"'";
+				sql = "SELECT * FROM profilo_partita WHERE idprofilo='"+idprof+"'";
 				rs = stmt.executeQuery(sql);				
 				while(rs.next()) {
 					bidone +=(Integer) rs.getObject("bidone");
@@ -230,21 +237,30 @@ public class ServletProfilo extends HttpServlet {
 					Integer idpartita=(Integer) rs.getObject("idpartita");
 					
 					String sql2 = "SELECT * FROM squadra WHERE idpartita='"+idpartita+"'";
-					rs2 = stmt.executeQuery(sql2);					
-					if(rs2.getString("esito") == "VITTORIA")
-						partite_vinte += 1;
-					if(rs2.getString("esito") == "SCONFITTA")
-						partite_perse += 1;
-					if(rs2.getString("esito") == "PAREGGIO")
-						pareggi += 1;				
+					quer.add(sql2);
+				}
+				for(int k=0;k<quer.size();k++)
+				{
+					rs2 = stmt.executeQuery(quer.get(k));
+					if(rs2.next()) {						
+						if(rs2.getString("esito") == "VITTORIA")
+							partite_vinte += 1;
+						if(rs2.getString("esito") == "SCONFITTA")
+							partite_perse += 1;
+						if(rs2.getString("esito") == "PAREGGIO")
+							pareggi += 1;	
+					}
 					
 				}
+				
 				//writer.println(idcredenziali.toString().toJson());
-				jsonObj.put("idprofilo", idprofilo);
+				//jsonObj.put("idprofilo", idprofilo);
 				jsonObj.put("bidoni", bidone);
-				jsonObj.put("partite_giocare", partite_giocate);
-				jsonObj.put("partite_vinte", partite_vinte);
-				jsonObj.put("partite_perse", partite_perse);
+				jsonObj.put("partitegiocate", partite_giocate);
+				jsonObj.put("partitevinte", partite_vinte);
+				jsonObj.put("partiteperse", partite_perse);
+				
+				System.out.println(jsonObj.toString());
 				
 				writer.write(jsonObj.toString());
 			}
