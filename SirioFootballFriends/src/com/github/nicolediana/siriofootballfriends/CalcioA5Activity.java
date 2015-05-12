@@ -83,7 +83,8 @@ public class CalcioA5Activity extends Activity {
 			Integer numsquadra=1;
 			inviaRichiesta(ruolo,numsquadra);
 		}
-		else Toast.makeText(this, "Ruolo già assegnato", Toast.LENGTH_SHORT).show(); 
+		else visualizzaProfilo(ttemp);
+		//Toast.makeText(this, "Ruolo già assegnato", Toast.LENGTH_SHORT).show(); 
 	}
 	
 	public void onClickAttaccante2(View v){
@@ -94,7 +95,9 @@ public class CalcioA5Activity extends Activity {
 			Integer numsquadra=2;
 			inviaRichiesta(ruolo,numsquadra);
 		}
-		else Toast.makeText(this, "Ruolo già assegnato", Toast.LENGTH_SHORT).show(); 
+		else visualizzaProfilo(ttemp);
+		//Toast.makeText(this, "Ruolo già assegnato", Toast.LENGTH_SHORT).show(); 
+			
 	}
 	
 	public void onClickAlaDx1(View v){
@@ -105,7 +108,8 @@ public class CalcioA5Activity extends Activity {
 			Integer numsquadra=1;
 			inviaRichiesta(ruolo,numsquadra);
 		}
-		else Toast.makeText(this, "Ruolo già assegnato", Toast.LENGTH_SHORT).show(); 
+		else visualizzaProfilo(ttemp);
+		//Toast.makeText(this, "Ruolo già assegnato", Toast.LENGTH_SHORT).show(); 
 	}
 	
 	public void onClickAlaDx2(View v){
@@ -116,7 +120,8 @@ public class CalcioA5Activity extends Activity {
 			Integer numsquadra=2;
 			inviaRichiesta(ruolo,numsquadra);
 		}
-		else Toast.makeText(this, "Ruolo già assegnato", Toast.LENGTH_SHORT).show(); 
+		else visualizzaProfilo(ttemp);
+		//Toast.makeText(this, "Ruolo già assegnato", Toast.LENGTH_SHORT).show(); 
 	}
 	
 	public void onClickAlaSx1(View v){
@@ -127,7 +132,8 @@ public class CalcioA5Activity extends Activity {
 			Integer numsquadra=1;
 			inviaRichiesta(ruolo,numsquadra);
 		}
-		else Toast.makeText(this, "Ruolo già assegnato", Toast.LENGTH_SHORT).show(); 
+		else visualizzaProfilo(ttemp);
+		//Toast.makeText(this, "Ruolo già assegnato", Toast.LENGTH_SHORT).show(); 
 	}
 	
 	public void onClickAlaSx2(View v){
@@ -138,7 +144,8 @@ public class CalcioA5Activity extends Activity {
 			Integer numsquadra=2;
 			inviaRichiesta(ruolo,numsquadra);
 		}
-		else Toast.makeText(this, "Ruolo già assegnato", Toast.LENGTH_SHORT).show(); 
+		else visualizzaProfilo(ttemp);
+		//Toast.makeText(this, "Ruolo già assegnato", Toast.LENGTH_SHORT).show(); 
 	}
 	
 	public void onClickDifensore1(View v){
@@ -149,7 +156,8 @@ public class CalcioA5Activity extends Activity {
 			Integer numsquadra=1;
 			inviaRichiesta(ruolo,numsquadra);
 		}
-		else Toast.makeText(this, "Ruolo già assegnato", Toast.LENGTH_SHORT).show(); 
+		else visualizzaProfilo(ttemp);
+		//Toast.makeText(this, "Ruolo già assegnato", Toast.LENGTH_SHORT).show(); 
 	}
 	
 	public void onClickDifensore2(View v){
@@ -160,7 +168,8 @@ public class CalcioA5Activity extends Activity {
 			Integer numsquadra=2;
 			inviaRichiesta(ruolo,numsquadra);
 		}
-		else Toast.makeText(this, "Ruolo già assegnato", Toast.LENGTH_SHORT).show(); 
+		else visualizzaProfilo(ttemp);
+		//Toast.makeText(this, "Ruolo già assegnato", Toast.LENGTH_SHORT).show(); 
 	}
 	
 	public void onClickPortiere1(View v){
@@ -171,7 +180,8 @@ public class CalcioA5Activity extends Activity {
 			Integer numsquadra=1;
 			inviaRichiesta(ruolo,numsquadra);
 		}
-		else Toast.makeText(this, "Ruolo già assegnato", Toast.LENGTH_SHORT).show(); 
+		else visualizzaProfilo(ttemp);
+		//Toast.makeText(this, "Ruolo già assegnato", Toast.LENGTH_SHORT).show(); 
 	}
 	
 	public void onClickPortiere2(View v){
@@ -182,9 +192,19 @@ public class CalcioA5Activity extends Activity {
 			Integer numsquadra=2;
 			inviaRichiesta(ruolo,numsquadra);
 		}
-		else Toast.makeText(this, "Ruolo già assegnato", Toast.LENGTH_SHORT).show(); 
+		else visualizzaProfilo(ttemp);
+		//Toast.makeText(this, "Ruolo già assegnato", Toast.LENGTH_SHORT).show(); 
 	}
 
+	public void visualizzaProfilo(String ttemp){
+		Intent intent=new Intent(this,VisualizzaProfiloActivity.class);
+		Bundle b=new Bundle();
+		b.putString("idprofilo", idprofilo); 
+	    b.putString("nickname", ttemp);
+	    intent.putExtras(b); 
+	    startActivity(intent);
+	}
+	
 	public void inviaRichiesta(String ruolo, Integer numsquadra){
 		try{
 			tiporichiesta = "aggiorna";
@@ -264,10 +284,11 @@ public class CalcioA5Activity extends Activity {
 		        String nick=another_json_object.get("nickname").toString();
 		        
 		        TextView temp = null;
+		        Button temp2 = null;
 		        if(ruoloscelto.equals("attaccante1"))
-		        	temp=(TextView)findViewById(R.id.attaccante1);
+		        	temp2=(Button)findViewById(R.id.attaccante1);
 				if(ruoloscelto.equals("attaccante2"))
-					temp=(TextView)findViewById(R.id.attaccante2);
+					temp2=(Button)findViewById(R.id.attaccante2);
 				if(ruoloscelto.equals("ala destra1"))
 			        temp=(TextView)findViewById(R.id.alaDx1);
 				if(ruoloscelto.equals("ala destra2"))
@@ -284,8 +305,8 @@ public class CalcioA5Activity extends Activity {
 					temp=(TextView)findViewById(R.id.portiere1);
 				if(ruoloscelto.equals("portiere2"))
 					temp=(TextView)findViewById(R.id.portiere2);
-				temp.setText(nick);	
-				temp.setTextColor(getResources().getColor(R.color.nero));
+				temp2.setText(nick);	
+				temp2.setTextColor(getResources().getColor(R.color.nero));
 			}
 			
 		}catch (Exception e) {e.printStackTrace();}
