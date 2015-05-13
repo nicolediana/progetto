@@ -74,7 +74,8 @@ public class PartiteGiocateActivity extends Activity {
 			 for (int j = 0; j < size; j++) {
 			    JSONObject another_json_object = json_array.getJSONObject(j);
 			    partite[j] = another_json_object.get("nomecampo").toString() + " - " +
-			    		     another_json_object.get("data").toString();
+			    		     another_json_object.get("data").toString() + "\n" +
+			    		     another_json_object.get("esito").toString();
 			    idpart[j] = Integer.parseInt(another_json_object.get("idpartita").toString()); 
 			 }
 			 
