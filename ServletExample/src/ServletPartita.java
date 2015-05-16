@@ -289,6 +289,7 @@ public class ServletPartita extends HttpServlet {
 				idtipopartita = Integer.parseInt(jObj.get("idtipopartita").toString());
 				String ruolo = jObj.get("ruolo").toString();
 				Integer squadra = Integer.parseInt(jObj.get("squadra").toString());
+				
 				Integer idruolo=0,idsquadra=0;
 				JSONObject jsonObj = new JSONObject();
 				
@@ -303,13 +304,13 @@ public class ServletPartita extends HttpServlet {
 					if(rs.next()) {
 						idruolo=Integer.parseInt(rs.getString("idruolo"));
 					}
+					
 					sql = "SELECT idsquadra FROM squadra WHERE squadra='"+squadra+"' and idpartita='"+idpartita+"' and idtipopartita='"+idtipopartita+"'";
 					rs = stmt.executeQuery(sql);
 					if(rs.next()) {
 						idsquadra=Integer.parseInt(rs.getString("idsquadra"));
 					}
-					sql = "INSERT INTO squadra_ruolo (idsquadra, idruolo) VALUES ('"+idsquadra+"', '"+idruolo+"')";
-					stmt.executeUpdate(sql);
+					
 					sql = "INSERT INTO profilo_partita (idprofilo, idpartita, idruolo, idsquadra) VALUES ('"+idprofilo+"','"+idpartita+"', '"+idruolo+"', '"+idsquadra+"')";
 					stmt.executeUpdate(sql);
 					jsonObj.put("risposta", "si");
@@ -495,7 +496,14 @@ public class ServletPartita extends HttpServlet {
 				jsonObj.put("elencoPartite", partite);
 				//jsonObj.put("esito", esito);
 				writer.write(jsonObj.toString());
-	    	}			
+	    	}
+			
+//--------------------------------------- ELIMINA PARTITA ----------------------------------------------------
+			if(tiporichiesta.equals("eliminaPartita")) {	
+				
+				
+			}
+
 //-------------------------------------------------------------------------------------------------------------			
 			
 		} catch (SQLException | JSONException e) {
