@@ -146,5 +146,14 @@
     <string name="title_activity_partite_giocate">PARTITE GIOCATE</string>
     <string name="title_activity_partite_organizzate">PARTITE ORGANIZZATE</string>
     <string name="label_PartiteInProgramma">PARTITE IN PROGRAMMA</string>
-
+    <string name="title_activity_calcio_a11">CalcioA11Activity</string>
+    <string name="label_centravanti">Centravanti</string>
+    <string name="label_mezzalaDx">Mezzala destra</string>
+    <string name="label_mezzalaSx">Mezzala sinistra</string>
+    <string name="label_terzinoDx">Terzino destro</string>
+    <string name="label_terzinoSx">Terzino sinistro</string>
+    <string name="label_medianoDx">Mediano destro</string>
+    <string name="label_medianoSx">Mediano sinistro</string>
+    <string name="label_centromediano">Centromediano</string>
+    
 </resources>
