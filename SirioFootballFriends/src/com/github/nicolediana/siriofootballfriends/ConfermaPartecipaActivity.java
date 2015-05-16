@@ -1,22 +1,28 @@
 package com.github.nicolediana.siriofootballfriends;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 
 import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,15 +51,34 @@ public class ConfermaPartecipaActivity extends Activity {
 		Button partecipaButton = (Button) findViewById(R.id.bottoneConfermaPartecipa);
 		Button annullaButton = (Button) findViewById(R.id.bottoneAnnulla);
 		
-		if(visibilit‡Pulsanti.equals("invisibili")) {
-			partecipaButton.setVisibility(View.GONE); // GONE: pulsanti completamente rimossi dall'activity
-			annullaButton.setVisibility(View.GONE);
-		}
-        else {
-			partecipaButton.setVisibility(View.VISIBLE);
-			annullaButton.setVisibility(View.VISIBLE);
-		}
 		
+		if(visibilit‡Pulsanti.equals("elimina")) {
+			partecipaButton.setVisibility(View.GONE); // GONE: pulsanti completamente rimossi dall'activity
+			annullaButton.setVisibility(View.VISIBLE);
+			annullaButton.setText("ELIMINA");	
+			annullaButton.setOnClickListener(new OnClickListener() {				
+				@Override
+				public void onClick(View v) {
+					onClickElimina(v);					
+				}				
+			});
+		}
+		else{
+			if(visibilit‡Pulsanti.equals("abbandona")) {
+			partecipaButton.setVisibility(View.GONE); // GONE: pulsanti completamente rimossi dall'activity
+			annullaButton.setVisibility(View.VISIBLE);
+			annullaButton.setText("ABBANDONA");	
+			annullaButton.setOnClickListener(new OnClickListener() {				
+				@Override
+				public void onClick(View v) {
+					onClickAbbandona(v);					
+				}				
+			});}
+	        else {
+				partecipaButton.setVisibility(View.VISIBLE);
+				annullaButton.setVisibility(View.VISIBLE);
+			}
+		}
 		// Legge i campi della tabella 'partita'
 		tiporichiesta = "leggi";
 		try{
@@ -189,7 +214,7 @@ public class ConfermaPartecipaActivity extends Activity {
 		Bundle b=new Bundle();
 	    b.putString("idprofilo", idprofilo); //passa chiave valore a activity_home
 	    intent.putExtras(b); //intent x passaggio parametri
-	    startActivity(intent);
+	    startActivity(intent);	
 	}
 /*	
 	private String[] convertiDataSql(String data) {
@@ -213,4 +238,97 @@ public class ConfermaPartecipaActivity extends Activity {
 		return result;
 	}
 */	
+	public void onClickElimina(View v) {
+		JSONObject jsonobj= new JSONObject();
+		String tiporichiesta="eliminaPartita";			
+		try{
+			jsonobj.put("tiporichiesta", tiporichiesta);
+			jsonobj.put("idprofilo", idprofilo);
+			jsonobj.put("idpartita", idpartita);
+			jsonobj.put("citta", "");
+			jsonobj.put("provincia", "");		
+			
+			//creazione pacchetto post
+			StringEntity entity = new StringEntity(jsonobj.toString());
+			StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+			StrictMode.setThreadPolicy(policy);
+			DefaultHttpClient httpclient = new DefaultHttpClient();
+			HttpPost httppostreq = new HttpPost(MainActivity.urlServlet+nomeServlet);
+			entity.setContentType("application/json;charset=UTF-8");
+			httppostreq.setEntity(entity);
+			HttpResponse httpresponse = httpclient.execute(httppostreq);
+			
+			String line = "";
+			InputStream inputstream = httpresponse.getEntity().getContent();
+			line = convertStreamToString(inputstream);			    
+			JSONObject myjson = new JSONObject(line);	        	     
+			String risposta=myjson.get("risposta").toString();
+			
+			if(risposta.equals("si"))
+			{
+				Toast.makeText(this, "Partita eliminata", Toast.LENGTH_SHORT).show();
+				
+				Intent intent=new Intent(this,HomeActivity.class);
+				Bundle b=new Bundle();
+			    b.putString("idprofilo", idprofilo); //passa chiave valore a activity_home
+			    intent.putExtras(b); //intent x passaggio parametri
+			    startActivity(intent);
+			}
+			else
+				 Toast.makeText(getApplicationContext(), "Permesso negato, partita non eliminata", Toast.LENGTH_LONG).show();
+		}
+		catch (JSONException ex) {
+			ex.printStackTrace();
+		}
+		catch(UnsupportedEncodingException e){e.printStackTrace();}
+		catch (ClientProtocolException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
+	}
+	
+	public void onClickAbbandona(View v) {
+		JSONObject jsonobj= new JSONObject();
+		String tiporichiesta="abbandonaPartita";			
+		try{
+			jsonobj.put("tiporichiesta", tiporichiesta);
+			jsonobj.put("idprofilo", idprofilo);
+			jsonobj.put("idpartita", idpartita);
+			jsonobj.put("citta", "");
+			jsonobj.put("provincia", "");		
+					
+			//creazione pacchetto post
+			StringEntity entity = new StringEntity(jsonobj.toString());
+			StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+			StrictMode.setThreadPolicy(policy);
+			DefaultHttpClient httpclient = new DefaultHttpClient();
+			HttpPost httppostreq = new HttpPost(MainActivity.urlServlet+nomeServlet);
+			entity.setContentType("application/json;charset=UTF-8");
+			httppostreq.setEntity(entity);
+			HttpResponse httpresponse = httpclient.execute(httppostreq);
+			
+			Toast.makeText(this, "Partita abbandonata", Toast.LENGTH_SHORT).show();
+			Intent intent=new Intent(this,HomeActivity.class);
+			Bundle b=new Bundle();
+		    b.putString("idprofilo", idprofilo); //passa chiave valore a activity_home
+		    intent.putExtras(b); //intent x passaggio parametri
+		    startActivity(intent);
+					
+		}
+		catch (JSONException ex) {
+			ex.printStackTrace();
+		}
+		catch(UnsupportedEncodingException e){e.printStackTrace();}
+		catch (ClientProtocolException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
+	}
+	
 }

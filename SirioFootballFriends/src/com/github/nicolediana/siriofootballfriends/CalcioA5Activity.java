@@ -234,13 +234,13 @@ public class CalcioA5Activity extends Activity {
 			String risposta=myjson.get("risposta").toString();
 			if(risposta.equals("si")){
 				Toast.makeText(this, "Registrazione effettuata con successo", Toast.LENGTH_SHORT).show();
-			
+				leggiRuoli();
 				// Ritorno alla Homepage
-				Intent intent=new Intent(this,HomeActivity.class);
+				/*Intent intent=new Intent(this,HomeActivity.class);
 				Bundle b=new Bundle();
 			    b.putString("idprofilo", idprofilo); //passa chiave valore a activity_home
 			    intent.putExtras(b); //intent x passaggio parametri
-			    startActivity(intent);
+			    startActivity(intent);*/
 			}
 			else Toast.makeText(this, "Nickname già presente in questa partita", Toast.LENGTH_SHORT).show();
 		}
