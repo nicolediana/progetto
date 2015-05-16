@@ -134,9 +134,11 @@ public class ServletPartita extends HttpServlet {
 				{
 					stmt.executeUpdate(quer2.get(z));	
 				}
+				System.out.println(tipopartita);
 				//ritornare idpartita
 				JSONObject jsonObj = new JSONObject();
 				jsonObj.put("idpartita", idpartita);
+				jsonObj.put("tipopartita", tipopartita);				
 				writer.write(jsonObj.toString()); 				
 			}
 			
