@@ -1,7 +1,6 @@
 package com.github.nicolediana.siriofootballfriends;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
@@ -76,7 +75,7 @@ public class CalcioA5Activity extends Activity {
 	}
 	
 	public void onClickAttaccante1(View v){
-		TextView temp=(TextView)findViewById(R.id.attaccante1);		
+		TextView temp=(TextView)findViewById(R.id.btnAttaccante1);		
 		String ttemp= temp.getText().toString();
 		if(ttemp.equals("Disponibile")){
 			String ruolo="attaccante";
@@ -88,7 +87,7 @@ public class CalcioA5Activity extends Activity {
 	}
 	
 	public void onClickAttaccante2(View v){
-		TextView temp=(TextView)findViewById(R.id.attaccante2);		
+		TextView temp=(TextView)findViewById(R.id.btnAttaccante2);		
 		String ttemp= temp.getText().toString();
 		if(ttemp.equals("Disponibile")){
 			String ruolo="attaccante";
@@ -101,7 +100,7 @@ public class CalcioA5Activity extends Activity {
 	}
 	
 	public void onClickAlaDx1(View v){
-		TextView temp=(TextView)findViewById(R.id.alaDx1);		
+		TextView temp=(TextView)findViewById(R.id.btnAlaDx1);		
 		String ttemp= temp.getText().toString();
 		if(ttemp.equals("Disponibile")){
 			String ruolo="ala destra";
@@ -113,7 +112,7 @@ public class CalcioA5Activity extends Activity {
 	}
 	
 	public void onClickAlaDx2(View v){
-		TextView temp=(TextView)findViewById(R.id.alaDx2);		
+		TextView temp=(TextView)findViewById(R.id.btnAlaDx2);		
 		String ttemp= temp.getText().toString();
 		if(ttemp.equals("Disponibile")){
 			String ruolo="ala destra";
@@ -125,7 +124,7 @@ public class CalcioA5Activity extends Activity {
 	}
 	
 	public void onClickAlaSx1(View v){
-		TextView temp=(TextView)findViewById(R.id.alaSx1);		
+		TextView temp=(TextView)findViewById(R.id.btnAlaSx1);		
 		String ttemp= temp.getText().toString();
 		if(ttemp.equals("Disponibile")){
 			String ruolo="ala sinistra";
@@ -137,7 +136,7 @@ public class CalcioA5Activity extends Activity {
 	}
 	
 	public void onClickAlaSx2(View v){
-		TextView temp=(TextView)findViewById(R.id.alaSx2);		
+		TextView temp=(TextView)findViewById(R.id.btnAlaSx2);		
 		String ttemp= temp.getText().toString();
 		if(ttemp.equals("Disponibile")){
 			String ruolo="ala sinistra";
@@ -149,7 +148,7 @@ public class CalcioA5Activity extends Activity {
 	}
 	
 	public void onClickDifensore1(View v){
-		TextView temp=(TextView)findViewById(R.id.difensore1);		
+		TextView temp=(TextView)findViewById(R.id.btnDifensore1);		
 		String ttemp= temp.getText().toString();
 		if(ttemp.equals("Disponibile")){
 			String ruolo="difensore";
@@ -161,7 +160,7 @@ public class CalcioA5Activity extends Activity {
 	}
 	
 	public void onClickDifensore2(View v){
-		TextView temp=(TextView)findViewById(R.id.difensore2);		
+		TextView temp=(TextView)findViewById(R.id.btnDifensore2);		
 		String ttemp= temp.getText().toString();
 		if(ttemp.equals("Disponibile")){
 			String ruolo="difensore";
@@ -173,7 +172,7 @@ public class CalcioA5Activity extends Activity {
 	}
 	
 	public void onClickPortiere1(View v){
-		TextView temp=(TextView)findViewById(R.id.portiere1);		
+		TextView temp=(TextView)findViewById(R.id.btnPortiere1);		
 		String ttemp= temp.getText().toString();
 		if(ttemp.equals("Disponibile")){
 			String ruolo="portiere";
@@ -185,7 +184,7 @@ public class CalcioA5Activity extends Activity {
 	}
 	
 	public void onClickPortiere2(View v){
-		TextView temp=(TextView)findViewById(R.id.portiere2);		
+		TextView temp=(TextView)findViewById(R.id.btnPortiere2);		
 		String ttemp= temp.getText().toString();
 		if(ttemp.equals("Disponibile")){
 			String ruolo="portiere";
@@ -285,25 +284,25 @@ public class CalcioA5Activity extends Activity {
 		        
 		        Button temp = null;
 		        if(ruoloscelto.equals("attaccante1"))
-		        	temp=(Button)findViewById(R.id.attaccante1);
+		        	temp=(Button)findViewById(R.id.btnAttaccante1);
 				if(ruoloscelto.equals("attaccante2"))
-					temp=(Button)findViewById(R.id.attaccante2);
+					temp=(Button)findViewById(R.id.btnAttaccante2);
 				if(ruoloscelto.equals("ala destra1"))
-			        temp=(Button)findViewById(R.id.alaDx1);
+			        temp=(Button)findViewById(R.id.btnAlaDx1);
 				if(ruoloscelto.equals("ala destra2"))
-			        temp=(Button)findViewById(R.id.alaDx2);
+			        temp=(Button)findViewById(R.id.btnAlaDx2);
 				if(ruoloscelto.equals("ala sinistra1"))
-					temp=(Button)findViewById(R.id.alaSx1);
+					temp=(Button)findViewById(R.id.btnAlaSx1);
 				if(ruoloscelto.equals("ala sinistra2"))
-					temp=(Button)findViewById(R.id.alaSx2);
+					temp=(Button)findViewById(R.id.btnAlaSx2);
 				if(ruoloscelto.equals("difensore1"))
-			        temp=(Button)findViewById(R.id.difensore1);
+			        temp=(Button)findViewById(R.id.btnDifensore1);
 				if(ruoloscelto.equals("difensore2"))
-					temp=(Button)findViewById(R.id.difensore2);
+					temp=(Button)findViewById(R.id.btnDifensore2);
 				if(ruoloscelto.equals("portiere1"))
-					temp=(Button)findViewById(R.id.portiere1);
+					temp=(Button)findViewById(R.id.btnPortiere1);
 				if(ruoloscelto.equals("portiere2"))
-					temp=(Button)findViewById(R.id.portiere2);
+					temp=(Button)findViewById(R.id.btnPortiere2);
 				temp.setText(nick);	
 				temp.setTextColor(getResources().getColor(R.color.nero));
 			}

@@ -31,7 +31,7 @@ import android.widget.Toast;
 public class PartitaActivity extends Activity {
 	private String nomeServlet="/ServletExample/ServletPartita";
 			
-	String idprofilo;
+	private String idprofilo;
 	private String nomecampo;
 	private String indirizzocampo;
 	private String provincia;
@@ -47,6 +47,7 @@ public class PartitaActivity extends Activity {
 	//ArrayList<String> tipopartitalist;
 	private String tipopartita;
 	private String tipoPartitaList;
+	private String idpartita;
 			
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -172,33 +173,35 @@ public void onClickSalva(View v) throws UnsupportedEncodingException {
 				 //recupero della risposta
 				String line = "";
 				InputStream inputstream = httpresponse.getEntity().getContent();
-				line = convertStreamToString(inputstream);
+				line = convertStreamToString(inputstream);			    
 				JSONObject myjson = new JSONObject(line);	        	     
-				String idpartita=myjson.get("idpartita").toString();
+				idpartita=myjson.get("idpartita").toString();
+				tipopartita=myjson.get("tipopartita").toString();
 				
-				/*if(tipopartita.equals("Calcio a 5"))
-					Intent intent=new Intent(this,CalcioA5Activity.class);
-				if(tipopartita.equals("Calcio a 11"))
-					Intent intent=new Intent(this,CalcioA11Activity.class);
-				*/
-				Intent intent=new Intent(this,HomeActivity.class);
 				Bundle b=new Bundle();
-			    b.putString("idprofilo", idprofilo); //passa chiave valore a activity_home
-			    b.putString("idpartita", idpartita);
+			    b.putString("idprofilo", idprofilo);
+			    b.putString("idpartita", idpartita);			    
+			    Intent intent = null;
+			    if(tipopartita.equals("Calcio a 5"))
+			    	intent=new Intent(this,CalcioA5Activity.class);
+			    else if(tipopartita.equals("Calcio a 11"))
+			    	intent=new Intent(this,CalcioA11Activity.class);
+			    else
+			    	intent=new Intent(this,HomeActivity.class);
 			    intent.putExtras(b); //intent x passaggio parametri
-			    startActivity(intent);
-			    }
-				catch (JSONException ex) {
-					ex.printStackTrace();
-				}
-				catch(UnsupportedEncodingException e){e.printStackTrace();}
-				catch (ClientProtocolException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IOException e2) {
-					// TODO Auto-generated catch block
-					e2.printStackTrace();
-				}
+				startActivity(intent);
+			}
+			catch (JSONException ex) {
+				ex.printStackTrace();
+			}
+			catch(UnsupportedEncodingException e){e.printStackTrace();}
+			catch (ClientProtocolException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e2) {
+				// TODO Auto-generated catch block
+				e2.printStackTrace();
+			}
 				
 		}
 	}
