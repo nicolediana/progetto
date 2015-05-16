@@ -70,6 +70,7 @@ public class ServletPartita extends HttpServlet {
 			//PUT ->crea partita. PartitaActivity
 			if(tiporichiesta.equals("crea"))
 			{
+				System.out.println("crea partita");
 				nomecampo= jObj.get("nomecampo").toString();
 			    indirizzocampo= jObj.get("indirizzocampo").toString();
 			    data= jObj.get("data").toString();
@@ -134,7 +135,6 @@ public class ServletPartita extends HttpServlet {
 				{
 					stmt.executeUpdate(quer2.get(z));	
 				}
-				System.out.println(tipopartita);
 				//ritornare idpartita
 				JSONObject jsonObj = new JSONObject();
 				jsonObj.put("idpartita", idpartita);
@@ -146,6 +146,7 @@ public class ServletPartita extends HttpServlet {
 			//GET ->cerca partite->elenco PartecipaActivity
 			if(tiporichiesta.equals("leggi")&&(!citta.equals("null") || !provincia.equals("null")))
 			{
+				System.out.println("cerca partita");
 				Vector<Partita> v = new Vector<Partita>();
 				Vector<Partita> v2 = new Vector<Partita>();
 				Vector<String> quer = new Vector<String>();
@@ -221,6 +222,7 @@ public class ServletPartita extends HttpServlet {
 			// riepilogo/dettaglio di una partita ConfermaPartecipaActivity
 			if(tiporichiesta.equals("leggi")&& citta.equals("null") && provincia.equals("null"))
 			{
+				System.out.println("dettagli partita");
 				idpartita = Integer.parseInt(jObj.get("idpartita").toString());
 				System.out.println("Leggi Partita per Id");
 				// Prelevo dati dal database
@@ -499,9 +501,56 @@ public class ServletPartita extends HttpServlet {
 	    	}
 			
 //--------------------------------------- ELIMINA PARTITA ----------------------------------------------------
-			if(tiporichiesta.equals("eliminaPartita")) {	
+			if(tiporichiesta.equals("eliminaPartita")) {
+				System.out.println("elimina partita");
 				
+				idpartita = Integer.parseInt(jObj.get("idpartita").toString());
+				idprofilo = Integer.parseInt(jObj.get("idprofilo").toString());
+				JSONObject jsonObj = new JSONObject();
 				
+				//si può eliminare la partita solo se si è l'amministratore
+				sql = "SELECT * FROM partita WHERE amministratore='"+idprofilo+"' and idpartita='"+idpartita+"'";
+				rs = stmt.executeQuery(sql);
+				if(rs.next()) {
+					Vector<String> quer = new Vector<String>();
+					sql = "SELECT idsquadra FROM squadra WHERE idpartita='"+idpartita+"'";
+					rs = stmt.executeQuery(sql);
+					while(rs.next()) {
+						Integer idsquadra=Integer.parseInt(rs.getString("idsquadra"));
+						String sql2 = "DELETE FROM squadra_ruolo WHERE idsquadra='"+idsquadra+"'";		    
+						quer.add(sql2);			    	
+					}
+					for(int z=0;z<quer.size();z++)
+					{
+						stmt.executeUpdate(quer.get(z));	
+					}
+					
+					sql = "DELETE FROM profilo_partita WHERE idpartita='"+idpartita+"'";
+					stmt.executeUpdate(sql);
+					sql = "DELETE FROM squadra WHERE idpartita='"+idpartita+"'";
+					stmt.executeUpdate(sql);
+					sql = "DELETE FROM partita WHERE idpartita='"+idpartita+"'";
+					stmt.executeUpdate(sql);
+					jsonObj.put("risposta", "si");
+				}
+				else {
+					jsonObj.put("risposta", "no");
+					//non ha i diritti di cancellare la partita
+				}
+				writer.write(jsonObj.toString());
+				}
+
+
+//--------------------------------------- ABBANDONA PARTITA ----------------------------------------------------
+			if(tiporichiesta.equals("abbandonaPartita")) {
+				System.out.println("abbandona partita");
+				
+				idpartita = Integer.parseInt(jObj.get("idpartita").toString());
+				idprofilo = Integer.parseInt(jObj.get("idprofilo").toString());
+				JSONObject jsonObj = new JSONObject();
+				
+				sql = "DELETE FROM profilo_partita WHERE idprofilo='"+idprofilo+"' and idpartita='"+idpartita+"'";
+				stmt.executeUpdate(sql);
 			}
 
 //-------------------------------------------------------------------------------------------------------------			
