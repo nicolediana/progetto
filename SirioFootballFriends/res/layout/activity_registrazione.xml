@@ -166,7 +166,7 @@
             android:id="@+id/bottone_salva"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="120dp"
+            android:layout_marginTop="150dp"
             android:background="@drawable/salva"
             android:onClick="onClickSalvaReg"
             android:textColor="@color/rosso2"
