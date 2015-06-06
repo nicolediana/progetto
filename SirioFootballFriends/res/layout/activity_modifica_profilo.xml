@@ -239,7 +239,7 @@
                     android:checked="true"
                     android:onClick="onRadioButtonClicked"
                     android:text="@string/radio_sessoM"
-                    android:textColor="@color/bianco"
+                    android:textColor="@color/nero"
                     android:textStyle="bold" />
 
                 <RadioButton
@@ -248,7 +248,7 @@
                     android:layout_height="wrap_content"
                     android:onClick="onRadioButtonClicked"
                     android:text="@string/radio_sessoF"
-                    android:textColor="@color/bianco"
+                    android:textColor="@color/nero"
                     android:textStyle="bold" />
 
             </RadioGroup>
