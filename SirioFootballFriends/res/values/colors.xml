@@ -6,5 +6,6 @@
     <color name="nero">#000000</color>
     <color name="bianco">#FFFFFF</color>
     <color name="rosso2">#EA0101</color>
-    <color name="rossoscuro">#AB0303</color>   
+    <color name="rossoscuro">#AB0303</color>
+    <color name="giallo">#FFD800</color>   
 </resources>
