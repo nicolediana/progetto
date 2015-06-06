@@ -3,10 +3,10 @@
 
     <string name="app_name">SirioFootballFriends</string>
     <string name="action_settings">Settings</string>
-    <string name="login">Login</string>
-    <string name="label_email">Email : </string>
+    <string name="login">ORGANIZZA O CERCA LE PARTITE OVUNQUE TI TROVI</string>
+    <string name="label_email">Email </string>
     <string name="email">  Inserire Email</string>
-    <string name="label_psw">Password : </string>
+    <string name="label_psw">Password </string>
     <string name="psw">Password</string>
     <string name="bottone_accedi">ACCEDI</string>
     <string name="bottone_registrati">REGISTRATI</string>
