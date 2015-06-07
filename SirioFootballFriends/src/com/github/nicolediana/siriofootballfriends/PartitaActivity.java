@@ -18,8 +18,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -57,57 +55,17 @@ public class PartitaActivity extends Activity {
 		idprofilo= i.getStringExtra("idprofilo");
 		//Toast.makeText(getApplicationContext(), "Organizza una partita !", Toast.LENGTH_LONG).show();
 		amministratore=i.getStringExtra("idprofilo");
-		//da idprofilo prendere num cell dell'amministratore else salvare il num inserito nel db in tab profilo
-		//caricare lo spinner
-		//caricaTipoPartito();
 		Spinner spinner_tipopartita = (Spinner) findViewById(R.id.spinnerTipoPartita);
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.tipoPartitaList, android.R.layout.simple_spinner_item);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		spinner_tipopartita.setAdapter(adapter);
-		
+		spinner_tipopartita.setAdapter(adapter);		
 		spinner_tipopartita.setOnItemSelectedListener(new OnItemSelectedListener() {
 			public void onItemSelected(AdapterView<?> adapter, View view, int pos,long id) 
-			{
-				tipoPartitaList= adapter.getItemAtPosition(pos).toString();	
-			}
-			public void onNothingSelected(AdapterView<?> arg0) { }});
-			
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.partita, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		Intent i=getIntent();
-		idprofilo= i.getStringExtra("idprofilo");
-		
-		int id = item.getItemId();
-		if (id == R.id.action_logout) {
-			Intent intent=new Intent(this,MainActivity.class);
-			startActivity(intent);
-			return true;
-		}
-		if (id == R.id.action_info) {
-			Intent intent=new Intent(this,InfoActivity.class);
-			Bundle b=new Bundle();
-			b.putString("idprofilo", idprofilo); //passa chiave valore a activity_home
-			intent.putExtras(b); //intent x passaggio parametri
-			startActivity(intent);
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
+			{   tipoPartitaList= adapter.getItemAtPosition(pos).toString();	}
+			public void onNothingSelected(AdapterView<?> arg0) { }});			
 	}
 	
-public void onClickSalva(View v) throws UnsupportedEncodingException {
-
+	public void onClickSalva(View v) throws UnsupportedEncodingException {
 		TextView nomedig=(TextView)findViewById(R.id.nomeCampo);
 		nomecampo= nomedig.getText().toString();
 		TextView indirizzodig=(TextView)findViewById(R.id.indirizzoCampo);
@@ -133,8 +91,7 @@ public void onClickSalva(View v) throws UnsupportedEncodingException {
 		TextView copertodig=(TextView)findViewById(R.id.coperto);
 		coperto= copertodig.getText().toString();
 		TextView notedig=(TextView)findViewById(R.id.note);
-		note= notedig.getText().toString();
-		
+		note= notedig.getText().toString();		
 		//città non deve essere nullo
 		if(citta.equals("")||provincia.equals("")||indirizzocampo.equals("")||data.equals("")||ora.equals("")||cellulareStr.equals(""))
 			Toast.makeText(getApplicationContext(), "Inserire tutti i campi contrassegnati con * ", Toast.LENGTH_LONG).show();
@@ -167,8 +124,7 @@ public void onClickSalva(View v) throws UnsupportedEncodingException {
 				HttpPost httppostreq = new HttpPost(MainActivity.urlServlet+nomeServlet);
 				entity.setContentType("application/json;charset=UTF-8");
 				httppostreq.setEntity(entity);
-				HttpResponse httpresponse = httpclient.execute(httppostreq);
-				
+				HttpResponse httpresponse = httpclient.execute(httppostreq);				
 				
 				 //recupero della risposta
 				String line = "";
@@ -196,21 +152,18 @@ public void onClickSalva(View v) throws UnsupportedEncodingException {
 			}
 			catch(UnsupportedEncodingException e){e.printStackTrace();}
 			catch (ClientProtocolException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (IOException e2) {
-				// TODO Auto-generated catch block
 				e2.printStackTrace();
-			}
-				
+			}				
 		}
 	}
 	
 	public void onClickAnnulla(View v){
 		Intent intent=new Intent(this,HomeActivity.class);
 		Bundle b=new Bundle();
-		b.putString("idprofilo", idprofilo); //passa chiave valore a activity_home
-		intent.putExtras(b); //intent x passaggio parametri
+		b.putString("idprofilo", idprofilo); 
+		intent.putExtras(b);
 		startActivity(intent);
 	}
 	
@@ -227,61 +180,4 @@ public void onClickSalva(View v) throws UnsupportedEncodingException {
 	    }
 	return total.toString();
 	}
-	
-/*	private void caricaTipoPartito(){
-		//LEGGI PROFILO
-				String tiporichiesta="caricaTipoPartita";
-				JSONObject myjson= new JSONObject();
-				try{
-					//creazione della Json
-					myjson.put("tiporichiesta", tiporichiesta );
-					myjson.put("citta", "citta" );
-					myjson.put("provincia", "provincia" );
-					//creazione pacchetto post
-					StringEntity entity = new StringEntity(myjson.toString());
-					StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-					StrictMode.setThreadPolicy(policy);
-					DefaultHttpClient httpclient = new DefaultHttpClient();
-					HttpPost httppostreq = new HttpPost(MainActivity.urlServlet+nomeServlet);
-					entity.setContentType("application/json;charset=UTF-8");
-					httppostreq.setEntity(entity);
-					HttpResponse httpresponse = httpclient.execute(httppostreq);
-					//risposta
-					String line = "";
-					InputStream inputstream = httpresponse.getEntity().getContent();
-					line = convertStreamToString(inputstream);
-					JSONObject myjson2 = new JSONObject(line);	 
-					JSONArray json_array = myjson2.getJSONArray("jsonVector");
-					int size = json_array.length();
-					for (int i = 0; i < size; i++) {
-						String tipo = json_array.getJSONObject(i).toString();
-						tipopartitalist.add(tipo);
-						Toast.makeText(getApplicationContext(), "Tipo:" + tipo , Toast.LENGTH_LONG).show();
-						
-					}				
-					
-					Spinner mySpinner = (Spinner) findViewById(R.id.spinnerTipoPartita);
-					ArrayAdapter<String> adapter = new ArrayAdapter<String>(PartitaActivity.this,android.R.layout.simple_spinner_dropdown_item,tipopartitalist);
-					mySpinner.setAdapter(adapter);
-					mySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-						public void onItemSelected(AdapterView<?> adapter, View view, int pos,long id) 
-						{
-							tipopartita= adapter.getItemAtPosition(pos).toString();	
-						}
-						public void onNothingSelected(AdapterView<?> arg0) { }});
-	
-				}
-				catch (JSONException ex) {
-					ex.printStackTrace();
-				}
-				catch(UnsupportedEncodingException e){e.printStackTrace();}
-				catch (ClientProtocolException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IOException e2) {
-					// TODO Auto-generated catch block
-					e2.printStackTrace();
-				}
-			}*/
-
 }

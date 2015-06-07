@@ -20,8 +20,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -49,38 +47,6 @@ public class PartecipaActivity extends Activity {
 		//Toast.makeText(getApplicationContext(), "Sei pronto a giocare? Scegli la partita a cui partecipare!!!", Toast.LENGTH_LONG).show();
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.partecipa, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		Intent i=getIntent();
-		idprofilo= i.getStringExtra("idprofilo");
-		
-		int id = item.getItemId();
-		if (id == R.id.action_logout) {
-			Intent intent=new Intent(this,MainActivity.class);
-			startActivity(intent);
-			return true;
-		}
-		if (id == R.id.action_info) {
-			Intent intent=new Intent(this,InfoActivity.class);
-			Bundle b=new Bundle();
-			b.putString("idprofilo", idprofilo); //passa chiave valore a activity_home
-			intent.putExtras(b); //intent x passaggio parametri
-			startActivity(intent);
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
-	
 	public void onClickCerca(View v) throws UnsupportedEncodingException {
 		TextView cercaCitta=(TextView)findViewById(R.id.cercaPerCitta);
 		citta= cercaCitta.getText().toString();
@@ -161,18 +127,10 @@ public class PartecipaActivity extends Activity {
 				     }    
 			    });  
 			}	
-			catch (JSONException ex) {
-				ex.printStackTrace();
-			}
+			catch (JSONException ex) {ex.printStackTrace();	}
 			catch(UnsupportedEncodingException e){e.printStackTrace();}
-			catch (ClientProtocolException e) {
-					// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e2) {
-					// TODO Auto-generated catch block
-				e2.printStackTrace();
-			}
-		
+			catch (ClientProtocolException e) {e.printStackTrace();} 
+			catch (IOException e2) {e2.printStackTrace();}		
 		}
 	}
 	
@@ -188,7 +146,5 @@ public class PartecipaActivity extends Activity {
 	    Toast.makeText(this, "Stream Exception", Toast.LENGTH_SHORT).show();
 	    }
 	return total.toString();
-	}
-
-	
+	}	
 }

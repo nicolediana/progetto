@@ -18,14 +18,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.ArrayAdapter;
 import android.widget.RadioButton;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -53,38 +47,6 @@ public class ModificaProfiloActivity extends Activity {
 		idprofilo= i.getStringExtra("idprofilo");
 		
 		caricaProfilo();
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.modifica_profilo, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		Intent i=getIntent();
-		idprofilo= i.getStringExtra("idprofilo");
-		
-		int id = item.getItemId();
-		if (id == R.id.action_logout) {
-			Intent intent=new Intent(this,MainActivity.class);
-			startActivity(intent);
-			return true;
-		}
-		if (id == R.id.action_info) {
-			Intent intent=new Intent(this,InfoActivity.class);
-			Bundle b=new Bundle();
-			b.putString("idprofilo", idprofilo); //passa chiave valore a activity_home
-			intent.putExtras(b); //intent x passaggio parametri
-			startActivity(intent);
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
 	}
 	
 	public void onClickSalva(View v) throws UnsupportedEncodingException {
@@ -115,9 +77,6 @@ public class ModificaProfiloActivity extends Activity {
 		else
 			annonascita=Integer.parseInt(annonascitaStr);
 
-		//if(annonascita<5||annonascita>80)
-		//	Toast.makeText(gannonascitapplicationContext(), "Inserire una annonascita' valida", Toast.LENGTH_LONG).show();
-		
 		//nickname non può essere nullo
 		if(nickname.equals("")||nickname.equals(null))
 				Toast.makeText(getApplicationContext(), " Inserire un Nickname", Toast.LENGTH_LONG).show();	
@@ -283,10 +242,8 @@ public class ModificaProfiloActivity extends Activity {
 		}
 		catch(UnsupportedEncodingException e){e.printStackTrace();}
 		catch (ClientProtocolException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e2) {
-			// TODO Auto-generated catch block
 			e2.printStackTrace();
 		}
 	}
