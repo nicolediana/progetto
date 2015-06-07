@@ -78,14 +78,6 @@
         android:text="@string/info5"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="270dp"
-        android:layout_height="175dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
-        android:src="@drawable/bart" />
-
 </LinearLayout>
 
 </ScrollView>
