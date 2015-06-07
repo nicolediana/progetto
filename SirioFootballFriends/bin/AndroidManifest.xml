@@ -80,6 +80,10 @@
             android:name=".PartiteOrganizzateActivity"
             android:label="@string/title_activity_partite_organizzate" >
         </activity>
+        <activity
+            android:name=".CalcioA11Activity"
+            android:label="@string/title_activity_calcio_a11" >
+        </activity>
     </application>
 
 </manifest>
