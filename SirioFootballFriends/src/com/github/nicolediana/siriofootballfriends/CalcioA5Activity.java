@@ -15,8 +15,6 @@ import android.os.StrictMode;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -34,46 +32,13 @@ public class CalcioA5Activity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_calcio_a5);
-		
+		setContentView(R.layout.activity_calcio_a5);		
 		Intent i = getIntent();
 		idpartita= i.getStringExtra("idpartita");
-		idprofilo= i.getStringExtra("idprofilo");
-		
+		idprofilo= i.getStringExtra("idprofilo");		
 		leggiRuoli();
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.calcio_a5, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_logout) {
-			Intent intent=new Intent(this,MainActivity.class);
-			startActivity(intent);
-			return true;
-		}
-		if (id == R.id.action_info) {
-			Intent intent=new Intent(this,InfoActivity.class);
-			Intent i=getIntent();
-			idprofilo= i.getStringExtra("idprofilo");
-			Bundle b=new Bundle();
-			b.putString("idprofilo", idprofilo); //passa chiave valore a activity_home
-			intent.putExtras(b); //intent x passaggio parametri
-			startActivity(intent);
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
-	
 	public void onClickAttaccante1(View v){
 		TextView temp=(TextView)findViewById(R.id.btnAttaccante1);		
 		String ttemp= temp.getText().toString();
@@ -94,9 +59,7 @@ public class CalcioA5Activity extends Activity {
 			Integer numsquadra=2;
 			inviaRichiesta(ruolo,numsquadra);
 		}
-		else visualizzaProfilo(ttemp);
-		//Toast.makeText(this, "Ruolo già assegnato", Toast.LENGTH_SHORT).show(); 
-			
+		else visualizzaProfilo(ttemp);			
 	}
 	
 	public void onClickAlaDx1(View v){
@@ -107,8 +70,7 @@ public class CalcioA5Activity extends Activity {
 			Integer numsquadra=1;
 			inviaRichiesta(ruolo,numsquadra);
 		}
-		else visualizzaProfilo(ttemp);
-		//Toast.makeText(this, "Ruolo già assegnato", Toast.LENGTH_SHORT).show(); 
+		else visualizzaProfilo(ttemp); 
 	}
 	
 	public void onClickAlaDx2(View v){
@@ -119,8 +81,7 @@ public class CalcioA5Activity extends Activity {
 			Integer numsquadra=2;
 			inviaRichiesta(ruolo,numsquadra);
 		}
-		else visualizzaProfilo(ttemp);
-		//Toast.makeText(this, "Ruolo già assegnato", Toast.LENGTH_SHORT).show(); 
+		else visualizzaProfilo(ttemp); 
 	}
 	
 	public void onClickAlaSx1(View v){
@@ -132,7 +93,6 @@ public class CalcioA5Activity extends Activity {
 			inviaRichiesta(ruolo,numsquadra);
 		}
 		else visualizzaProfilo(ttemp);
-		//Toast.makeText(this, "Ruolo già assegnato", Toast.LENGTH_SHORT).show(); 
 	}
 	
 	public void onClickAlaSx2(View v){
@@ -143,8 +103,7 @@ public class CalcioA5Activity extends Activity {
 			Integer numsquadra=2;
 			inviaRichiesta(ruolo,numsquadra);
 		}
-		else visualizzaProfilo(ttemp);
-		//Toast.makeText(this, "Ruolo già assegnato", Toast.LENGTH_SHORT).show(); 
+		else visualizzaProfilo(ttemp); 
 	}
 	
 	public void onClickDifensore1(View v){
@@ -155,8 +114,7 @@ public class CalcioA5Activity extends Activity {
 			Integer numsquadra=1;
 			inviaRichiesta(ruolo,numsquadra);
 		}
-		else visualizzaProfilo(ttemp);
-		//Toast.makeText(this, "Ruolo già assegnato", Toast.LENGTH_SHORT).show(); 
+		else visualizzaProfilo(ttemp); 
 	}
 	
 	public void onClickDifensore2(View v){
@@ -167,8 +125,7 @@ public class CalcioA5Activity extends Activity {
 			Integer numsquadra=2;
 			inviaRichiesta(ruolo,numsquadra);
 		}
-		else visualizzaProfilo(ttemp);
-		//Toast.makeText(this, "Ruolo già assegnato", Toast.LENGTH_SHORT).show(); 
+		else visualizzaProfilo(ttemp); 
 	}
 	
 	public void onClickPortiere1(View v){
@@ -179,8 +136,7 @@ public class CalcioA5Activity extends Activity {
 			Integer numsquadra=1;
 			inviaRichiesta(ruolo,numsquadra);
 		}
-		else visualizzaProfilo(ttemp);
-		//Toast.makeText(this, "Ruolo già assegnato", Toast.LENGTH_SHORT).show(); 
+		else visualizzaProfilo(ttemp); 
 	}
 	
 	public void onClickPortiere2(View v){
@@ -191,8 +147,7 @@ public class CalcioA5Activity extends Activity {
 			Integer numsquadra=2;
 			inviaRichiesta(ruolo,numsquadra);
 		}
-		else visualizzaProfilo(ttemp);
-		//Toast.makeText(this, "Ruolo già assegnato", Toast.LENGTH_SHORT).show(); 
+		else visualizzaProfilo(ttemp); 
 	}
 
 	public void visualizzaProfilo(String ttemp){
@@ -235,12 +190,6 @@ public class CalcioA5Activity extends Activity {
 			if(risposta.equals("si")){
 				Toast.makeText(this, "Registrazione effettuata con successo", Toast.LENGTH_SHORT).show();
 				leggiRuoli();
-				// Ritorno alla Homepage
-				/*Intent intent=new Intent(this,HomeActivity.class);
-				Bundle b=new Bundle();
-			    b.putString("idprofilo", idprofilo); //passa chiave valore a activity_home
-			    intent.putExtras(b); //intent x passaggio parametri
-			    startActivity(intent);*/
 			}
 			else Toast.makeText(this, "Nickname già presente in questa partita", Toast.LENGTH_SHORT).show();
 		}
@@ -305,8 +254,7 @@ public class CalcioA5Activity extends Activity {
 					temp=(Button)findViewById(R.id.btnPortiere2);
 				temp.setText(nick);	
 				temp.setTextColor(getResources().getColor(R.color.nero));
-			}
-			
+			}			
 		}catch (Exception e) {e.printStackTrace();}
 	}
 
@@ -323,5 +271,4 @@ public class CalcioA5Activity extends Activity {
 	    }
 	return total.toString();
 	}
-
 }
