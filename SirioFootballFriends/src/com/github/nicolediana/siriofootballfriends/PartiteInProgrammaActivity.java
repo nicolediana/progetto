@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Vector;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpPost;
@@ -19,9 +18,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -99,7 +95,7 @@ public class PartiteInProgrammaActivity extends Activity {
 		    	String indicepartita = idpart[pos].toString();
 			    intent.putExtra("idpartita", indicepartita); //intent x passaggio parametri
 			    intent.putExtra("idprofilo", idprofilo);
-			    intent.putExtra("visibilit‡Pulsanti", "abbandona");
+			    intent.putExtra("visibilit‡Pulsanti", "partiteInProgramma");
 			    startActivity(intent);
 			 }    
 		   });

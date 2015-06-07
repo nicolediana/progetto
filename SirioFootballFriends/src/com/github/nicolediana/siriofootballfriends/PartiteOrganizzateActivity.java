@@ -18,8 +18,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -98,7 +96,7 @@ public class PartiteOrganizzateActivity extends Activity {
 		    	String indicepartita = idpart[pos].toString();
 			    intent.putExtra("idpartita", indicepartita); //intent x passaggio parametri
 			    intent.putExtra("idprofilo", idprofilo);
-			    intent.putExtra("visibilit‡Pulsanti", "elimina");
+			    intent.putExtra("visibilit‡Pulsanti", "partiteOrganizzate");
 			    startActivity(intent);
 			 }    
 		   });
