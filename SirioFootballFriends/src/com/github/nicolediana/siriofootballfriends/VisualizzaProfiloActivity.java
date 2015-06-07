@@ -18,14 +18,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.ArrayAdapter;
-import android.widget.RadioButton;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,18 +25,8 @@ public class VisualizzaProfiloActivity extends Activity {
 	private String nomeServlet="/ServletExample/ServletProfilo";
 	
 	String idprofilo;
-	//private String nome;
-	//private String cognome;
 	private String nickname;
-	private String citta;
-	private Integer annonascita;
-	private String livello;
-	private Integer voto;
 	//private String linkfotoprofilo;
-	private Integer partitegiocate;
-	private Integer partitevinte;
-	private Integer partiteperse;
-	private Integer bidoni;
 	String tiporichiesta;
 
 	@Override
@@ -56,39 +38,6 @@ public class VisualizzaProfiloActivity extends Activity {
 		nickname= i.getStringExtra("nickname");
 		caricaProfilo();
 	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.visualizza_profilo, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		Intent i=getIntent();
-		idprofilo= i.getStringExtra("idprofilo");
-		
-		int id = item.getItemId();
-		if (id == R.id.action_logout) {
-			Intent intent=new Intent(this,MainActivity.class);
-			startActivity(intent);
-			return true;
-		}
-		if (id == R.id.action_info) {
-			Intent intent=new Intent(this,InfoActivity.class);
-			Bundle b=new Bundle();
-			b.putString("idprofilo", idprofilo); //passa chiave valore a activity_home
-			intent.putExtras(b); //intent x passaggio parametri
-			startActivity(intent);
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
-	
 	
 	public void caricaProfilo() {
 		

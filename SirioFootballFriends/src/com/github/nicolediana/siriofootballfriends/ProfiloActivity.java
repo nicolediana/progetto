@@ -18,14 +18,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.ArrayAdapter;
 import android.widget.RadioButton;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -51,27 +45,6 @@ public class ProfiloActivity extends Activity {
 		Intent i=getIntent();
 		idcredenziali=i.getStringExtra("idcredenziali");
 		Toast.makeText(getApplicationContext(), "Ciao, crea il tuo profilo!", Toast.LENGTH_LONG).show();
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.profilo, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_logout) {
-			Intent intent=new Intent(this,MainActivity.class);
-			startActivity(intent);
-			return true;
-		}		
-		return super.onOptionsItemSelected(item);
 	}
 	
 	public void onClickSalva(View v) throws UnsupportedEncodingException {
@@ -186,8 +159,7 @@ public class ProfiloActivity extends Activity {
 
 	public void onRadioButtonClicked(View view) {
 		// Is the button now checked?
-	    sessochecked = ((RadioButton) view).isChecked();
-	    
+	    sessochecked = ((RadioButton) view).isChecked();	    
 	    // Check which radio button was clicked
 	    switch(view.getId()) {
 	        case R.id.radio_sessoM:
