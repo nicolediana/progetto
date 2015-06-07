@@ -18,9 +18,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -40,8 +37,6 @@ public class ConfermaPartecipaActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_conferma_partecipa);
-		
-		//Prelevo dati dalla activity precedente
 		Intent i = getIntent();
 		idpartita= i.getStringExtra("idpartita");
 		idprofilo= i.getStringExtra("idprofilo");
@@ -49,11 +44,17 @@ public class ConfermaPartecipaActivity extends Activity {
 		
 		// Visibilit‡ dei pulsanti
 		Button partecipaButton = (Button) findViewById(R.id.bottoneConfermaPartecipa);
-		Button annullaButton = (Button) findViewById(R.id.bottoneAnnulla);
+		Button annullaButton = (Button) findViewById(R.id.bottoneAnnulla);		
 		
-		
-		if(visibilit‡Pulsanti.equals("elimina")) {
-			partecipaButton.setVisibility(View.GONE); // GONE: pulsanti completamente rimossi dall'activity
+		if(visibilit‡Pulsanti.equals("partiteOrganizzate")) {
+			partecipaButton.setVisibility(View.VISIBLE); // GONE: pulsanti completamente rimossi dall'activity
+			partecipaButton.setText("MODIFICA");	
+			partecipaButton.setOnClickListener(new OnClickListener() {				
+				@Override
+				public void onClick(View v) {
+					onClickModifica(v);					
+				}				
+			});			
 			annullaButton.setVisibility(View.VISIBLE);
 			annullaButton.setText("ELIMINA");	
 			annullaButton.setOnClickListener(new OnClickListener() {				
@@ -64,7 +65,7 @@ public class ConfermaPartecipaActivity extends Activity {
 			});
 		}
 		else{
-			if(visibilit‡Pulsanti.equals("abbandona")) {
+			if(visibilit‡Pulsanti.equals("partiteInProgramma")) {
 			partecipaButton.setVisibility(View.GONE); // GONE: pulsanti completamente rimossi dall'activity
 			annullaButton.setVisibility(View.VISIBLE);
 			annullaButton.setText("ABBANDONA");	
@@ -115,14 +116,7 @@ public class ConfermaPartecipaActivity extends Activity {
 		     TextView datadig=(TextView)findViewById(R.id.data);
 		     datadig.setText(myjson1.get("data").toString());
 		     TextView oradig=(TextView)findViewById(R.id.ora);
-		     oradig.setText(myjson1.get("ora").toString());
-		     
-		     /*
-		     String dataDaConvertire = myjson1.get("data").toString();
-		     String[] result = convertiDataSql(dataDaConvertire);
-		     datadig.setText(result[0]);
-		     oradig.setText(result[1]);
-		     */
+		     oradig.setText(myjson1.get("ora").toString());		     
 		     
 		     TextView costodig=(TextView)findViewById(R.id.costo);
 			 costodig.setText(myjson1.get("costo").toString());
@@ -138,44 +132,10 @@ public class ConfermaPartecipaActivity extends Activity {
 			 tipopartitadig.setText(myjson1.get("tipopartita").toString());
 			 TextView celldig=(TextView)findViewById(R.id.cellulare);
 			 celldig.setText(myjson1.get("cellulare").toString());
-			 			 
-			 //Toast.makeText(getApplicationContext(), giocatoriMancanti.toString(), Toast.LENGTH_LONG).show();
-			}
+			 }
 		} catch(Exception e) {
-    		//Toast.makeText(getApplicationContext(), ""+e.toString(), Toast.LENGTH_LONG).show();
-			e.printStackTrace();
+    		e.printStackTrace();
         }	
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.conferma_partecipa, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_logout) {
-			Intent intent=new Intent(this,MainActivity.class);
-			startActivity(intent);
-			return true;
-		}
-		if (id == R.id.action_info) {
-			Intent intent=new Intent(this,InfoActivity.class);
-			Intent i=getIntent();
-			idprofilo= i.getStringExtra("idprofilo");
-			Bundle b=new Bundle();
-			b.putString("idprofilo", idprofilo); //passa chiave valore a activity_home
-			intent.putExtras(b); //intent x passaggio parametri
-			startActivity(intent);
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
 	}
 	
 	private String convertStreamToString(InputStream is) {
@@ -216,28 +176,7 @@ public class ConfermaPartecipaActivity extends Activity {
 	    intent.putExtras(b); //intent x passaggio parametri
 	    startActivity(intent);	
 	}
-/*	
-	private String[] convertiDataSql(String data) {
-		String[] result = new String[2];
-		String[] separated = new String[3];
-		
-		separated = data.split("-");
-		String anno = separated[0];
-		String mese = separated[1];
-		String temp = separated[2];
-		
-		separated = temp.split(" ");
-		String giorno = separated[0];
-		result[0] = giorno + "/" + mese + "/" + anno;
-		
-		temp = separated[1];
-		separated = temp.split(":");
-		String ora = separated[0];
-		String minuti = separated[1];
-		result[1] = ora + ":" + minuti;
-		return result;
-	}
-*/	
+
 	public void onClickElimina(View v) {
 		JSONObject jsonobj= new JSONObject();
 		String tiporichiesta="eliminaPartita";			
@@ -281,13 +220,8 @@ public class ConfermaPartecipaActivity extends Activity {
 			ex.printStackTrace();
 		}
 		catch(UnsupportedEncodingException e){e.printStackTrace();}
-		catch (ClientProtocolException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e2) {
-			// TODO Auto-generated catch block
-			e2.printStackTrace();
-		}
+		catch (ClientProtocolException e) {	e.printStackTrace();} 
+		catch (IOException e2) {e2.printStackTrace();}
 	}
 	
 	public void onClickAbbandona(View v) {
@@ -315,20 +249,24 @@ public class ConfermaPartecipaActivity extends Activity {
 			Bundle b=new Bundle();
 		    b.putString("idprofilo", idprofilo); //passa chiave valore a activity_home
 		    intent.putExtras(b); //intent x passaggio parametri
-		    startActivity(intent);
-					
+		    startActivity(intent);					
 		}
-		catch (JSONException ex) {
-			ex.printStackTrace();
-		}
+		catch (JSONException ex) {ex.printStackTrace();	}
 		catch(UnsupportedEncodingException e){e.printStackTrace();}
-		catch (ClientProtocolException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e2) {
-			// TODO Auto-generated catch block
-			e2.printStackTrace();
-		}
+		catch (ClientProtocolException e) {e.printStackTrace();} 
+		catch (IOException e2) { e2.printStackTrace(); }
 	}
 	
+	public void onClickModifica(View v) {
+		TextView tipopartitadig=(TextView)findViewById(R.id.tipoPartita);
+		String tipopartita=tipopartitadig.getText().toString();
+		Bundle b=new Bundle();
+		b.putString("tiporichiesta", "modifica"); 
+	    b.putString("idprofilo", idprofilo); 
+	    b.putString("idpartita", idpartita); 
+	    Intent intent = null;
+	   // intent=new Intent(this,ModificaPartitaActivity.class);
+	    intent.putExtras(b); //intent x passaggio parametri
+		startActivity(intent);
+		}	
 }
