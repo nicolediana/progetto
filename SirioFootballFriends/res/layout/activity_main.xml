@@ -120,26 +120,36 @@
                 android:textStyle="bold" />
         </TableRow>
 
-        <Button
-            android:id="@+id/bottone_accedi"
+        <TableRow
+            android:id="@+id/tableRow5"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="140dp"
-            android:background="@drawable/accedi02"
-            android:onClick="onClickAccedi"
-            android:textColor="@color/rosso2"
-            android:textStyle="bold" />
+            android:layout_height="wrap_content" >
 
-        <Button
-            android:id="@+id/bottone_registrati"
+            <Button
+                android:id="@+id/bottone_accedi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/accedi02"
+                android:onClick="onClickAccedi" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow6"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/registrati"
-            android:onClick="onClickRegistrati"
-            android:textColor="@color/rosso2"
-            android:textStyle="bold" />
+            android:layout_height="wrap_content" >
+
+            <Button
+                android:id="@+id/bottone_registrati"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/registrati"
+                android:onClick="onClickRegistrati" />
+
+        </TableRow>
 
 </LinearLayout>
