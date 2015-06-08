@@ -8,15 +8,13 @@
     android:id="@+id/TableLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginRight="5dp"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@drawable/sfondo"
+    android:background="@drawable/squadre"
     tools:context="com.github.nicolediana.siriofootballfriends.CalcioA11Activity" >
 
-    
     <TextView
         android:id="@+id/textView1"
         android:layout_width="match_parent"
@@ -25,7 +23,8 @@
         android:gravity="center_vertical|center_horizontal"
         android:text="@string/scegliRuolo"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@color/bianco"
+        android:textColor="@color/rossoscuro"
+        android:textSize="25sp"
         android:textStyle="bold" />
 
     <TableRow
@@ -33,24 +32,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" >
         
-        <TextView
+        <Button
             android:id="@+id/label_squadra1"
+            style="?android:attr/buttonStyleSmall"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
-            android:text="@string/label_squadra1"
-            android:textAppearance="?android:attr/textAppearanceMedium" 
-			android:textColor="@color/darkblue"
-            android:textStyle="bold" /> 
-        <TextView
-            android:id="@+id/label_squadra2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:text="@string/label_squadra2"
-            android:textAppearance="?android:attr/textAppearanceMedium" 
-			android:textColor="@color/darkblue"
-            android:textStyle="bold" />  
+            android:layout_marginRight="10dp"
+            android:background="@drawable/maglia1" />
+
+            <Button
+                android:id="@+id/label_squadra2"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/maglia2" />
     </TableRow>
     
     <TableRow
@@ -63,7 +61,7 @@
             android:id="@+id/portiere1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
             android:text="@string/label_portiere"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/darkblue"
@@ -73,11 +71,12 @@
             android:id="@+id/portiere2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="20dp"
             android:text="@string/label_portiere"
-            android:textAppearance="?android:attr/textAppearanceMedium" 
-			android:textColor="@color/darkblue"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/darkblue"
             android:textStyle="bold" />
+
     </TableRow> 
     
     <TableRow
@@ -90,22 +89,24 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
             android:onClick="onClickPortiere1"
             android:text="@string/btnDisponibile"  
 			android:textColor="@color/rossoscuro"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:background="@drawable/background" />
 
         <Button
             android:id="@+id/btnPortiere2"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="20dp"
             android:onClick="onClickPortiere2"
             android:text="@string/btnDisponibile"  
 			android:textColor="@color/rossoscuro"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:background="@drawable/background" />
     </TableRow>
  
 	<TableRow
@@ -117,7 +118,7 @@
             android:id="@+id/terzinoDx1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
             android:text="@string/label_terzinoDx"
             android:textAppearance="?android:attr/textAppearanceMedium" 
 			android:textColor="@color/darkblue"
@@ -126,7 +127,7 @@
             android:id="@+id/terzinoDx2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="20dp"
             android:text="@string/label_terzinoDx"
             android:textAppearance="?android:attr/textAppearanceMedium" 
 			android:textColor="@color/darkblue"
@@ -143,22 +144,24 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
             android:onClick="onClickTerzinoDx1"
              android:text="@string/btnDisponibile"  
 			android:textColor="@color/rossoscuro"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:background="@drawable/background" />
 
 		<Button
 		    android:id="@+id/btnTerzinoDx2"
 		    style="?android:attr/buttonStyleSmall"
 		    android:layout_width="wrap_content"
 		    android:layout_height="wrap_content"
-		    android:layout_marginLeft="30dp"
+		    android:layout_marginLeft="20dp"
 		    android:onClick="onClickTerzinoDx2"
 		     android:text="@string/btnDisponibile"  
 			android:textColor="@color/rossoscuro"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:background="@drawable/background" />
    </TableRow> 
     
    <TableRow
@@ -170,7 +173,7 @@
             android:id="@+id/terzinoSx1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
             android:text="@string/label_terzinoSx"
             android:textAppearance="?android:attr/textAppearanceMedium" 
 			android:textColor="@color/darkblue"
@@ -179,7 +182,7 @@
             android:id="@+id/terzinoSx2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="20dp"
             android:text="@string/label_terzinoSx"
             android:textAppearance="?android:attr/textAppearanceMedium" 
 			android:textColor="@color/darkblue"
@@ -196,21 +199,23 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
             android:onClick="onClickTerzinoSx1"
              android:text="@string/btnDisponibile"  
 			android:textColor="@color/rossoscuro"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:background="@drawable/background" />
 		<Button
             android:id="@+id/btnTerzinoSx2"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="20dp"
             android:onClick="onClickTerzinoSx2"
              android:text="@string/btnDisponibile"  
 			android:textColor="@color/rossoscuro"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:background="@drawable/background" />
     </TableRow>
     
     <TableRow
@@ -222,7 +227,7 @@
             android:id="@+id/medianoDx1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
             android:text="@string/label_medianoDx"
             android:textAppearance="?android:attr/textAppearanceMedium" 
 			android:textColor="@color/darkblue"
@@ -231,7 +236,7 @@
             android:id="@+id/medianoDx2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="20dp"
             android:text="@string/label_medianoDx"
             android:textAppearance="?android:attr/textAppearanceMedium" 
 			android:textColor="@color/darkblue"
@@ -248,21 +253,23 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
             android:onClick="onClickMedianoDx1"
              android:text="@string/btnDisponibile"  
 			android:textColor="@color/rossoscuro"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:background="@drawable/background" />
 		<Button
             android:id="@+id/btnMedianoDx2"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="20dp"
             android:onClick="onClickMedianoDx2"
              android:text="@string/btnDisponibile"  
 			android:textColor="@color/rossoscuro"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:background="@drawable/background" />
     </TableRow>
     
 	<TableRow
@@ -274,7 +281,7 @@
             android:id="@+id/medianoSx1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
             android:text="@string/label_medianoSx"
             android:textAppearance="?android:attr/textAppearanceMedium" 
 			android:textColor="@color/darkblue"
@@ -300,23 +307,25 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
             android:enabled="true"
             android:onClick="onClickMedianoSx1"
              android:text="@string/btnDisponibile"  
 			android:textColor="@color/rossoscuro"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:background="@drawable/background" />
 
 		<Button
             android:id="@+id/btnMedianoSx2"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="20dp"
             android:onClick="onClickMedianoSx2"
              android:text="@string/btnDisponibile"  
 			android:textColor="@color/rossoscuro"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:background="@drawable/background" />
     </TableRow> 
     
 	<TableRow
@@ -328,7 +337,7 @@
             android:id="@+id/centromediano1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
             android:text="@string/label_centromediano"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/darkblue"
@@ -338,7 +347,7 @@
             android:id="@+id/centromediano2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="20dp"
             android:text="@string/label_centromediano"
             android:textAppearance="?android:attr/textAppearanceMedium" 
 			android:textColor="@color/darkblue"
@@ -355,22 +364,24 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
             android:onClick="onClickCentromediano1"
             android:text="@string/btnDisponibile"  
 			android:textColor="@color/rossoscuro"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:background="@drawable/background" />
 
         <Button
             android:id="@+id/btnCentromediano2"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="20dp"
             android:onClick="onClickCentromediano2"
             android:text="@string/btnDisponibile"  
 			android:textColor="@color/rossoscuro"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:background="@drawable/background" />
     </TableRow>
  
 	<TableRow
@@ -382,7 +393,7 @@
             android:id="@+id/alaDx1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
             android:text="@string/label_alaDx"
             android:textAppearance="?android:attr/textAppearanceMedium" 
 			android:textColor="@color/darkblue"
@@ -391,7 +402,7 @@
             android:id="@+id/alaDx2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="20dp"
             android:text="@string/label_alaDx"
             android:textAppearance="?android:attr/textAppearanceMedium" 
 			android:textColor="@color/darkblue"
@@ -408,22 +419,24 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
             android:onClick="onClickAlaDx1"
-             android:text="@string/btnDisponibile"  
+            android:text="@string/btnDisponibile"  
 			android:textColor="@color/rossoscuro"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:background="@drawable/background" />
 
 		<Button
 		    android:id="@+id/btnAlaDx2"
 		    style="?android:attr/buttonStyleSmall"
 		    android:layout_width="wrap_content"
 		    android:layout_height="wrap_content"
-		    android:layout_marginLeft="30dp"
+		    android:layout_marginLeft="20dp"
 		    android:onClick="onClickAlaDx2"
 		     android:text="@string/btnDisponibile"  
 			android:textColor="@color/rossoscuro"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:background="@drawable/background" />
    </TableRow> 
     
    <TableRow
@@ -435,7 +448,7 @@
             android:id="@+id/alaSx1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
             android:text="@string/label_alaSx"
             android:textAppearance="?android:attr/textAppearanceMedium" 
 			android:textColor="@color/darkblue"
@@ -444,7 +457,7 @@
             android:id="@+id/alaSx2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="20dp"
             android:text="@string/label_alaSx"
             android:textAppearance="?android:attr/textAppearanceMedium" 
 			android:textColor="@color/darkblue"
@@ -461,21 +474,23 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
             android:onClick="onClickAlaSx1"
              android:text="@string/btnDisponibile"  
 			android:textColor="@color/rossoscuro"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:background="@drawable/background" />
 		<Button
             android:id="@+id/btnAlaSx2"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="20dp"
             android:onClick="onClickAlaSx2"
-             android:text="@string/btnDisponibile"  
+            android:text="@string/btnDisponibile"  
 			android:textColor="@color/rossoscuro"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:background="@drawable/background" />
     </TableRow>
     
     <TableRow
@@ -487,7 +502,7 @@
             android:id="@+id/mezzalaDx1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
             android:text="@string/label_mezzalaDx"
             android:textAppearance="?android:attr/textAppearanceMedium" 
 			android:textColor="@color/darkblue"
@@ -496,7 +511,7 @@
             android:id="@+id/mezzalaDx2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="20dp"
             android:text="@string/label_mezzalaDx"
             android:textAppearance="?android:attr/textAppearanceMedium" 
 			android:textColor="@color/darkblue"
@@ -513,21 +528,23 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
             android:onClick="onClickMezzalaDx1"
              android:text="@string/btnDisponibile"  
 			android:textColor="@color/rossoscuro"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:background="@drawable/background" />
 		<Button
             android:id="@+id/btnMezzalaDx2"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="20dp"
             android:onClick="onClickMezzalaDx2"
              android:text="@string/btnDisponibile"  
 			android:textColor="@color/rossoscuro"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:background="@drawable/background" />
     </TableRow>
     
 	<TableRow
@@ -539,7 +556,7 @@
             android:id="@+id/mezzalaSx1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
             android:text="@string/label_mezzalaSx"
             android:textAppearance="?android:attr/textAppearanceMedium" 
 			android:textColor="@color/darkblue"
@@ -565,23 +582,25 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
             android:enabled="true"
             android:onClick="onClickMezzalaSx1"
              android:text="@string/btnDisponibile"  
 			android:textColor="@color/rossoscuro"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:background="@drawable/background" />
 
 		<Button
             android:id="@+id/btnMezzalaSx2"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="20dp"
             android:onClick="onClickMezzalaSx2"
-             android:text="@string/btnDisponibile"  
+            android:text="@string/btnDisponibile"  
 			android:textColor="@color/rossoscuro"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:background="@drawable/background" />
     </TableRow>
     
 	<TableRow
@@ -593,7 +612,7 @@
             android:id="@+id/centravanti1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
             android:text="@string/label_centravanti"
             android:textAppearance="?android:attr/textAppearanceMedium" 
 			android:textColor="@color/darkblue"
@@ -619,23 +638,25 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
             android:enabled="true"
             android:onClick="onClickCentravanti1"
              android:text="@string/btnDisponibile"  
 			android:textColor="@color/rossoscuro"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:background="@drawable/background" />
 
 		<Button
             android:id="@+id/btnCentravanti2"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="20dp"
             android:onClick="onClickCentravanti2"
              android:text="@string/btnDisponibile"  
 			android:textColor="@color/rossoscuro"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:background="@drawable/background" />
     </TableRow>
     
     </TableLayout>

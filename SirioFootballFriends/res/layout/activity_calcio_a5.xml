@@ -4,321 +4,357 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
     
-    <TableLayout 
-    android:id="@+id/TableLayout1"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginRight="5dp"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@drawable/sfondo"
-    tools:context="com.github.nicolediana.siriofootballfriends.CalcioA5Activity" >
-
-
-    <TextView
-        android:id="@+id/textView1"
+    <TableLayout
+        android:id="@+id/TableLayout1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:gravity="center_vertical|center_horizontal"
-        android:text="@string/scegliRuolo"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@color/bianco"
-        android:textStyle="bold" />
-
-    <TableRow
-        android:id="@+id/tableRow1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
-        
-        <TextView
-            android:id="@+id/label_squadra1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="@string/label_squadra1"
-            android:textAppearance="?android:attr/textAppearanceMedium" 
-			android:textColor="@color/darkblue"
-            android:textStyle="bold" /> 
-        <TextView
-            android:id="@+id/label_squadra2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:text="@string/label_squadra2"
-            android:textAppearance="?android:attr/textAppearanceMedium" 
-			android:textColor="@color/darkblue"
-            android:textStyle="bold" />  
-    </TableRow>
-    
-    <TableRow
-        android:id="@+id/tableRow2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/separa">
+        android:layout_height="match_parent"
+        android:background="@drawable/squadre"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context="com.github.nicolediana.siriofootballfriends.CalcioA5Activity" >
 
         <TextView
-            android:id="@+id/attaccante1"
+            android:id="@+id/textView1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="@string/label_attaccante"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/darkblue"
+            android:layout_height="0dp"
+            android:layout_marginBottom="20dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="@string/scegliRuolo"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/rossoscuro"
+            android:textSize="25sp"
             android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/attaccante2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:text="@string/label_attaccante"
-            android:textAppearance="?android:attr/textAppearanceMedium" 
-			android:textColor="@color/darkblue"
-            android:textStyle="bold" />
-    </TableRow> 
-    
-    <TableRow
-        android:id="@+id/tableRow7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
-
-        <Button
-            android:id="@+id/btnAttaccante1"
-            style="?android:attr/buttonStyleSmall"
+        <TableRow
+            android:id="@+id/tableRow1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginLeft="20dp"
-            android:onClick="onClickAttaccante1"
-            android:text="@string/btnDisponibile"  
-			android:textColor="@color/rossoscuro"
-            android:textStyle="bold" />
+            android:layout_marginTop="30dp"
+            android:layout_weight="1" >
 
-        <Button
-            android:id="@+id/btnAttaccante2"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:onClick="onClickAttaccante2"
-            android:text="@string/btnDisponibile"  
-			android:textColor="@color/rossoscuro"
-            android:textStyle="bold" />
-    </TableRow>
- 
-	<TableRow
-        android:id="@+id/tableRow3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
-        
-       <TextView
-            android:id="@+id/alaDx1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="@string/label_alaDx"
-            android:textAppearance="?android:attr/textAppearanceMedium" 
-			android:textColor="@color/darkblue"
-            android:textStyle="bold" />
-        <TextView
-            android:id="@+id/alaDx2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:text="@string/label_alaDx"
-            android:textAppearance="?android:attr/textAppearanceMedium" 
-			android:textColor="@color/darkblue"
-            android:textStyle="bold" />
-    </TableRow>
-    
-	<TableRow
-        android:id="@+id/tableRow8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
+            <Button
+                android:id="@+id/label_squadra1"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/maglia1" />
 
-        <Button
-            android:id="@+id/btnAlaDx1"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:onClick="onClickAlaDx1"
-             android:text="@string/btnDisponibile"  
-			android:textColor="@color/rossoscuro"
-            android:textStyle="bold" />
+            <Button
+                android:id="@+id/label_squadra2"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:background="@drawable/maglia2" />
+        </TableRow>
 
-		<Button
-		    android:id="@+id/btnAlaDx2"
-		    style="?android:attr/buttonStyleSmall"
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:layout_marginLeft="30dp"
-		    android:onClick="onClickAlaDx2"
-		     android:text="@string/btnDisponibile"  
-			android:textColor="@color/rossoscuro"
-            android:textStyle="bold" />
-   </TableRow> 
-    
-   <TableRow
-        android:id="@+id/tableRow4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
-        
-        <TextView
-            android:id="@+id/alaSx1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginLeft="20dp"
-            android:text="@string/label_alaSx"
-            android:textAppearance="?android:attr/textAppearanceMedium" 
-			android:textColor="@color/darkblue"
-            android:textStyle="bold" />
-        <TextView
-            android:id="@+id/alaSx2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:text="@string/label_alaSx"
-            android:textAppearance="?android:attr/textAppearanceMedium" 
-			android:textColor="@color/darkblue"
-            android:textStyle="bold" />
-    </TableRow>
-    
-	<TableRow
-        android:id="@+id/tableRow9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
+            android:layout_marginTop="@dimen/separa"
+            android:layout_weight="1" >
 
-        <Button
-            android:id="@+id/btnAlaSx1"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:onClick="onClickAlaSx1"
-             android:text="@string/btnDisponibile"  
-			android:textColor="@color/rossoscuro"
-            android:textStyle="bold" />
-		<Button
-            android:id="@+id/btnAlaSx2"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:onClick="onClickAlaSx2"
-             android:text="@string/btnDisponibile"  
-			android:textColor="@color/rossoscuro"
-            android:textStyle="bold" />
-    </TableRow>
-    
-    <TableRow
-        android:id="@+id/tableRow5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
-        
-        <TextView
-            android:id="@+id/difensore1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="@string/label_difensore"
-            android:textAppearance="?android:attr/textAppearanceMedium" 
-			android:textColor="@color/darkblue"
-            android:textStyle="bold" />
-        <TextView
-            android:id="@+id/difensore2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:text="@string/label_difensore"
-            android:textAppearance="?android:attr/textAppearanceMedium" 
-			android:textColor="@color/darkblue"
-            android:textStyle="bold" /> 
-    </TableRow>
-    
-	<TableRow
-        android:id="@+id/tableRow10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
+            <TextView
+                android:id="@+id/attaccante1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="@string/label_attaccante"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/darkblue"
+                android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/btnDifensore1"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:onClick="onClickDifensore1"
-             android:text="@string/btnDisponibile"  
-			android:textColor="@color/rossoscuro"
-            android:textStyle="bold" />
-		<Button
-            android:id="@+id/btnDifensore2"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:onClick="onClickDifensore2"
-             android:text="@string/btnDisponibile"  
-			android:textColor="@color/rossoscuro"
-            android:textStyle="bold" />
-    </TableRow>
-    
-	<TableRow
-        android:id="@+id/tableRow6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
-        
-        <TextView
-            android:id="@+id/portiere1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="@string/label_portiere"
-            android:textAppearance="?android:attr/textAppearanceMedium" 
-			android:textColor="@color/darkblue"
-            android:textStyle="bold" />
-        <TextView
-            android:id="@+id/portiere2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="@string/label_portiere"
-            android:textAppearance="?android:attr/textAppearanceMedium" 
-			android:textColor="@color/darkblue"
-            android:textStyle="bold" />
-    </TableRow>   
+            <TextView
+                android:id="@+id/attaccante2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:text="@string/label_attaccante"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/darkblue"
+                android:textStyle="bold" />
+        </TableRow>
 
-	<TableRow
-        android:id="@+id/tableRow11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
-
-        <Button
-            android:id="@+id/btnPortiere1"
-            style="?android:attr/buttonStyleSmall"
+        <TableRow
+            android:id="@+id/tableRow7"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginLeft="20dp"
-            android:enabled="true"
-            android:onClick="onClickPortiere1"
-             android:text="@string/btnDisponibile"  
-			android:textColor="@color/rossoscuro"
-            android:textStyle="bold" />
+            android:layout_weight="1" >
 
-		<Button
-            android:id="@+id/btnPortiere2"
-            style="?android:attr/buttonStyleSmall"
+            <Button
+                android:id="@+id/btnAttaccante1"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/background"
+                android:onClick="onClickAttaccante1"
+                android:text="@string/btnDisponibile"
+                android:textColor="@color/rossoscuro"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnAttaccante2"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:background="@drawable/background"
+                android:onClick="onClickAttaccante2"
+                android:text="@string/btnDisponibile"
+                android:textColor="@color/rossoscuro"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow3"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:onClick="onClickPortiere2"
-             android:text="@string/btnDisponibile"  
-			android:textColor="@color/rossoscuro"
-            android:textStyle="bold" />
-    </TableRow>  
-    
+            android:layout_height="0dp"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1" >
+
+            <TextView
+                android:id="@+id/alaDx1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="@string/label_alaDx"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/darkblue"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/alaDx2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:text="@string/label_alaDx"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/darkblue"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow8"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1" >
+
+            <Button
+                android:id="@+id/btnAlaDx1"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/background"
+                android:onClick="onClickAlaDx1"
+                android:text="@string/btnDisponibile"
+                android:textColor="@color/rossoscuro"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnAlaDx2"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:background="@drawable/background"
+                android:onClick="onClickAlaDx2"
+                android:text="@string/btnDisponibile"
+                android:textColor="@color/rossoscuro"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow4"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1" >
+
+            <TextView
+                android:id="@+id/alaSx1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="@string/label_alaSx"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/darkblue"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/alaSx2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:text="@string/label_alaSx"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/darkblue"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow9"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1" >
+
+            <Button
+                android:id="@+id/btnAlaSx1"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/background"
+                android:onClick="onClickAlaSx1"
+                android:text="@string/btnDisponibile"
+                android:textColor="@color/rossoscuro"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnAlaSx2"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:background="@drawable/background"
+                android:onClick="onClickAlaSx2"
+                android:text="@string/btnDisponibile"
+                android:textColor="@color/rossoscuro"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow5"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1" >
+
+            <TextView
+                android:id="@+id/difensore1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="@string/label_difensore"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/darkblue"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/difensore2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:text="@string/label_difensore"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/darkblue"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow10"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1" >
+
+            <Button
+                android:id="@+id/btnDifensore1"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/background"
+                android:onClick="onClickDifensore1"
+                android:text="@string/btnDisponibile"
+                android:textColor="@color/rossoscuro"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnDifensore2"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:background="@drawable/background"
+                android:onClick="onClickDifensore2"
+                android:text="@string/btnDisponibile"
+                android:textColor="@color/rossoscuro"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow6"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1" >
+
+            <TextView
+                android:id="@+id/portiere1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="@string/label_portiere"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/darkblue"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/portiere2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:text="@string/label_portiere"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/darkblue"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow11"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1" >
+
+            <Button
+                android:id="@+id/btnPortiere1"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/background"
+                android:enabled="true"
+                android:onClick="onClickPortiere1"
+                android:text="@string/btnDisponibile"
+                android:textColor="@color/rossoscuro"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnPortiere2"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:background="@drawable/background"
+                android:onClick="onClickPortiere2"
+                android:text="@string/btnDisponibile"
+                android:textColor="@color/rossoscuro"
+                android:textStyle="bold" />
+        </TableRow>
     </TableLayout>
 
 </ScrollView>
