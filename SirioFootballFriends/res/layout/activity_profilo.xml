@@ -14,17 +14,12 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:scrollbars="horizontal|vertical"
     tools:context="com.github.nicolediana.siriofootballfriends.ProfiloActivity" >
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:gravity="center_vertical|center_horizontal"
-        android:text="PROFILO"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@color/rosso2"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/profilo" />
     <TableRow
         android:id="@+id/tableRow1"
         android:layout_width="wrap_content"

@@ -8,8 +8,7 @@
     android:id="@+id/TableLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginRight="6dp"
-    android:background="@drawable/sfondo"
+    android:background="@drawable/home"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -29,7 +28,7 @@
             android:layout_gravity="center_vertical|center_horizontal|center"
             android:text="@string/Partecipa"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/bianco"
+            android:textColor="@color/rossoscuro"
             android:textSize="25sp"
             android:textStyle="bold" />
 
@@ -420,7 +419,8 @@
             android:onClick="onClickSalva"
             android:text="@string/bottoneConfermaPartecipa"
             android:textColor="@color/rosso"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:background="@drawable/background" />
 
         <TableRow
             android:id="@+id/tableRow15"
@@ -436,7 +436,8 @@
                 android:onClick="onClickAnnulla"
                 android:text="@string/bottone_annulla"
                 android:textColor="@color/rosso"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:background="@drawable/background" />
 
         </TableRow>
 
