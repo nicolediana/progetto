@@ -120,12 +120,7 @@
                 android:textStyle="bold" />
         </TableRow>
 
-        <TableRow
-            android:id="@+id/tableRow5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
-
-            <Button
+        <Button
                 android:id="@+id/bottone_accedi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -133,14 +128,7 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/accedi02"
                 android:onClick="onClickAccedi" />
-
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow6"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
-
+        
             <Button
                 android:id="@+id/bottone_registrati"
                 android:layout_width="match_parent"
@@ -149,7 +137,5 @@
                 android:layout_marginTop="15dp"
                 android:background="@drawable/registrati"
                 android:onClick="onClickRegistrati" />
-
-        </TableRow>
 
 </LinearLayout>
