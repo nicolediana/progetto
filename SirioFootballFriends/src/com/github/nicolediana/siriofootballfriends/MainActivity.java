@@ -5,30 +5,23 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
-
 import org.apache.http.HttpResponse;
-import org.apache.http.client.*;
-import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONObject;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity{	
 	//public static String urlServlet="http://app-siriofootball.rhcloud.com";
-	public static String urlServlet="http://192.168.1.111:9080";
-	//public static String urlServlet="http://192.168.1.107:8080";
+	public static String urlServlet="http://192.168.1.107:8080";
 	private String nomeServlet="/ServletExample/ServletCredenziali";
 	
 	private String email="";
@@ -40,23 +33,6 @@ public class MainActivity extends Activity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
-
 	
 	@SuppressLint("NewApi")
 	public void onClickAccedi(View v) throws UnsupportedEncodingException {
@@ -117,28 +93,18 @@ public class MainActivity extends Activity{
 				        		Bundle b=new Bundle();
 				        		b.putString("idcredenziali", id); //passa chiave valore a activity_home
 				        		intent.putExtras(b); //intent x passaggio parametri
-				        		startActivity(intent);
-				        		
-				    			Toast.makeText(getApplicationContext(), "Crea il tuo Profilo", Toast.LENGTH_LONG).show(); 
-					    		
+				        		startActivity(intent);				        		
 				    			}
-				    		}
-		        	    
+				    		}		        	    
 				    else Toast.makeText(getApplicationContext(), "Utente Inesistente!!!", Toast.LENGTH_LONG).show(); //(id=0)
-			    		
-		        	}//if
+			    	}//if
 		        	else Toast.makeText(getApplicationContext(), "Utente Inesistente", Toast.LENGTH_LONG).show();
-		    		
-		        }//try
+		    	 }//try
 		        	catch(Exception e){
 		        		Toast.makeText(getApplicationContext(), ""+e.toString(), Toast.LENGTH_LONG).show();
 		        	}//catch 
 			}
 		}
-		
-		
-		//Toast.makeText(getApplicationContext(), "funziona "+email+" "+password, Toast.LENGTH_LONG).show();
-		
 	}
 	
 	private String convertStreamToString(InputStream is) {
@@ -168,7 +134,5 @@ public class MainActivity extends Activity{
 		b.putString("password", password); //passa chiave valore a activity_home
 		intent.putExtras(b); //intent x passaggio parametri
 		startActivity(intent);
-	}
-
-	
+	}	
 }
