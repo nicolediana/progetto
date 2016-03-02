@@ -94,7 +94,7 @@ public class HomeActivity extends Activity {
 			Bundle b = new Bundle();
 			b.putString("idprofilo", idprofilo); //passa chiave valore a activity_home
 			b.putString("idpartita", idPartita);
-			b.putString("visibilit‡Pulsanti", "invisibili");
+			b.putString("visibilit√†Pulsanti", "invisibili");
 			intent.putExtras(b); //intent x passaggio parametri
 			startActivity(intent);	
 			}
