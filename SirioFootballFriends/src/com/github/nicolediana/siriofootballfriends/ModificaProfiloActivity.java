@@ -77,11 +77,11 @@ public class ModificaProfiloActivity extends Activity {
 		else
 			annonascita=Integer.parseInt(annonascitaStr);
 
-		//nickname non puÚ essere nullo
+		//nickname non pu√≤ essere nullo
 		if(nickname.equals("")||nickname.equals(null))
 				Toast.makeText(getApplicationContext(), " Inserire un Nickname", Toast.LENGTH_LONG).show();	
 		else{				
-			//citt‡ non deve essere nullo
+			//citt√† non deve essere nullo
 			if(citta.equals("")||citta.equals(null))
 				Toast.makeText(getApplicationContext(), "Citta' non valida", Toast.LENGTH_LONG).show();
 			else{
@@ -219,12 +219,12 @@ public class ModificaProfiloActivity extends Activity {
 			if(!myjson2.get("annonascita").toString().equals("0"))
 			{
 				TextView annonascitadig=(TextView)findViewById(R.id.annonascita);
-				annonascitadig.setText(Integer.parseInt(myjson2.get("annonascita").toString()));
+				annonascitadig.setText(myjson2.get("annonascita").toString());
 			}
 			if(!myjson2.get("cellulare").toString().equals("0"))
 			{
 				TextView celldig=(TextView)findViewById(R.id.cellulare);
-				celldig.setText(Integer.parseInt(myjson2.get("cellulare").toString()));
+				celldig.setText(myjson2.get("cellulare").toString());
 			}
 			
 			if(sesso.equals("M")){
