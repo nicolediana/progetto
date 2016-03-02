@@ -95,7 +95,7 @@ public class PartiteInProgrammaActivity extends Activity {
 		    	String indicepartita = idpart[pos].toString();
 			    intent.putExtra("idpartita", indicepartita); //intent x passaggio parametri
 			    intent.putExtra("idprofilo", idprofilo);
-			    intent.putExtra("visibilit‡Pulsanti", "partiteInProgramma");
+			    intent.putExtra("visibilit√†Pulsanti", "partiteInProgramma");
 			    startActivity(intent);
 			 }    
 		   });
