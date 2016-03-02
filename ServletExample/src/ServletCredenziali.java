@@ -197,8 +197,7 @@ public class ServletCredenziali extends HttpServlet {
 	  // Chiudere sempre la connessione alla base di dati
 	  if (conn != null)
 	  connect.closeConnection(conn);
-	  }
-	  
+	  }	  
 	 } 
 	
   	}  

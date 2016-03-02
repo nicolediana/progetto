@@ -156,7 +156,7 @@ public class ServletPartita extends HttpServlet {
 			    	sql = "SELECT * FROM partita WHERE provincia='"+provincia.toUpperCase()+"' AND data > (SELECT NOW()) ORDER BY data ASC";
 			    }
 			    if(provincia.equals("null")){
-			    	System.out.println("Ricerca per cittÃ ");
+			    	System.out.println("Ricerca per città");
 			    	sql = "SELECT * FROM partita WHERE citta='"+citta.toUpperCase()+"' AND data > (SELECT NOW()) ORDER BY data ASC";
 				}
 			    if(!provincia.equals("null")&&!citta.equals("null")){
@@ -190,7 +190,7 @@ public class ServletPartita extends HttpServlet {
 					quer.add(sql);
 					v.add(part);
 				}
-				//vedere se Ã¨ al completo
+				//vedere se è al completo
 				Integer cont=0;
 				for(int i=0;i<quer.size();i++)
 				{
@@ -281,7 +281,7 @@ public class ServletPartita extends HttpServlet {
 			
 //------------------------PARTECIPA ALLA PARTITA------------------------------------
 			//POST -update
-	//fa anche il controllo se un utente giÃ  si Ã¨ registrato x quella partita
+	//fa anche il controllo se un utente già si è registrato x quella partita
 			if(tiporichiesta.equals("aggiorna"))
 			{
 				//inserire idprofilo in tab correlate
@@ -324,7 +324,7 @@ public class ServletPartita extends HttpServlet {
 				/*
 				String sql = "UPDATE partita SET nmancanti='"+nmancanti+"' WHERE idpartita='"+idpartita+"'";
 				stmt.executeUpdate(sql);
-				// Ritorna a ConfermaPartecipaActivity il nÂ° di giocatori che mancano ancora
+				// Ritorna a ConfermaPartecipaActivity il n° di giocatori che mancano ancora
 				sql = "SELECT nmancanti FROM partita WHERE idpartita='"+idpartita+"'";
 				rs = stmt.executeQuery(sql);
 				if(rs.next()) 
@@ -508,7 +508,7 @@ public class ServletPartita extends HttpServlet {
 				idprofilo = Integer.parseInt(jObj.get("idprofilo").toString());
 				JSONObject jsonObj = new JSONObject();
 				
-				//si puÃ² eliminare la partita solo se si Ã¨ l'amministratore
+				//si può eliminare la partita solo se si è l'amministratore
 				sql = "SELECT * FROM partita WHERE amministratore='"+idprofilo+"' and idpartita='"+idpartita+"'";
 				rs = stmt.executeQuery(sql);
 				if(rs.next()) {
