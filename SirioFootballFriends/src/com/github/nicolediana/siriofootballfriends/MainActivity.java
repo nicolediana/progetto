@@ -20,8 +20,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity{	
-	//public static String urlServlet="http://app-siriofootball.rhcloud.com";
-	public static String urlServlet="http://192.168.1.107:8080";
+	public static String urlServlet="http://app-siriofootball.rhcloud.com";
+	//public static String urlServlet="http://192.168.1.102:8080";
 	private String nomeServlet="/ServletExample/ServletCredenziali";
 	
 	private String email="";
@@ -41,11 +41,11 @@ public class MainActivity extends Activity{
 		TextView pwDigitato=(TextView)findViewById(R.id.psw);
 		password= (String)pwDigitato.getText().toString();
 		
-		//controllo se email è vuota e se rispetta la regular expression
+		//controllo se email Ã¨ vuota e se rispetta la regular expression
 		if(email.equals("")||email.equals(null)||(!email.matches(email_regular)))
 			Toast.makeText(getApplicationContext(), "Email non valida", Toast.LENGTH_LONG).show();
 		else{
-			//controllo se pw è vuota 
+			//controllo se pw Ã¨ vuota 
 			if(password.equals("")||password.equals(null))
 				Toast.makeText(getApplicationContext(), "Inserire Password", Toast.LENGTH_LONG).show();
 			else{
