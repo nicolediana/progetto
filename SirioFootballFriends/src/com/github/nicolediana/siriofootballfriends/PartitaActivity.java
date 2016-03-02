@@ -92,7 +92,7 @@ public class PartitaActivity extends Activity {
 		coperto= copertodig.getText().toString();
 		TextView notedig=(TextView)findViewById(R.id.note);
 		note= notedig.getText().toString();		
-		//citt‡ non deve essere nullo
+		//citt√† non deve essere nullo
 		if(citta.equals("")||provincia.equals("")||indirizzocampo.equals("")||data.equals("")||ora.equals("")||cellulareStr.equals(""))
 			Toast.makeText(getApplicationContext(), "Inserire tutti i campi contrassegnati con * ", Toast.LENGTH_LONG).show();
 		else{
