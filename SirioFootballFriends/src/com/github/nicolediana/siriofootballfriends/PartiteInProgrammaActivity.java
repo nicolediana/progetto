@@ -66,7 +66,7 @@ public class PartiteInProgrammaActivity extends Activity {
 			 int size = json_array.length();
 			 String[] partite = new String[size];
 		     final Integer[] idpart = new Integer[size]; //Associa l'id della riga del ListView all'idpartita
-		    
+		     
 		     // Recupero delle singole Json dall'array di Json
 			 for (int j = 0; j < size; j++) {
 			    JSONObject another_json_object = json_array.getJSONObject(j);
