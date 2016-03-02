@@ -20,8 +20,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity{	
-	public static String urlServlet="http://app-siriofootball.rhcloud.com";
-	//public static String urlServlet="http://192.168.1.102:8080";
+	//public static String urlServlet="http://app-siriofootball.rhcloud.com";
+	public static String urlServlet="http://192.168.1.102:8080";
 	private String nomeServlet="/ServletExample/ServletCredenziali";
 	
 	private String email="";
