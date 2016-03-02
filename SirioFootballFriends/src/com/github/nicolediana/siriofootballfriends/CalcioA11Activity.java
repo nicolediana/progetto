@@ -173,7 +173,7 @@ public class CalcioA11Activity extends Activity {
 			entity.setContentType("application/json;charset=UTF-8");
 			httppostreq.setEntity(entity);
 			HttpResponse response = httpclient.execute(httppostreq);
-			//risposta si=ok prenotazione effettuata con successo,no=nick gi‡ presente x qst partita
+			//risposta si=ok prenotazione effettuata con successo,no=nick gi√† presente x qst partita
 			String line = "";
 			InputStream inputstream = response.getEntity().getContent();
 			line = convertStreamToString(inputstream);
@@ -183,7 +183,7 @@ public class CalcioA11Activity extends Activity {
 				Toast.makeText(this, "Registrazione effettuata con successo", Toast.LENGTH_SHORT).show();
 				leggiRuoli();
 			}
-			else Toast.makeText(this, "Nickname gi‡ presente in questa partita", Toast.LENGTH_SHORT).show();
+			else Toast.makeText(this, "Nickname gi√† presente in questa partita", Toast.LENGTH_SHORT).show();
 		}
 		catch (Exception e) {e.printStackTrace();}
 	}	
@@ -197,7 +197,7 @@ public class CalcioA11Activity extends Activity {
 			inviaRichiesta(ruolo,numsquadra);
 		}
 		else visualizzaProfilo(ttemp);
-		//Toast.makeText(this, "Ruolo gi‡ assegnato", Toast.LENGTH_SHORT).show(); 
+		//Toast.makeText(this, "Ruolo gi√† assegnato", Toast.LENGTH_SHORT).show(); 
 	}
 	
 	public void onClickAlaDx1(View v){
