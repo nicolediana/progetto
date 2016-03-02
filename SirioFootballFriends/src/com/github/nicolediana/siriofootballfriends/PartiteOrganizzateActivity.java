@@ -36,13 +36,13 @@ public class PartiteOrganizzateActivity extends Activity {
 		
 		//Recupera parametro passato
 		Intent i = getIntent();
-	    idprofilo = i.getStringExtra("idprofilo");
-	    
-	    StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+		idprofilo = i.getStringExtra("idprofilo");
+		
+		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 		StrictMode.setThreadPolicy(policy);
 		JSONObject jsonobj = new JSONObject();
 		String tiporichiesta = "partiteOrganizzate";
-				
+		
 		try {			 
 			 jsonobj.put("idprofilo", idprofilo);
 			 jsonobj.put("tiporichiesta", tiporichiesta );
@@ -66,9 +66,9 @@ public class PartiteOrganizzateActivity extends Activity {
 			 JSONArray json_array = myjson.getJSONArray("elencoPartite");
 			 int size = json_array.length();
 			 String[] partite = new String[size];
-		     final Integer[] idpart = new Integer[size]; //Associa l'id della riga del ListView all'idpartita
-		    
-		     // Recupero delle singole Json dall'array di Json
+			 final Integer[] idpart = new Integer[size]; //Associa l'id della riga del ListView all'idpartita
+			 
+			 // Recupero delle singole Json dall'array di Json
 			 for (int j = 0; j < size; j++) {
 			    JSONObject another_json_object = json_array.getJSONObject(j);
 			    partite[j] = another_json_object.get("nomecampo").toString() + " - " +
@@ -77,29 +77,29 @@ public class PartiteOrganizzateActivity extends Activity {
 			 }
 			 
 			 // Creazione del Listview - definisco un ArrayList
-		     final ArrayList <String> partitelist = new ArrayList<String>();  
-	         for (int i1 = 0; i1 < partite.length; ++i1) {  
-	             partitelist.add(partite[i1]);  
-	         }  		     
-	         // Recupero la lista dal layout  
-		     ListView mylist = (ListView) findViewById(R.id.elencoPartiteOrganizzate); 
-		     mylist.setTextFilterEnabled(true);			    
-		     // Creo e istruisco l'adattatore  
-		     ArrayAdapter <String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, partitelist);  
-	         // Inietto i dati  
-	         mylist.setAdapter(adapter); 
-	         final Intent intent = new Intent(this, ConfermaPartecipaActivity.class);
-		     // Definisco un listener per l'adattatore
-		     mylist.setOnItemClickListener(new OnItemClickListener() {  
-		     @Override  
-			 public void onItemClick(AdapterView<?> adapter, final View view, int pos, long id){  
-		    	String indicepartita = idpart[pos].toString();
-			    intent.putExtra("idpartita", indicepartita); //intent x passaggio parametri
-			    intent.putExtra("idprofilo", idprofilo);
-			    intent.putExtra("visibilit‡Pulsanti", "partiteOrganizzate");
-			    startActivity(intent);
-			 }    
-		   });
+			 final ArrayList <String> partitelist = new ArrayList<String>();  
+			 for (int i1 = 0; i1 < partite.length; ++i1) {  
+			 	partitelist.add(partite[i1]);  
+			 }  		    
+			 // Recupero la lista dal layout 
+			 ListView mylist = (ListView) findViewById(R.id.elencoPartiteOrganizzate); 
+			 mylist.setTextFilterEnabled(true);			  
+			 // Creo e istruisco l'adattatore  
+			 ArrayAdapter <String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, partitelist); 
+			 // Inietto i dati  
+			 mylist.setAdapter(adapter); 
+			 final Intent intent = new Intent(this, ConfermaPartecipaActivity.class);
+			 // Definisco un listener per l'adattatore
+			 mylist.setOnItemClickListener(new OnItemClickListener() {  
+			 	@Override  
+			 	public void onItemClick(AdapterView<?> adapter, final View view, int pos, long id){  
+			 		String indicepartita = idpart[pos].toString();
+			 		intent.putExtra("idpartita", indicepartita); //intent x passaggio parametri
+			 		intent.putExtra("idprofilo", idprofilo);
+			 		intent.putExtra("visibilit√†Pulsanti", "partiteOrganizzate");
+			 		startActivity(intent);
+			 	}    
+			 });
 		}
 		catch(IOException | JSONException e) {
 			e.printStackTrace();
@@ -107,16 +107,16 @@ public class PartiteOrganizzateActivity extends Activity {
 	}
 	
 	private String convertStreamToString(InputStream is) {
-	    String line = "";
-	    StringBuilder total = new StringBuilder();
-	    BufferedReader rd = new BufferedReader(new InputStreamReader(is));
-	    try {
-	        while ((line = rd.readLine()) != null) {
-	            total.append(line);
-	        }
-	    } catch (Exception e) {
-	    Toast.makeText(this, "Stream Exception", Toast.LENGTH_SHORT).show();
-	    }
-	return total.toString();
+		String line = "";
+		StringBuilder total = new StringBuilder();
+		BufferedReader rd = new BufferedReader(new InputStreamReader(is));
+		try {
+			while ((line = rd.readLine()) != null) {
+				total.append(line);
+			}
+		} catch (Exception e) {
+			Toast.makeText(this, "Stream Exception", Toast.LENGTH_SHORT).show();
+		}
+		return total.toString();
 	}
 }
