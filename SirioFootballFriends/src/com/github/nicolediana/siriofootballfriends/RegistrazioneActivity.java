@@ -52,11 +52,11 @@ public class RegistrazioneActivity extends Activity {
 		TextView pw2Digitato=(TextView)findViewById(R.id.psw2);
 		password2= (String)pw2Digitato.getText().toString();
 		
-		//controllo se email Ë vuota e se rispetta la regular expression
+		//controllo se email √® vuota e se rispetta la regular expression
 		if(email.equals("")||email.equals(null)||(!email.matches(email_regular)))
 			Toast.makeText(getApplicationContext(), "Email non valida", Toast.LENGTH_LONG).show();
 		else{
-			//controllo se pw Ë vuota 
+			//controllo se pw √® vuota 
 			if(password.equals("")||password.equals(null))
 				Toast.makeText(getApplicationContext(), "Inserire Password", Toast.LENGTH_LONG).show();
 			else{
@@ -97,7 +97,7 @@ public class RegistrazioneActivity extends Activity {
 			        		startActivity(intent);
 			        	}
 					else
-						Toast.makeText(getApplicationContext(), "Email gi‡ registrata", Toast.LENGTH_LONG).show();
+						Toast.makeText(getApplicationContext(), "Email gi√† registrata", Toast.LENGTH_LONG).show();
 					}
 					catch (JSONException ex) {
 						ex.printStackTrace();
