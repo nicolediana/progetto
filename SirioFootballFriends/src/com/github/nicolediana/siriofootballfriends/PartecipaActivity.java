@@ -53,7 +53,7 @@ public class PartecipaActivity extends Activity {
 		TextView cercaProv=(TextView)findViewById(R.id.cercaPerProvincia);
 		provincia= cercaProv.getText().toString();
 		
-		//citt√† e provincia non devono essere entrambi nulli
+		//citt‡ e provincia non devono essere entrambi nulli
 		if((citta.equals("")||citta.equals(null))&&(provincia.equals("")||provincia.equals(null)))
 				Toast.makeText(getApplicationContext(), "Inserire Citta' e/o Provincia", Toast.LENGTH_LONG).show();
 		else{
@@ -122,7 +122,7 @@ public class PartecipaActivity extends Activity {
 				        //Toast.makeText(getApplicationContext(), indicepartita, Toast.LENGTH_LONG).show();
 				        intent.putExtra("idpartita", indicepartita); //intent x passaggio parametri
 				        intent.putExtra("idprofilo", idprofilo);
-				        intent.putExtra("visibilit√†Pulsanti", "");
+				        intent.putExtra("visibilit‡Pulsanti", "");
 				        startActivity(intent);
 				     }    
 			    });  

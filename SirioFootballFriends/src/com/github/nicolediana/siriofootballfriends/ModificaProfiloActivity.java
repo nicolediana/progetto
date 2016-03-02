@@ -77,11 +77,11 @@ public class ModificaProfiloActivity extends Activity {
 		else
 			annonascita=Integer.parseInt(annonascitaStr);
 
-		//nickname non pu√≤ essere nullo
+		//nickname non puÚ essere nullo
 		if(nickname.equals("")||nickname.equals(null))
 				Toast.makeText(getApplicationContext(), " Inserire un Nickname", Toast.LENGTH_LONG).show();	
 		else{				
-			//citt√† non deve essere nullo
+			//citt‡ non deve essere nullo
 			if(citta.equals("")||citta.equals(null))
 				Toast.makeText(getApplicationContext(), "Citta' non valida", Toast.LENGTH_LONG).show();
 			else{

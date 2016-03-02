@@ -66,7 +66,7 @@ public class PartiteInProgrammaActivity extends Activity {
 			 int size = json_array.length();
 			 String[] partite = new String[size];
 		     final Integer[] idpart = new Integer[size]; //Associa l'id della riga del ListView all'idpartita
-		     
+		    
 		     // Recupero delle singole Json dall'array di Json
 			 for (int j = 0; j < size; j++) {
 			    JSONObject another_json_object = json_array.getJSONObject(j);
@@ -95,7 +95,7 @@ public class PartiteInProgrammaActivity extends Activity {
 		    	String indicepartita = idpart[pos].toString();
 			    intent.putExtra("idpartita", indicepartita); //intent x passaggio parametri
 			    intent.putExtra("idprofilo", idprofilo);
-			    intent.putExtra("visibilitÃ Pulsanti", "partiteInProgramma");
+			    intent.putExtra("visibilitàPulsanti", "partiteInProgramma");
 			    startActivity(intent);
 			 }    
 		   });
