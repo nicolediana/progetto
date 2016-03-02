@@ -18,19 +18,19 @@ public class ConnessioneDB {
 
 	Connection conn = null;
 	
-	/*
+	
 	String url = "jdbc:mysql://localhost:3306/";
 	String dbName = "calcio";
 	String userName = "root";
 	String password = "";
-	*/
+
 	
-	
+	/*
 	String url = "jdbc:mysql://127.11.139.2:3306/";
 	String dbName = "sirio";
 	String userName = "adminlL8hBfI";
 	String password = "HPZjQCQsnVG4";
-	
+	*/	
 	
 	public Connection openConnection(){
 		try {
