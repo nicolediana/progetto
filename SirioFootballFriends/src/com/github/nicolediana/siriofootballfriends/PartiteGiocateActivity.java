@@ -97,7 +97,7 @@ public class PartiteGiocateActivity extends Activity {
 		    	String indicepartita = idpart[pos].toString();
 			    intent.putExtra("idpartita", indicepartita); //intent x passaggio parametri
 			    intent.putExtra("idprofilo", idprofilo);
-			    intent.putExtra("visibilit‡Pulsanti", "invisibili");
+			    intent.putExtra("visibilit√†Pulsanti", "invisibili");
 			    startActivity(intent);
 			 }    
 		   });
