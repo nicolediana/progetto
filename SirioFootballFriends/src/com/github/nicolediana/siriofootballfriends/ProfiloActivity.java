@@ -72,11 +72,11 @@ public class ProfiloActivity extends Activity {
 		else
 			annonascita=Integer.parseInt(etaStr);
 			
-		//nickname non puÚ essere nullo
+		//nickname non pu√≤ essere nullo
 		if(nickname.equals("")||nickname.equals(null))
 				Toast.makeText(getApplicationContext(), " Inserire un Nickname", Toast.LENGTH_LONG).show();
 		else{
-			//citt‡ non deve essere nullo
+			//citt√† non deve essere nullo
 		if(citta.equals("")||citta.equals(null))
 			Toast.makeText(getApplicationContext(), "Inserire una Citta' ", Toast.LENGTH_LONG).show();
 		else{
@@ -126,7 +126,7 @@ public class ProfiloActivity extends Activity {
 					    intent.putExtras(b); //intent x passaggio parametri
 					    startActivity(intent);
 					}
-					else Toast.makeText(this, "Nickname gi‡ presente, sceglierne un altro", Toast.LENGTH_SHORT).show();
+					else Toast.makeText(this, "Nickname gi√† presente, sceglierne un altro", Toast.LENGTH_SHORT).show();
 				}
 				catch (JSONException ex) {
 					ex.printStackTrace();
