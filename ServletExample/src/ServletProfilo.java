@@ -49,7 +49,7 @@ public class ServletProfilo extends HttpServlet {
 			
 			// Esegui una query SQL, ottieni un ResultSet
 //--------------------------------------CREA PROFILO--------------------------------------------------------------			
-//c'Ë anche il controllo per veder se il nickname Ë stato gi‡ assegnato a qualcun altro
+//c'√® anche il controllo per veder se il nickname √® stato gi√† assegnato a qualcun altro
 			if(tiporichiesta.equals("crea"))
 			{
 				System.out.println("crea");
@@ -144,7 +144,7 @@ public class ServletProfilo extends HttpServlet {
 			    //linkfotoprofilo
 			    String risposta="si";
 			    
-			    //controllo che nickname non sia gi‡ esistente
+			    //controllo che nickname non sia gi√† esistente
 			    JSONObject jsonObj = new JSONObject();
 				sql = "SELECT * FROM profilo WHERE nickname='"+nickname+"'";
 				rs = stmt.executeQuery(sql);
