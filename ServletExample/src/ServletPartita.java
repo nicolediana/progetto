@@ -49,50 +49,50 @@ public class ServletPartita extends HttpServlet {
 		Statement stmt = null;		
 		ResultSet rs,rs2;
 		PrintWriter writer = response.getWriter();
-
+		
 		// Recupero i dati dalla richiesta
 		try {
 			System.out.println("Servlet partita");
 			StringBuilder sb = new StringBuilder();
-		    String s;
-		    while ((s = request.getReader().readLine()) != null) {
-		    	sb.append(s);
-		    }		    
-		    JSONObject jObj = new JSONObject(sb.toString());
-		    tiporichiesta= jObj.get("tiporichiesta").toString();	
+			String s;
+			while ((s = request.getReader().readLine()) != null) {
+				sb.append(s);
+			}		    
+			JSONObject jObj = new JSONObject(sb.toString());
+			tiporichiesta= jObj.get("tiporichiesta").toString();	
 			citta= jObj.get("citta").toString();
-		    provincia= jObj.get("provincia").toString();		    
-		    
-		    conn = connect.openConnection();
-			stmt = conn.createStatement();			
-								
+			provincia= jObj.get("provincia").toString();
+			
+			conn = connect.openConnection();
+			stmt = conn.createStatement();
+			
 //-----------------------------CREA PARTITA----------------------------------------
 			//PUT ->crea partita. PartitaActivity
 			if(tiporichiesta.equals("crea"))
 			{
 				System.out.println("crea partita");
 				nomecampo= jObj.get("nomecampo").toString();
-			    indirizzocampo= jObj.get("indirizzocampo").toString();
-			    data= jObj.get("data").toString();
-			    ora= jObj.get("ora").toString();
-			    costo= Float.parseFloat(jObj.get("costo").toString());
-			    amministratore = Integer.parseInt(jObj.get("amministratore").toString());
-			    contatto = jObj.get("contatto").toString();
-			    linkfotocampo="";
-			    terreno= jObj.get("terreno").toString();
-			    coperto= jObj.get("coperto").toString();
-			    note= jObj.get("note").toString();
-			    tipopartita= jObj.get("tipopartita").toString();
-			    
-			    String dataSQL = convertiDataInSql(data, ora);
-			    sql = "SELECT * FROM tipopartita WHERE tipopartita='"+tipopartita+"'";
+				indirizzocampo= jObj.get("indirizzocampo").toString();
+				data= jObj.get("data").toString();
+				ora= jObj.get("ora").toString();
+				costo= Float.parseFloat(jObj.get("costo").toString());
+				amministratore = Integer.parseInt(jObj.get("amministratore").toString());
+				contatto = jObj.get("contatto").toString();
+				linkfotocampo="";
+				terreno= jObj.get("terreno").toString();
+				coperto= jObj.get("coperto").toString();
+				note= jObj.get("note").toString();
+				tipopartita= jObj.get("tipopartita").toString();
+				
+				String dataSQL = convertiDataInSql(data, ora);
+				sql = "SELECT * FROM tipopartita WHERE tipopartita='"+tipopartita+"'";
 				rs = stmt.executeQuery(sql);
 				if(rs.next()) {
 					idtipopartita=Integer.parseInt(rs.getString("idtipopartita"));
 					numsquadre=Integer.parseInt(rs.getString("numsquadre"));
 					numgiocatori=Integer.parseInt(rs.getString("numgiocatori"));					
 				}
-			    
+				
 				//Memorizza parita
 				sql = "INSERT INTO partita (idtipopartita, nomecampo, indirizzocampo, citta, provincia, costo, data, terreno, coperto, note, linkfotocampo,amministratore, contatto) VALUES ('"+idtipopartita+"','"+nomecampo+"', '"+indirizzocampo+"', '"+citta.toUpperCase()+"', '"+provincia.toUpperCase()+"', '"+costo+"', '"+dataSQL+"', '"+terreno+"', '"+coperto+"', '"+note+"', '"+linkfotocampo+"', '"+amministratore+"', '"+contatto+"')";
 				stmt.executeUpdate(sql);
@@ -117,9 +117,9 @@ public class ServletPartita extends HttpServlet {
 				while(rs.next()) {
 					//per ogni squadra crea ruolo ->tab squadra-ruolo
 					Integer idsquadra=Integer.parseInt(rs.getString("idsquadra"));
-			    	String sql2 = "SELECT idruolo FROM ruolo WHERE idtipopartita='"+idtipopartita+"'";		    
-			    	quer.add(sql2);
-			    	idsquad.add(idsquadra);
+					String sql2 = "SELECT idruolo FROM ruolo WHERE idtipopartita='"+idtipopartita+"'";
+					quer.add(sql2);
+					idsquad.add(idsquadra);
 				}
 				for(int k=0;k<quer.size();k++)
 				{
@@ -156,7 +156,7 @@ public class ServletPartita extends HttpServlet {
 			    	sql = "SELECT * FROM partita WHERE provincia='"+provincia.toUpperCase()+"' AND data > (SELECT NOW()) ORDER BY data ASC";
 			    }
 			    if(provincia.equals("null")){
-			    	System.out.println("Ricerca per città");
+			    	System.out.println("Ricerca per cittÃ ");
 			    	sql = "SELECT * FROM partita WHERE citta='"+citta.toUpperCase()+"' AND data > (SELECT NOW()) ORDER BY data ASC";
 				}
 			    if(!provincia.equals("null")&&!citta.equals("null")){
@@ -190,7 +190,7 @@ public class ServletPartita extends HttpServlet {
 					quer.add(sql);
 					v.add(part);
 				}
-				//vedere se è al completo
+				//vedere se Ã¨ al completo
 				Integer cont=0;
 				for(int i=0;i<quer.size();i++)
 				{
@@ -281,7 +281,7 @@ public class ServletPartita extends HttpServlet {
 			
 //------------------------PARTECIPA ALLA PARTITA------------------------------------
 			//POST -update
-	//fa anche il controllo se un utente già si è registrato x quella partita
+	//fa anche il controllo se un utente giÃ  si Ã¨ registrato x quella partita
 			if(tiporichiesta.equals("aggiorna"))
 			{
 				//inserire idprofilo in tab correlate
@@ -324,7 +324,7 @@ public class ServletPartita extends HttpServlet {
 				/*
 				String sql = "UPDATE partita SET nmancanti='"+nmancanti+"' WHERE idpartita='"+idpartita+"'";
 				stmt.executeUpdate(sql);
-				// Ritorna a ConfermaPartecipaActivity il n° di giocatori che mancano ancora
+				// Ritorna a ConfermaPartecipaActivity il nÂ° di giocatori che mancano ancora
 				sql = "SELECT nmancanti FROM partita WHERE idpartita='"+idpartita+"'";
 				rs = stmt.executeQuery(sql);
 				if(rs.next()) 
@@ -508,7 +508,7 @@ public class ServletPartita extends HttpServlet {
 				idprofilo = Integer.parseInt(jObj.get("idprofilo").toString());
 				JSONObject jsonObj = new JSONObject();
 				
-				//si può eliminare la partita solo se si è l'amministratore
+				//si puÃ² eliminare la partita solo se si Ã¨ l'amministratore
 				sql = "SELECT * FROM partita WHERE amministratore='"+idprofilo+"' and idpartita='"+idpartita+"'";
 				rs = stmt.executeQuery(sql);
 				if(rs.next()) {
